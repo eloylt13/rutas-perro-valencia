@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Rutas con perro en Valencia",
   description:
     "Colección de rutas verificadas para disfrutar con perro cerca de Valencia, organizadas por zona, tipo y ficha detallada.",
-  metadataBase: new URL("https://rutas-perro-valencia.vercel.app")
+  metadataBase: new URL("https://rutasperrovalencia.es")
 };
 
 const navigation = [

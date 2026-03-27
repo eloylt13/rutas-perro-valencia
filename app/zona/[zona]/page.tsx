@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -37,8 +37,12 @@ export async function generateMetadata({
   }
 
   return {
+    metadataBase: new URL("https://rutasperrovalencia.es"),
     title: `Rutas en ${formatZona(zona)}`,
-    description: `Listado de rutas con perro en ${formatZona(zona)}.`
+    description: `Listado de rutas con perro en ${formatZona(zona)}.`,
+    alternates: {
+      canonical: `/zona/${params.zona}`
+    }
   };
 }
 
@@ -66,8 +70,8 @@ export default function ZonaPage({ params }: ZonaPageProps) {
         </p>
         <h2 className="mt-2 text-3xl font-bold text-bosque">{formatZona(zona)}</h2>
         <p className="mt-3 max-w-3xl text-base leading-7 text-grafito/80">
-          {rutas.length} rutas disponibles para esta zona, con acceso rápido a la ficha
-          individual de cada recorrido.
+          {rutas.length} rutas disponibles para esta zona, con acceso rápido a la ficha individual
+          de cada recorrido.
         </p>
       </section>
 

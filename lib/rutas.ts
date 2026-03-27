@@ -1,4 +1,4 @@
-import rutasData from "@/data/rutas-verified.json";
+﻿import rutasData from "@/data/rutas-verified.json";
 import type { Ruta } from "@/types/ruta";
 
 export const TIPOS_SOPORTADOS = ["con-agua", "faciles", "cerca-de-valencia"] as const;
@@ -67,7 +67,7 @@ function fixUtf8Mojibake(value: string): string {
   let current = value;
 
   for (let index = 0; index < 3; index += 1) {
-    if (!/[ÃƒÆ’Ãƒâ€šÃƒÂ¢]/.test(current)) {
+    if (!/[ÃƒÆ’Ã†â€™ÃƒÆ’Ã¢â‚¬Å¡ÃƒÆ’Ã‚Â¢]/.test(current)) {
       break;
     }
 
@@ -117,7 +117,7 @@ function normalizeText(value: string): string {
 export function capitalize(value: string): string {
   return fixUtf8Mojibake(value)
     .toLocaleLowerCase("es")
-    .replace(/(^|[\s/'â€™-])\p{L}/gu, (match) => match.toLocaleUpperCase("es"));
+    .replace(/(^|[\s/'’-])\p{L}/gu, (match) => match.toLocaleUpperCase("es"));
 }
 
 export function sanitizeText(value: string): string {
@@ -170,7 +170,7 @@ export function getZonas(): string[] {
 
 export function getZonaSlug(zona: string): string {
   return normalizeText(zona)
-    .replace(/['â€™]/g, "")
+    .replace(/['’-]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }
@@ -188,7 +188,7 @@ export function getTipoLabel(tipo: TipoSoportado): string {
     case "con-agua":
       return "Rutas con agua";
     case "faciles":
-      return "Rutas f\u00e1ciles";
+      return "Rutas fáciles";
     case "cerca-de-valencia":
       return "Rutas cerca de Valencia";
   }
@@ -197,10 +197,10 @@ export function getTipoLabel(tipo: TipoSoportado): string {
 export function getTipoDescription(tipo: TipoSoportado): string {
   switch (tipo) {
     case "con-agua":
-      return "Recorridos con puntos de agua para paseos m\u00e1s frescos.";
+      return "Recorridos con puntos de agua para paseos más frescos.";
     case "faciles":
-      return "Selecci\u00f3n de rutas asequibles para la mayor\u00eda de perros y personas.";
+      return "Selección de rutas asequibles para la mayoría de perros y personas.";
     case "cerca-de-valencia":
-      return "Escapadas a 45 minutos o menos de Valencia, ordenadas por cercan\u00eda.";
+      return "Escapadas a 45 minutos o menos de Valencia, ordenadas por cercanía.";
   }
 }

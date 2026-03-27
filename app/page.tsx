@@ -1,3 +1,4 @@
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import {
   getRutas,
@@ -7,6 +8,15 @@ import {
   getZonaSlug,
   TIPOS_SOPORTADOS
 } from "@/lib/rutas";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://rutasperrovalencia.es"),
+  title: "Rutas con perro cerca de Valencia",
+  description: "Rutas verificadas, mapa y filtros para salir con perro cerca de Valencia.",
+  alternates: {
+    canonical: "/"
+  }
+};
 
 const featureItems = [
   {
@@ -41,8 +51,8 @@ export default function HomePage() {
                 Escapadas perrunas para playa, monte y riberas a un salto de Valencia.
               </h2>
               <p className="max-w-2xl text-lg leading-8 text-grafito/80">
-                Este proyecto organiza rutas reales con información útil para decidir
-                dónde ir según tiempo de acceso, agua, dificultad o zona.
+                Este proyecto organiza rutas reales con información útil para decidir dónde ir según
+                tiempo de acceso, agua, dificultad o zona.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">

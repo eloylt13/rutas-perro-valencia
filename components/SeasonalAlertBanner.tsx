@@ -17,7 +17,7 @@ export default function SeasonalAlertBanner() {
             ⚠️ Temporada de procesionaria (ene-may): peligrosa para perros. Evita rutas con riesgo alto.
           </span>
           <Link
-            href="/blog/procesionaria-perros-valencia"
+            href="/rutas?agua=true&procesionaria=bajo"
             className="underline decoration-amber-800/50 underline-offset-4 hover:decoration-amber-950"
           >
             Más info →

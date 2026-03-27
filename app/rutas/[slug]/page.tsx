@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getContenidoRuta } from "@/data/contenido-rutas";
@@ -61,8 +61,12 @@ export async function generateMetadata({
   }
 
   return {
+    metadataBase: new URL("https://rutasperrovalencia.es"),
     title: `${sanitizeText(ruta.nombre)} | ${formatZona(ruta.zona)}`,
-    description: buildDescription(ruta)
+    description: buildDescription(ruta),
+    alternates: {
+      canonical: `/rutas/${params.slug}`
+    }
   };
 }
 
@@ -130,10 +134,10 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
       {isPendiente ? (
         <section className="rounded-3xl border border-amber-300 bg-amber-100 px-6 py-5 text-amber-950 shadow-card">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-800">
-            Verificacion pendiente
+            Verificación pendiente
           </p>
           <p className="mt-2 text-base leading-7">
-            Algunos datos de esta ruta estan pendientes de verificacion in situ. Conviene revisar el
+            Algunos datos de esta ruta están pendientes de verificación in situ. Conviene revisar el
             estado del recorrido antes de ir con tu perro.
           </p>
         </section>
@@ -142,7 +146,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
       <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-6">
           <article className="panel px-6 py-7 sm:px-8">
-            <h3 className="text-xl font-semibold text-bosque">Ficha rapida</h3>
+            <h3 className="text-xl font-semibold text-bosque">Ficha rápida</h3>
             <dl className="mt-5 grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl bg-bosque/5 p-4">
                 <dt className="text-sm text-grafito/60">Distancia</dt>
@@ -166,7 +170,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
               </div>
               <div className="rounded-2xl bg-bosque/5 p-4">
                 <dt className="text-sm text-grafito/60">Agua</dt>
-                <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.agua ? "Si" : "No"}</dd>
+                <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.agua ? "Sí" : "No"}</dd>
               </div>
               <div className="rounded-2xl bg-bosque/5 p-4">
                 <dt className="text-sm text-grafito/60">Sombra</dt>
@@ -186,7 +190,9 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
               </div>
               <div className="rounded-2xl bg-bosque/5 p-4">
                 <dt className="text-sm text-grafito/60">Apta en verano</dt>
-                <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.apta_verano ? "Si" : "No"}</dd>
+                <dd className="mt-1 text-lg font-semibold text-bosque">
+                  {ruta.apta_verano ? "Sí" : "No"}
+                </dd>
               </div>
               <div className="rounded-2xl bg-bosque/5 p-4">
                 <dt className="text-sm text-grafito/60">Coordenadas de inicio</dt>
@@ -200,7 +206,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
           {contenido ? (
             <>
               <article className="panel px-6 py-7 sm:px-8">
-                <h3 className="text-xl font-semibold text-bosque">Descripcion</h3>
+                <h3 className="text-xl font-semibold text-bosque">Descripción</h3>
                 <div className="mt-4 space-y-4 text-base leading-7 text-grafito/80">
                   {descripcionParrafos.map((parrafo) => (
                     <p key={parrafo}>{parrafo}</p>
@@ -236,7 +242,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
           {contenido ? (
             <>
               <article className="panel px-6 py-7 sm:px-8">
-                <h3 className="text-xl font-semibold text-bosque">Mejor epoca</h3>
+                <h3 className="text-xl font-semibold text-bosque">Mejor época</h3>
                 <p className="mt-4 text-base leading-7 text-grafito/80">{contenido.mejorEpoca}</p>
               </article>
 
@@ -260,13 +266,13 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
           ) : null}
 
           <article className="panel px-6 py-7 sm:px-8">
-            <h3 className="text-xl font-semibold text-bosque">Explorar mas</h3>
+            <h3 className="text-xl font-semibold text-bosque">Explorar más</h3>
             <div className="mt-4 grid gap-3">
               <Link
                 href={`/zona/${getZonaSlug(ruta.zona)}`}
                 className="rounded-2xl border border-bosque/10 bg-white px-4 py-3 font-semibold text-bosque hover:border-bosque/35"
               >
-                Ver mas rutas en {formatZona(ruta.zona)}
+                Ver más rutas en {formatZona(ruta.zona)}
               </Link>
               <Link
                 href={`/tipo/${ruta.agua ? "con-agua" : "cerca-de-valencia"}`}

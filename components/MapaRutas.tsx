@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import L from "leaflet";
-import type { Ruta, RiesgoProcesionaria } from "@/types/ruta";
+import type { RiesgoProcesionaria } from "@/types/ruta";
 import { capitalize, getRutas } from "@/lib/rutas";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png"
+  iconUrl: "/leaflet/marker-icon.png",
+  iconRetinaUrl: "/leaflet/marker-icon-2x.png",
+  shadowUrl: "/leaflet/marker-shadow.png"
 });
 
 const rutas = getRutas();
@@ -62,10 +62,7 @@ export default function MapaRutas() {
       return false;
     }
 
-    if (
-      procesionaria !== defaultFilter &&
-      ruta.riesgo_procesionaria !== procesionaria
-    ) {
+    if (procesionaria !== defaultFilter && ruta.riesgo_procesionaria !== procesionaria) {
       return false;
     }
 
@@ -92,7 +89,8 @@ export default function MapaRutas() {
               Explora rutas dog-friendly sobre el mapa
             </h2>
             <p className="text-base leading-7 text-grafito/80">
-              Filtra por dificultad, zona, riesgo de procesionaria o necesidades prácticas y abre cada ficha completa desde su marcador.
+              Filtra por dificultad, zona, riesgo de procesionaria o necesidades prácticas y abre
+              cada ficha completa desde su marcador.
             </p>
           </div>
           <div className="rounded-2xl border border-bosque/10 bg-bosque/5 px-4 py-3 text-sm text-grafito/80">

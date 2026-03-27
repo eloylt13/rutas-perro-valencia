@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -36,8 +36,12 @@ export async function generateMetadata({
   }
 
   return {
+    metadataBase: new URL("https://rutasperrovalencia.es"),
     title: getTipoLabel(params.tipo),
-    description: getTipoDescription(params.tipo)
+    description: getTipoDescription(params.tipo),
+    alternates: {
+      canonical: `/tipo/${params.tipo}`
+    }
   };
 }
 
