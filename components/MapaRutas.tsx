@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import L from "leaflet";
-import rutasData from "@/data/rutas-verified.json";
 import type { Ruta, RiesgoProcesionaria } from "@/types/ruta";
+import { capitalize, getRutas } from "@/lib/rutas";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -14,7 +14,7 @@ L.Icon.Default.mergeOptions({
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png"
 });
 
-const rutas = rutasData as Ruta[];
+const rutas = getRutas();
 const mapCenter: [number, number] = [39.47, -0.37];
 const defaultFilter = "todas";
 const riesgosProcesionaria: RiesgoProcesionaria[] = ["bajo", "medio", "alto"];
@@ -143,7 +143,7 @@ export default function MapaRutas() {
               <option value={defaultFilter}>Todos</option>
               {riesgosProcesionaria.map((option) => (
                 <option key={option} value={option}>
-                  {option[0].toUpperCase() + option.slice(1)}
+                  {capitalize(option)}
                 </option>
               ))}
             </select>
@@ -190,8 +190,8 @@ export default function MapaRutas() {
                   <div className="min-w-[220px] space-y-3 text-sm text-grafito">
                     <div>
                       <p className="text-base font-semibold text-bosque">{ruta.nombre}</p>
-                      <p className="text-xs uppercase tracking-[0.16em] text-bosque/60">
-                        {ruta.zona}
+                      <p className="text-xs tracking-[0.08em] text-bosque/60">
+                        {capitalize(ruta.zona)}
                       </p>
                     </div>
                     <p
@@ -212,11 +212,11 @@ export default function MapaRutas() {
                       </div>
                       <div className="flex justify-between gap-3">
                         <dt className="font-medium">Agua</dt>
-                        <dd>{ruta.agua ? "si" : "no"}</dd>
+                        <dd>{ruta.agua ? "💧 Sí" : "✗ No"}</dd>
                       </div>
                       <div className="flex justify-between gap-3">
                         <dt className="font-medium">Correa</dt>
-                        <dd>{ruta.correa_obligatoria ? "si" : "no"}</dd>
+                        <dd>{ruta.correa_obligatoria ? "🔴 Sí" : "✓ No"}</dd>
                       </div>
                     </dl>
                     <Link
