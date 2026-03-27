@@ -19,7 +19,8 @@ export const metadata: Metadata = {
 const navigation = [
   { href: "/", label: "Inicio" },
   { href: "/rutas", label: "Rutas" },
-  { href: "/mapa", label: "Mapa" }
+  { href: "/mapa", label: "Mapa" },
+  { href: "/guias/cerca-de-valencia", label: "Guías" }
 ];
 
 export default function RootLayout({
