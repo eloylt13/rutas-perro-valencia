@@ -229,6 +229,44 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
           {contenido ? (
             <>
               <article className="panel px-6 py-7 sm:px-8">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-emerald-800">
+                      <span aria-hidden="true">{"\u2713"}</span>
+                      <span>Lo mejor</span>
+                    </div>
+                    <ul className="mt-3 space-y-2 text-[13px] font-normal leading-6 text-grafito/80 sm:text-sm">
+                      {contenido.mejor.map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <span aria-hidden="true" className="mt-0.5 text-emerald-600">
+                            {"\u2713"}
+                          </span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-rose-800">
+                      <span aria-hidden="true">{"\u2717"}</span>
+                      <span>Lo peor</span>
+                    </div>
+                    <ul className="mt-3 space-y-2 text-[13px] font-normal leading-6 text-grafito/80 sm:text-sm">
+                      {contenido.peor.map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <span aria-hidden="true" className="mt-0.5 text-rose-600">
+                            {"\u2717"}
+                          </span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article className="panel px-6 py-7 sm:px-8">
                 <h3 className="text-xl font-semibold text-bosque">Descripción</h3>
                 <div className="mt-4 space-y-4 text-base leading-7 text-grafito/80">
                   {descripcionParrafos.map((parrafo) => (
