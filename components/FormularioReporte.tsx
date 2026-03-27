@@ -20,9 +20,9 @@ type EstadoEnvio = "idle" | "sending" | "success" | "error";
 
 export default function FormularioReporte({ nombreRuta }: FormularioReporteProps) {
   const [estado, setEstado] = useState<EstadoEnvio>("idle");
-  const [nombre, setNombre] = useState("");
   const [detalle, setDetalle] = useState("");
   const [seleccionadas, setSeleccionadas] = useState<string[]>([]);
+  const haySeleccion = seleccionadas.length > 0;
 
   function toggleOpcion(opcion: string) {
     setSeleccionadas((actuales) =>
@@ -34,12 +34,16 @@ export default function FormularioReporte({ nombreRuta }: FormularioReporteProps
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (!haySeleccion) {
+      return;
+    }
+
     setEstado("sending");
 
     const formData = {
       ruta: nombreRuta,
       incidencias: seleccionadas,
-      nombre,
       detalle
     };
 
@@ -55,7 +59,6 @@ export default function FormularioReporte({ nombreRuta }: FormularioReporteProps
       }
 
       setEstado("success");
-      setNombre("");
       setDetalle("");
       setSeleccionadas([]);
     } catch {
@@ -119,18 +122,6 @@ export default function FormularioReporte({ nombreRuta }: FormularioReporteProps
         </fieldset>
 
         <label className="block space-y-2">
-          <span className="text-sm font-semibold text-bosque">Nombre</span>
-          <input
-            type="text"
-            name="nombre"
-            value={nombre}
-            onChange={(event) => setNombre(event.target.value)}
-            placeholder="Tu nombre (opcional)"
-            className="w-full rounded-2xl border border-bosque/15 bg-white px-4 py-3 text-sm text-grafito outline-none transition placeholder:text-grafito/45 focus:border-bosque/40"
-          />
-        </label>
-
-        <label className="block space-y-2">
           <span className="text-sm font-semibold text-bosque">Detalles</span>
           <textarea
             name="detalle"
@@ -150,10 +141,10 @@ export default function FormularioReporte({ nombreRuta }: FormularioReporteProps
 
         <button
           type="submit"
-          disabled={estado === "sending"}
-          className="inline-flex min-h-11 items-center justify-center rounded-full bg-bosque px-6 py-3 text-sm font-semibold text-white transition hover:bg-bosque/90 disabled:cursor-not-allowed disabled:bg-bosque/50"
+          disabled={!haySeleccion || estado === "sending"}
+          className="inline-flex min-h-11 items-center justify-center rounded-full bg-bosque px-6 py-3 text-sm font-semibold text-white transition hover:bg-bosque/90 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          {estado === "sending" ? "Enviando..." : "Enviar reporte"}
+          {estado === "sending" ? "Enviando..." : "Confirmar reporte"}
         </button>
       </form>
     </section>
