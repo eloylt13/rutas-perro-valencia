@@ -1,52 +1,23 @@
-﻿import type { MetadataRoute } from "next";
-import { getRutas, getZonaSlug, getZonas } from "@/lib/rutas";
+﻿import { getRutas } from '@/lib/rutas'
 
-const siteUrl = "https://rutasperrovalencia.es";
-
-export default function sitemap(): MetadataRoute.Sitemap {
-  const rutas = getRutas();
-  const zonas = getZonas();
+export default function sitemap() {
+  const rutas = getRutas()
+  const base = 'https://rutas-perro-valencia.vercel.app'
+  
+  const rutasUrls = rutas.map(r => ({
+    url: `${base}/rutas/${r.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
 
   return [
-    {
-      url: `${siteUrl}/`,
-      changeFrequency: "weekly",
-      priority: 1
-    },
-    {
-      url: `${siteUrl}/mapa`,
-      changeFrequency: "weekly",
-      priority: 0.9
-    },
-    {
-      url: `${siteUrl}/rutas`,
-      changeFrequency: "weekly",
-      priority: 0.9
-    },
-    ...rutas.map((ruta) => ({
-      url: `${siteUrl}/rutas/${ruta.slug}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.8
-    })),
-    ...zonas.map((zona) => ({
-      url: `${siteUrl}/zona/${getZonaSlug(zona)}`,
-      changeFrequency: "weekly" as const,
-      priority: 0.7
-    })),
-    {
-      url: `${siteUrl}/tipo/con-agua`,
-      changeFrequency: "weekly",
-      priority: 0.7
-    },
-    {
-      url: `${siteUrl}/tipo/faciles`,
-      changeFrequency: "weekly",
-      priority: 0.7
-    },
-    {
-      url: `${siteUrl}/tipo/cerca-de-valencia`,
-      changeFrequency: "weekly",
-      priority: 0.7
-    }
-  ];
+    { url: base, lastModified: new Date(), priority: 1.0 },
+    { url: `${base}/mapa`, lastModified: new Date(), priority: 0.9 },
+    { url: `${base}/rutas`, lastModified: new Date(), priority: 0.9 },
+    { url: `${base}/tipo/con-agua`, lastModified: new Date(), priority: 0.8 },
+    { url: `${base}/tipo/faciles`, lastModified: new Date(), priority: 0.8 },
+    { url: `${base}/tipo/cerca-de-valencia`, lastModified: new Date(), priority: 0.8 },
+    ...rutasUrls,
+  ]
 }

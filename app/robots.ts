@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/"
     },
-    sitemap: "https://rutasperrovalencia.es/sitemap.xml"
+    sitemap: "https://rutas-perro-valencia.vercel.app/sitemap.xml"
   };
 }
