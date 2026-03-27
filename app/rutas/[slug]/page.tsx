@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getContenidoRuta } from "@/data/contenido-rutas";
 import {
   formatDificultad,
   formatZona,
@@ -26,6 +27,12 @@ export function generateStaticParams() {
 export const dynamicParams = false;
 
 function buildDescription(ruta: Ruta): string {
+  const contenido = getContenidoRuta(ruta.slug);
+
+  if (contenido) {
+    return contenido.resumen;
+  }
+
   return `${sanitizeText(ruta.nombre)} en ${formatZona(ruta.zona)}. ${ruta.distancia_km} km, dificultad ${formatDificultad(ruta.dificultad)}, acceso desde Valencia en ${ruta.acceso_desde_valencia_min} minutos.`;
 }
 
@@ -67,7 +74,10 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
   }
 
   const [latitude, longitude] = ruta.coordenadas_inicio;
+  const contenido = getContenidoRuta(ruta.slug);
   const description = buildDescription(ruta);
+  const descripcionParrafos = contenido?.descripcion.split("\n\n") ?? [];
+  const isPendiente = ruta.confianza_dato.toLowerCase() === "pendiente";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "TouristAttraction",
@@ -117,81 +127,146 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
         </div>
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-        <article className="panel px-6 py-7 sm:px-8">
-          <h3 className="text-xl font-semibold text-bosque">Ficha rápida</h3>
-          <dl className="mt-5 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-2xl bg-bosque/5 p-4">
-              <dt className="text-sm text-grafito/60">Distancia</dt>
-              <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.distancia_km} km</dd>
-            </div>
-            <div className="rounded-2xl bg-bosque/5 p-4">
-              <dt className="text-sm text-grafito/60">Desnivel</dt>
-              <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.desnivel_m} m</dd>
-            </div>
-            <div className="rounded-2xl bg-bosque/5 p-4">
-              <dt className="text-sm text-grafito/60">Dificultad</dt>
-              <dd className="mt-1 text-lg font-semibold text-bosque">
-                {formatDificultad(ruta.dificultad)}
-              </dd>
-            </div>
-            <div className="rounded-2xl bg-bosque/5 p-4">
-              <dt className="text-sm text-grafito/60">Desde Valencia en coche</dt>
-              <dd className="mt-1 text-lg font-semibold text-bosque">
-                {ruta.acceso_desde_valencia_min} min
-              </dd>
-            </div>
-            <div className="rounded-2xl bg-bosque/5 p-4">
-              <dt className="text-sm text-grafito/60">Agua</dt>
-              <dd className="mt-1 text-lg font-semibold text-bosque">
-                {ruta.agua ? "💧 Sí" : "✗ No"}
-              </dd>
-            </div>
-            <div className="rounded-2xl bg-bosque/5 p-4">
-              <dt className="text-sm text-grafito/60">Sombra</dt>
-              <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.sombra}</dd>
-            </div>
-            <div className="rounded-2xl bg-bosque/5 p-4">
-              <dt className="text-sm text-grafito/60">Parking</dt>
-              <dd className="mt-1 text-lg font-semibold text-bosque">
-                {ruta.parking ? "Disponible" : "No indicado"}
-              </dd>
-            </div>
-            <div className="rounded-2xl bg-bosque/5 p-4">
-              <dt className="text-sm text-grafito/60">Correa</dt>
-              <dd className="mt-1 text-lg font-semibold text-bosque">
-                {ruta.correa_obligatoria ? "🔴 Sí obligatoria" : "✓ No obligatoria"}
-              </dd>
-            </div>
-            <div className="rounded-2xl bg-bosque/5 p-4">
-              <dt className="text-sm text-grafito/60">Apta en verano</dt>
-              <dd className="mt-1 text-lg font-semibold text-bosque">
-                {ruta.apta_verano ? "Sí" : "No"}
-              </dd>
-            </div>
-            <div className="rounded-2xl bg-bosque/5 p-4">
-              <dt className="text-sm text-grafito/60">Coordenadas de inicio</dt>
-              <dd className="mt-1 text-lg font-semibold text-bosque">
-                {latitude}, {longitude}
-              </dd>
-            </div>
-          </dl>
-        </article>
+      {isPendiente ? (
+        <section className="rounded-3xl border border-amber-300 bg-amber-100 px-6 py-5 text-amber-950 shadow-card">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-800">
+            Verificacion pendiente
+          </p>
+          <p className="mt-2 text-base leading-7">
+            Algunos datos de esta ruta estan pendientes de verificacion in situ. Conviene revisar el
+            estado del recorrido antes de ir con tu perro.
+          </p>
+        </section>
+      ) : null}
 
-        <aside className="space-y-6">
+      <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="space-y-6">
           <article className="panel px-6 py-7 sm:px-8">
-            <h3 className="text-xl font-semibold text-bosque">Notas de la ruta</h3>
-            <p className="mt-4 text-base leading-7 text-grafito/80">{sanitizeText(ruta.notas)}</p>
+            <h3 className="text-xl font-semibold text-bosque">Ficha rapida</h3>
+            <dl className="mt-5 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl bg-bosque/5 p-4">
+                <dt className="text-sm text-grafito/60">Distancia</dt>
+                <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.distancia_km} km</dd>
+              </div>
+              <div className="rounded-2xl bg-bosque/5 p-4">
+                <dt className="text-sm text-grafito/60">Desnivel</dt>
+                <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.desnivel_m} m</dd>
+              </div>
+              <div className="rounded-2xl bg-bosque/5 p-4">
+                <dt className="text-sm text-grafito/60">Dificultad</dt>
+                <dd className="mt-1 text-lg font-semibold text-bosque">
+                  {formatDificultad(ruta.dificultad)}
+                </dd>
+              </div>
+              <div className="rounded-2xl bg-bosque/5 p-4">
+                <dt className="text-sm text-grafito/60">Desde Valencia en coche</dt>
+                <dd className="mt-1 text-lg font-semibold text-bosque">
+                  {ruta.acceso_desde_valencia_min} min
+                </dd>
+              </div>
+              <div className="rounded-2xl bg-bosque/5 p-4">
+                <dt className="text-sm text-grafito/60">Agua</dt>
+                <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.agua ? "Si" : "No"}</dd>
+              </div>
+              <div className="rounded-2xl bg-bosque/5 p-4">
+                <dt className="text-sm text-grafito/60">Sombra</dt>
+                <dd className="mt-1 text-lg font-semibold capitalize text-bosque">{ruta.sombra}</dd>
+              </div>
+              <div className="rounded-2xl bg-bosque/5 p-4">
+                <dt className="text-sm text-grafito/60">Parking</dt>
+                <dd className="mt-1 text-lg font-semibold text-bosque">
+                  {ruta.parking ? "Disponible" : "No indicado"}
+                </dd>
+              </div>
+              <div className="rounded-2xl bg-bosque/5 p-4">
+                <dt className="text-sm text-grafito/60">Correa</dt>
+                <dd className="mt-1 text-lg font-semibold text-bosque">
+                  {ruta.correa_obligatoria ? "Obligatoria" : "No obligatoria"}
+                </dd>
+              </div>
+              <div className="rounded-2xl bg-bosque/5 p-4">
+                <dt className="text-sm text-grafito/60">Apta en verano</dt>
+                <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.apta_verano ? "Si" : "No"}</dd>
+              </div>
+              <div className="rounded-2xl bg-bosque/5 p-4">
+                <dt className="text-sm text-grafito/60">Coordenadas de inicio</dt>
+                <dd className="mt-1 text-lg font-semibold text-bosque">
+                  {latitude}, {longitude}
+                </dd>
+              </div>
+            </dl>
           </article>
 
+          {contenido ? (
+            <>
+              <article className="panel px-6 py-7 sm:px-8">
+                <h3 className="text-xl font-semibold text-bosque">Descripcion</h3>
+                <div className="mt-4 space-y-4 text-base leading-7 text-grafito/80">
+                  {descripcionParrafos.map((parrafo) => (
+                    <p key={parrafo}>{parrafo}</p>
+                  ))}
+                </div>
+              </article>
+
+              <article className="panel px-6 py-7 sm:px-8">
+                <h3 className="text-xl font-semibold text-bosque">Consejos para ir con tu perro</h3>
+                <ol className="mt-4 space-y-3 pl-6 text-base leading-7 text-grafito/80">
+                  {contenido.consejos.map((consejo) => (
+                    <li key={consejo} className="list-decimal">
+                      {consejo}
+                    </li>
+                  ))}
+                </ol>
+              </article>
+
+              <article className="panel border border-amber-200 bg-amber-50 px-6 py-7 sm:px-8">
+                <h3 className="text-xl font-semibold text-amber-950">Advertencias</h3>
+                <p className="mt-4 text-base leading-7 text-amber-900">{contenido.advertencias}</p>
+              </article>
+            </>
+          ) : (
+            <article className="panel px-6 py-7 sm:px-8">
+              <h3 className="text-xl font-semibold text-bosque">Notas de la ruta</h3>
+              <p className="mt-4 text-base leading-7 text-grafito/80">{sanitizeText(ruta.notas)}</p>
+            </article>
+          )}
+        </div>
+
+        <aside className="space-y-6">
+          {contenido ? (
+            <>
+              <article className="panel px-6 py-7 sm:px-8">
+                <h3 className="text-xl font-semibold text-bosque">Mejor epoca</h3>
+                <p className="mt-4 text-base leading-7 text-grafito/80">{contenido.mejorEpoca}</p>
+              </article>
+
+              <article className="panel px-6 py-7 sm:px-8">
+                <h3 className="text-xl font-semibold text-bosque">Preguntas frecuentes</h3>
+                <div className="mt-4 space-y-3">
+                  {contenido.faq.map((item) => (
+                    <details
+                      key={item.pregunta}
+                      className="rounded-2xl border border-bosque/10 bg-bosque/5 px-4 py-3"
+                    >
+                      <summary className="cursor-pointer list-none font-semibold text-bosque">
+                        {item.pregunta}
+                      </summary>
+                      <p className="mt-3 text-sm leading-6 text-grafito/80">{item.respuesta}</p>
+                    </details>
+                  ))}
+                </div>
+              </article>
+            </>
+          ) : null}
+
           <article className="panel px-6 py-7 sm:px-8">
-            <h3 className="text-xl font-semibold text-bosque">Explorar más</h3>
+            <h3 className="text-xl font-semibold text-bosque">Explorar mas</h3>
             <div className="mt-4 grid gap-3">
               <Link
                 href={`/zona/${getZonaSlug(ruta.zona)}`}
                 className="rounded-2xl border border-bosque/10 bg-white px-4 py-3 font-semibold text-bosque hover:border-bosque/35"
               >
-                Ver más rutas en {formatZona(ruta.zona)}
+                Ver mas rutas en {formatZona(ruta.zona)}
               </Link>
               <Link
                 href={`/tipo/${ruta.agua ? "con-agua" : "cerca-de-valencia"}`}
