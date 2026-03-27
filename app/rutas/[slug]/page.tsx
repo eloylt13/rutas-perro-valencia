@@ -1,8 +1,10 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Breadcrumb from "@/components/Breadcrumb";
 import { getContenidoRuta } from "@/data/contenido-rutas";
 import {
+  buildBreadcrumbJsonLd,
   formatDificultad,
   formatZona,
   getRutaBySlug,
@@ -82,6 +84,17 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
   const description = buildDescription(ruta);
   const descripcionParrafos = contenido?.descripcion.split("\n\n") ?? [];
   const isPendiente = ruta.confianza_dato.toLowerCase() === "pendiente";
+  const breadcrumbItems = [
+    { label: "Inicio", href: "/" },
+    { label: "Rutas", href: "/rutas" },
+    { label: sanitizeText(ruta.nombre) }
+  ];
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd(
+    breadcrumbItems.map((item) => ({
+      name: item.label,
+      href: item.href
+    }))
+  );
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "TouristAttraction",
@@ -106,9 +119,14 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
 
       <section className="panel px-6 py-8 sm:px-8">
-        <div className="flex flex-wrap gap-3">
+        <Breadcrumb items={breadcrumbItems} />
+        <div className="mt-4 flex flex-wrap gap-3">
           <span className="chip border-rio/25 bg-rio/10 text-rio">{formatZona(ruta.zona)}</span>
           <span className="chip border-bosque/15 bg-bosque/5 text-bosque capitalize">
             {ruta.tipo_ruta}
@@ -123,7 +141,10 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
             ← Volver al listado
           </Link>
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-bosque sm:text-4xl">
+            <h1 className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
+              Ruta {sanitizeText(ruta.nombre)} con perro en Valencia
+            </h1>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight text-bosque sm:text-4xl">
               {sanitizeText(ruta.nombre)}
             </h2>
             <p className="mt-3 max-w-3xl text-lg leading-8 text-grafito/80">{description}</p>
@@ -199,6 +220,14 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
                 <dd className="mt-1 text-lg font-semibold text-bosque">
                   {latitude}, {longitude}
                 </dd>
+                <a
+                  href={`https://maps.google.com/?q=${latitude},${longitude}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-flex text-sm font-semibold text-bosque hover:text-grafito"
+                >
+                  Abrir punto de inicio en Google Maps
+                </a>
               </div>
             </dl>
           </article>

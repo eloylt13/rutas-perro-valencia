@@ -204,3 +204,36 @@ export function getTipoDescription(tipo: TipoSoportado): string {
       return "Escapadas a 45 minutos o menos de Valencia, ordenadas por cercanía.";
   }
 }
+
+export function getTipoSeoTitle(tipo: TipoSoportado): string {
+  switch (tipo) {
+    case "con-agua":
+      return "Rutas con perro y agua en Valencia";
+    case "faciles":
+      return "Rutas fáciles con perro en Valencia";
+    case "cerca-de-valencia":
+      return "Rutas con perro cerca de Valencia";
+  }
+}
+
+type BreadcrumbListItem = {
+  name: string;
+  href?: string;
+};
+
+export function buildBreadcrumbJsonLd(items: BreadcrumbListItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      ...(item.href
+        ? {
+            item: `https://rutasperrovalencia.es${item.href}`
+          }
+        : {})
+    }))
+  };
+}

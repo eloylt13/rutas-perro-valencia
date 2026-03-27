@@ -47,6 +47,9 @@ export default function HomePage() {
               25 rutas verificadas y clasificadas
             </span>
             <div className="space-y-3">
+              <h1 className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
+                Rutas con perro en Valencia
+              </h1>
               <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-bosque sm:text-4xl">
                 Escapadas perrunas para playa, monte y riberas a un salto de Valencia.
               </h2>
@@ -111,7 +114,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="panel px-6 py-7 sm:px-8">
+        <div id="zonas" className="panel px-6 py-7 sm:px-8">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
             Explorar por zona
           </p>

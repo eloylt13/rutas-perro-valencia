@@ -17,9 +17,9 @@ export default function RutasPage() {
   return (
     <div className="space-y-6">
       <section className="panel px-6 py-8 sm:px-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
-          Catálogo completo
-        </p>
+        <h1 className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
+          Rutas con perro en Valencia provincia
+        </h1>
         <h2 className="mt-2 text-3xl font-bold text-bosque">Todas las rutas disponibles</h2>
         <p className="mt-3 max-w-3xl text-base leading-7 text-grafito/80">
           Cada ficha incluye zona, dificultad, agua, cercanía a Valencia y notas prácticas para

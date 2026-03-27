@@ -40,9 +40,9 @@ export default function RootLayout({
                     Senderismo dog-friendly
                   </p>
                   <Link href="/" className="inline-block">
-                    <h1 className="font-serif text-4xl font-bold tracking-tight text-bosque sm:text-5xl">
+                    <p className="font-serif text-4xl font-bold tracking-tight text-bosque sm:text-5xl">
                       Rutas con perro en Valencia
-                    </h1>
+                    </p>
                   </Link>
                   <p className="max-w-xl text-base leading-7 text-grafito/80 sm:text-lg">
                     Una base sencilla y clara para encontrar escapadas por zona,

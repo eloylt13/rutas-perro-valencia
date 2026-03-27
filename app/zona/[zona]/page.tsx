@@ -1,7 +1,9 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Breadcrumb from "@/components/Breadcrumb";
 import {
+  buildBreadcrumbJsonLd,
   formatDificultad,
   formatZona,
   getRutasByZona,
@@ -54,21 +56,39 @@ export default function ZonaPage({ params }: ZonaPageProps) {
   }
 
   const rutas = getRutasByZona(zona);
+  const zonaFormateada = formatZona(zona);
 
   if (rutas.length === 0) {
     notFound();
   }
 
+  const breadcrumbItems = [
+    { label: "Inicio", href: "/" },
+    { label: "Zonas", href: "/#zonas" },
+    { label: zonaFormateada }
+  ];
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd(
+    breadcrumbItems.map((item) => ({
+      name: item.label,
+      href: item.href
+    }))
+  );
+
   return (
     <div className="space-y-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <section className="panel px-6 py-8 sm:px-8">
-        <Link href="/" className="text-sm font-semibold text-bosque hover:text-grafito">
+        <Breadcrumb items={breadcrumbItems} />
+        <Link href="/" className="mt-4 inline-flex text-sm font-semibold text-bosque hover:text-grafito">
           ← Volver al inicio
         </Link>
-        <p className="mt-5 text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
-          Zona
-        </p>
-        <h2 className="mt-2 text-3xl font-bold text-bosque">{formatZona(zona)}</h2>
+        <h1 className="mt-5 text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
+          Rutas con perro en {zonaFormateada}
+        </h1>
+        <h2 className="mt-2 text-3xl font-bold text-bosque">{zonaFormateada}</h2>
         <p className="mt-3 max-w-3xl text-base leading-7 text-grafito/80">
           {rutas.length} rutas disponibles para esta zona, con acceso rápido a la ficha individual
           de cada recorrido.
