@@ -279,15 +279,13 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
                 <h3 className="text-xl font-semibold text-bosque">Preguntas frecuentes</h3>
                 <div className="mt-4 space-y-3">
                   {contenido.faq.map((item) => (
-                    <details
+                    <div
                       key={item.pregunta}
                       className="rounded-2xl border border-bosque/10 bg-bosque/5 px-4 py-3"
                     >
-                      <summary className="cursor-pointer list-none font-semibold text-bosque">
-                        {item.pregunta}
-                      </summary>
+                      <p className="font-semibold text-bosque">{item.pregunta}</p>
                       <p className="mt-3 text-sm leading-6 text-grafito/80">{item.respuesta}</p>
-                    </details>
+                    </div>
                   ))}
                 </div>
               </article>

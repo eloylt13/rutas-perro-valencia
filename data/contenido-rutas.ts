@@ -12,7 +12,108 @@ export type RutaContenido = {
   faq: RutaFaqItem[];
 };
 
-export const contenidoRutas: Record<string, RutaContenido> = {
+const textoRotoReplacements: Array<[RegExp, string]> = [
+  [/ca\u00c3\u00b1\u00c3\u00b3n/g, "ca\u00f1\u00f3n"],
+  [/\u00c2\u00bf/g, "\u00bf"],
+  [/\bSi,/g, "S\u00ed,"],
+  [/\brio\b/g, "r\u00edo"],
+  [/\botono\b/g, "oto\u00f1o"],
+  [/\bepoca\b/g, "\u00e9poca"],
+  [/\bdia\b/g, "d\u00eda"],
+  [/\bdias\b/g, "d\u00edas"],
+  [/\bmas\b/g, "m\u00e1s"],
+  [/\bsegun\b/g, "seg\u00fan"],
+  [/\basegurate\b/g, "aseg\u00farate"],
+  [/\bobligacion\b/g, "obligaci\u00f3n"],
+  [/\bacompana\b/g, "acompa\u00f1a"],
+  [/\bacompanarte\b/g, "acompa\u00f1arte"],
+  [/\bcompania\b/g, "compa\u00f1\u00eda"],
+  [/\bpequenas\b/g, "peque\u00f1as"],
+  [/\bvegetacion\b/g, "vegetaci\u00f3n"],
+  [/\bano\b/g, "a\u00f1o"],
+  [/\bcomodo\b/g, "c\u00f3modo"],
+  [/\bsenalizados\b/g, "se\u00f1alizados"],
+  [/\bsenalizado\b/g, "se\u00f1alizado"],
+  [/\bsenalizada\b/g, "se\u00f1alizada"],
+  [/\bopcion\b/g, "opci\u00f3n"],
+  [/\butilizala\b/g, "util\u00edzala"],
+  [/\bencontraras\b/g, "encontrar\u00e1s"],
+  [/\bminimo\b/g, "m\u00ednimo"],
+  [/\bacuaticos\b/g, "acu\u00e1ticos"],
+  [/\bbano\b/g, "ba\u00f1o"],
+  [/\bfisica\b/g, "f\u00edsica"],
+  [/\binformate\b/g, "inf\u00f3rmate"],
+  [/\bmayoria\b/g, "mayor\u00eda"],
+  [/\bmultiples\b/g, "m\u00faltiples"],
+  [/\barboles\b/g, "\u00e1rboles"],
+  [/\bpanoramicas\b/g, "panor\u00e1micas"],
+  [/\bproteccion\b/g, "protecci\u00f3n"],
+  [/\btuneles\b/g, "t\u00faneles"],
+  [/\bGatova\b/g, "G\u00e1tova"],
+  [/\bAguila\b/g, "\u00c1guila"],
+  [/\bBunol\b/g, "Bu\u00f1ol"],
+  [/\bJucar\b/g, "J\u00facar"],
+  [/\bPena\b/g, "Pe\u00f1a"],
+  [/\bXativa\b/g, "X\u00e0tiva"],
+  [/\bPallas\b/g, "Pall\u00e1s"],
+  [/\btransito\b/g, "tr\u00e1nsito"],
+  [/\bpublicos\b/g, "p\u00fablicos"],
+  [/\bcalcareas\b/g, "calc\u00e1reas"],
+  [/\bsubterraneas\b/g, "subterr\u00e1neas"],
+  [/\benologia\b/g, "enolog\u00eda"],
+  [/\binformacion\b/g, "informaci\u00f3n"],
+  [/\btecnica\b/g, "t\u00e9cnica"],
+  [/\btecnicos\b/g, "t\u00e9cnicos"],
+  [/\btecnicas\b/g, "t\u00e9cnicas"],
+  [/\barnes\b/g, "arn\u00e9s"],
+  [/\bmovil\b/g, "m\u00f3vil"],
+  [/\bdocumentacion\b/g, "documentaci\u00f3n"],
+  [/\banade\b/g, "a\u00f1ade"],
+  [/\btambien\b/g, "tambi\u00e9n"],
+  [/\barqueologico\b/g, "arqueol\u00f3gico"],
+  [/\bnidificacion\b/g, "nidificaci\u00f3n"],
+  [/\bfria\b/g, "fr\u00eda"],
+  [/\bhidratacion\b/g, "hidrataci\u00f3n"],
+  [/\boptimas\b/g, "\u00f3ptimas"],
+  [/\bdespues\b/g, "despu\u00e9s"],
+  [/\bhumedo\b/g, "h\u00famedo"],
+  [/\bmaxima\b/g, "m\u00e1xima"],
+  [/\brapido\b/g, "r\u00e1pido"],
+  [/\bmontana\b/g, "monta\u00f1a"],
+  [/\bcanon\b/g, "ca\u00f1\u00f3n"],
+  [/\bcalidos\b/g, "c\u00e1lidos"],
+  [/\bareas\b/g, "\u00e1reas"],
+  [/\bestan\b/g, "est\u00e1n"],
+  [/La senda esta/g, "La senda est\u00e1"],
+  [/El recorrido esta/g, "El recorrido est\u00e1"],
+  [/La ruta esta/g, "La ruta est\u00e1"],
+  [/El agua esta/g, "El agua est\u00e1"],
+  [/El camino esta/g, "El camino est\u00e1"]
+];
+
+function repararTextoRoto(texto: string): string {
+  return textoRotoReplacements.reduce(
+    (textoNormalizado, [pattern, replacement]) =>
+      textoNormalizado.replace(pattern, replacement),
+    texto
+  );
+}
+
+function normalizarContenidoRuta(contenido: RutaContenido): RutaContenido {
+  return {
+    resumen: repararTextoRoto(contenido.resumen),
+    descripcion: repararTextoRoto(contenido.descripcion),
+    consejos: contenido.consejos.map(repararTextoRoto),
+    mejorEpoca: repararTextoRoto(contenido.mejorEpoca),
+    advertencias: repararTextoRoto(contenido.advertencias),
+    faq: contenido.faq.map((item) => ({
+      pregunta: repararTextoRoto(item.pregunta),
+      respuesta: repararTextoRoto(item.respuesta)
+    }))
+  };
+}
+
+const contenidoRutasBase: Record<string, RutaContenido> = {
   "puentes-colgantes-chulilla": {
     resumen:
       "La ruta Puentes Colgantes de Chulilla con perro Valencia discurre por un sendero lineal de unos 9 km dentro del Paraje Natural Los Calderones. Es un paseo sencillo pero requiere llevar al animal con correa en todo momento.",
@@ -589,6 +690,13 @@ export const contenidoRutas: Record<string, RutaContenido> = {
     ]
   }
 };
+
+export const contenidoRutas: Record<string, RutaContenido> = Object.fromEntries(
+  Object.entries(contenidoRutasBase).map(([slug, contenido]) => [
+    slug,
+    normalizarContenidoRuta(contenido)
+  ])
+);
 
 export function getContenidoRuta(slug: string): RutaContenido | undefined {
   return contenidoRutas[slug];
