@@ -1,27 +1,22 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import L from "leaflet";
-import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
-import markerIcon from "leaflet/dist/images/marker-icon.png";
-import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import rutasData from "@/data/rutas-verified.json";
 import type { Ruta } from "@/types/ruta";
+
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png"
+});
 
 const rutas = rutasData as Ruta[];
 const mapCenter: [number, number] = [39.47, -0.37];
 const defaultFilter = "todas";
-const defaultIcon = L.icon({
-  iconRetinaUrl: markerIcon2x.src,
-  iconUrl: markerIcon.src,
-  shadowUrl: markerShadow.src,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
 
 const zonas = [...new Set(rutas.map((ruta) => ruta.zona))].sort((a, b) =>
   a.localeCompare(b, "es")
@@ -143,6 +138,7 @@ export default function MapaRutas() {
             center={mapCenter}
             zoom={9}
             scrollWheelZoom
+            style={{ height: "600px", width: "100%" }}
             className="h-[420px] w-full sm:h-[560px]"
           >
             <TileLayer
@@ -150,11 +146,7 @@ export default function MapaRutas() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {rutasFiltradas.map((ruta) => (
-              <Marker
-                key={ruta.slug}
-                position={ruta.coordenadas_inicio}
-                icon={defaultIcon}
-              >
+              <Marker key={ruta.slug} position={ruta.coordenadas_inicio}>
                 <Popup>
                   <div className="min-w-[220px] space-y-3 text-sm text-grafito">
                     <div>
@@ -174,11 +166,11 @@ export default function MapaRutas() {
                       </div>
                       <div className="flex justify-between gap-3">
                         <dt className="font-medium">Agua</dt>
-                        <dd>{ruta.agua ? "✓" : "✗"}</dd>
+                        <dd>{ruta.agua ? "si" : "no"}</dd>
                       </div>
                       <div className="flex justify-between gap-3">
                         <dt className="font-medium">Correa</dt>
-                        <dd>{ruta.correa_obligatoria ? "✓" : "✗"}</dd>
+                        <dd>{ruta.correa_obligatoria ? "si" : "no"}</dd>
                       </div>
                     </dl>
                     <Link
