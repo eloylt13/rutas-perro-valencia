@@ -100,11 +100,12 @@ function sanitizeRuta(ruta: Ruta): Ruta {
     sombra: fixUtf8Mojibake(ruta.sombra),
     confianza_dato: fixUtf8Mojibake(ruta.confianza_dato),
     notas: fixUtf8Mojibake(ruta.notas),
-    riesgo_procesionaria: fixUtf8Mojibake(ruta.riesgo_procesionaria)
+    riesgo_procesionaria: fixUtf8Mojibake(ruta.riesgo_procesionaria),
+    como_llegar: ruta.como_llegar ? fixUtf8Mojibake(ruta.como_llegar) : undefined
   };
 }
 
-const rutas = (rutasData as Ruta[]).map(sanitizeRuta);
+const rutas = (rutasData as unknown as Ruta[]).map(sanitizeRuta);
 
 function normalizeText(value: string): string {
   return fixUtf8Mojibake(value)

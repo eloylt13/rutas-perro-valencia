@@ -14,12 +14,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 50,
     "coordenadas_inicio": [
-      39.7234,
-      -0.9812
+      39.6598,
+      -0.8915
     ],
     "confianza_dato": "verificado",
     "notas": "Variante lineal 9-10 km ida y vuelta hasta embalse Loriguilla. Variante circular 16 km. Dentro del Paraje Natural Municipal Los Calderones — correa obligatoria.",
-    "riesgo_procesionaria": "alto"
+    "riesgo_procesionaria": "alto",
+    "como_llegar": "Aparca en el parking de la Urbanización Santa Bárbara, junto a la carretera CV-394 a las afueras de Chulilla."
   },
   {
     "nombre": "Ruta del Agua de Chelva",
@@ -36,12 +37,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 70,
     "coordenadas_inicio": [
-      39.7584,
-      -1.0756
+      39.74621,
+      -1.00574
     ],
     "confianza_dato": "verificado",
     "notas": "Comienza en Plaza Mayor de Chelva. Fuentes, acequias y merenderos en el recorrido.",
-    "riesgo_procesionaria": "medio"
+    "riesgo_procesionaria": "medio",
+    "como_llegar": "El inicio está en el Área Recreativa Molino Puerto, en Chelva. Hay aparcamiento gratuito en la zona."
   },
   {
     "nombre": "Acueducto Romano de la Peña Cortada",
@@ -58,12 +60,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 65,
     "coordenadas_inicio": [
-      39.78,
-      -1.06
+      39.742322,
+      -0.969032
     ],
     "confianza_dato": "verificado",
     "notas": "Precaución en zona del acueducto romano: paso estrecho sin protección de unos 2 metros de ancho.",
-    "riesgo_procesionaria": "alto"
+    "riesgo_procesionaria": "alto",
+    "como_llegar": "Aparca junto a una fuente cerca de Calles, en las coordenadas del inicio. Desde allí parte la pista hacia el sendero."
   },
   {
     "nombre": "Ruta de los Pantaneros – Embalse de Loriguilla",
@@ -80,12 +83,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 50,
     "coordenadas_inicio": [
-      39.69,
-      -0.97
+      39.66401,
+      -0.89088
     ],
     "confianza_dato": "verificado",
     "notas": "Ruta alternativa a los Puentes Colgantes. Zona protegida Los Calderones.",
-    "riesgo_procesionaria": "alto"
+    "riesgo_procesionaria": "alto",
+    "como_llegar": "Acceso desde el área de aparcamiento junto al embalse de Loriguilla, cerca de Chulilla."
   },
   {
     "nombre": "Parque Fluvial del Turia – Masía de Traver",
@@ -102,12 +106,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 30,
     "coordenadas_inicio": [
-      39.5284,
-      -0.5956
+      39.55024,
+      -0.56183
     ],
     "confianza_dato": "verificado",
     "notas": "Ideal para principiantes y perros mayores. Zona de río con acceso al agua.",
-    "riesgo_procesionaria": "bajo"
+    "riesgo_procesionaria": "bajo",
+    "como_llegar": "Comienza en el Área Recreativa de Masía Traver, en Riba-roja de Túria. Parking disponible en la zona."
   },
   {
     "nombre": "Cruz de Montepicayo (GR-10)",
@@ -124,12 +129,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 30,
     "coordenadas_inicio": [
-      39.68,
-      -0.35
+      39.634333,
+      -0.329758
     ],
     "confianza_dato": "verificado",
     "notas": "Muy pedregosa. Llevar calzado adecuado. Sin agua en el recorrido — llevar para el perro.",
-    "riesgo_procesionaria": "alto"
+    "riesgo_procesionaria": "alto",
+    "como_llegar": "El sendero arranca en el área de aparcamiento junto al municipio de Puçol, en la Sierra Calderona."
   },
   {
     "nombre": "Gátova – Pico del Águila – Molino de la Ceja",
@@ -146,12 +152,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 55,
     "coordenadas_inicio": [
-      39.79,
-      -0.47
+      39.77089,
+      -0.52135
     ],
     "confianza_dato": "verificado",
     "notas": "Vistas panorámicas desde el Pico del Águila. Sin agua — llevar suficiente para el perro.",
-    "riesgo_procesionaria": "alto"
+    "riesgo_procesionaria": "alto",
+    "como_llegar": "Inicio en la Plaza del Ayuntamiento de Gátova. Aparcamiento en el pueblo."
   },
   {
     "nombre": "Buñol – Molino de la Luz – Alborache",
@@ -168,12 +175,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 40,
     "coordenadas_inicio": [
-      39.42,
-      -0.79
+      39.41366,
+      -0.7874
     ],
     "confianza_dato": "verificado",
     "notas": "Río Buñol accesible en varios puntos. Apta para perros de cualquier condición física.",
-    "riesgo_procesionaria": "medio"
+    "riesgo_procesionaria": "medio",
+    "como_llegar": "Sale del Parque Maestro Manuel Carrascosa de Buñol, en la Avenida de la Hoya de Buñol."
   },
   {
     "nombre": "Embalse de Bellús",
@@ -190,12 +198,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 60,
     "coordenadas_inicio": [
-      38.96,
-      -0.52
+      38.93886,
+      -0.45404
     ],
     "confianza_dato": "verificado",
     "notas": "Construido en 1995 sobre el río Albaida. Terreno llano, ideal para perros mayores o con movilidad reducida.",
-    "riesgo_procesionaria": "bajo"
+    "riesgo_procesionaria": "bajo",
+    "como_llegar": "El recorrido comienza en el dique del embalse de Bellús. Hay aparcamiento junto al acceso."
   },
   {
     "nombre": "Ontinyent – Senda dels Enginyers",
@@ -212,12 +221,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 75,
     "coordenadas_inicio": [
-      38.82,
-      -0.61
+      38.804327,
+      -0.602945
     ],
     "confianza_dato": "verificado",
     "notas": "Mezcla de asfalto y sendero. Buena opción de entrenamiento para perros activos.",
-    "riesgo_procesionaria": "medio"
+    "riesgo_procesionaria": "medio",
+    "como_llegar": "Inicio junto al cementerio municipal de Ontinyent. Aparcamiento disponible en la zona."
   },
   {
     "nombre": "Sierra de Aledua – Pico Besori",
@@ -234,12 +244,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 40,
     "coordenadas_inicio": [
-      39.22,
-      -0.61
+      39.3007,
+      -0.51828
     ],
     "confianza_dato": "verificado",
     "notas": "Senda técnica con bajadas en piedra. Llevar agua abundante para el perro.",
-    "riesgo_procesionaria": "alto"
+    "riesgo_procesionaria": "alto",
+    "como_llegar": "Acceso desde la pista forestal de Alfarp. Aparca al inicio de la pista."
   },
   {
     "nombre": "Cañones del Júcar (Jalance)",
@@ -256,12 +267,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 90,
     "coordenadas_inicio": [
-      39.2,
-      -1.08
+      39.196074,
+      -1.079507
     ],
     "confianza_dato": "verificado",
     "notas": "Río Júcar accesible en varios puntos. La más larga del MVP — perros con buena condición física.",
-    "riesgo_procesionaria": "medio"
+    "riesgo_procesionaria": "medio",
+    "como_llegar": "El sendero parte del Área Recreativa del Castillo de Jalance. Hay aparcamiento gratuito."
   },
   {
     "nombre": "Senda del Portalet (Gandía)",
@@ -278,12 +290,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 70,
     "coordenadas_inicio": [
-      38.96,
-      -0.18
+      38.9824,
+      -0.26437
     ],
     "confianza_dato": "verificado",
     "notas": "Muy corta — ideal como primer contacto con el senderismo. Formaciones calcáreas espectaculares.",
-    "riesgo_procesionaria": "medio"
+    "riesgo_procesionaria": "medio",
+    "como_llegar": "Inicio en el Área Recreativa de la Font de la Murta, en Gandía."
   },
   {
     "nombre": "Cueva Turche (Buñol)",
@@ -300,12 +313,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 40,
     "coordenadas_inicio": [
-      39.41,
-      -0.8
+      39.404997,
+      -0.785566
     ],
     "confianza_dato": "probable",
     "notas": "Cascada y zona de baño al final del recorrido. Muy frecuentada en verano.",
-    "riesgo_procesionaria": "medio"
+    "riesgo_procesionaria": "medio",
+    "como_llegar": "Aparca en el pequeño parking junto a la rambla, antes de llegar a la cueva."
   },
   {
     "nombre": "Gorgo de la Escalera (Anna)",
@@ -322,12 +336,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 70,
     "coordenadas_inicio": [
-      39.01,
-      -0.57
+      39.01659,
+      -0.642875
     ],
     "confianza_dato": "probable",
     "notas": "Zona de pozas naturales. Ideal para perros a los que les gusta el agua.",
-    "riesgo_procesionaria": "bajo"
+    "riesgo_procesionaria": "bajo",
+    "como_llegar": "El sendero comienza en el aparcamiento de la zona recreativa, desde donde se desciende al barranco."
   },
   {
     "nombre": "Salto de la Novia (Navajas)",
@@ -344,12 +359,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 60,
     "coordenadas_inicio": [
-      39.87,
-      -0.52
+      39.87851,
+      -0.50348
     ],
     "confianza_dato": "probable",
     "notas": "Cascada de 30 m. Muy concurrida en fines de semana. Correa recomendada por aglomeración.",
-    "riesgo_procesionaria": "medio"
+    "riesgo_procesionaria": "medio",
+    "como_llegar": "Inicio cerca del aparcamiento de Navajas, junto al acceso al sendero del Salto de la Novia."
   },
   {
     "nombre": "Descenso del Río Fraile (Cortes de Pallás)",
@@ -366,12 +382,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 90,
     "coordenadas_inicio": [
-      39.23,
-      -1.04
+      39.085601,
+      -0.867391
     ],
     "confianza_dato": "probable",
     "notas": "Descenso de río — solo para perros acostumbrados a nadar. Llevar bolsa estanca.",
-    "riesgo_procesionaria": "bajo"
+    "riesgo_procesionaria": "bajo",
+    "como_llegar": "El recorrido parte del aparcamiento de la Fuente de los Botijos, junto al camping de Bicorp."
   },
   {
     "nombre": "Ruta de Chera",
@@ -388,12 +405,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 70,
     "coordenadas_inicio": [
-      39.56,
-      -0.92
+      39.593541,
+      -0.973168
     ],
     "confianza_dato": "probable",
     "notas": "Cascada en el recorrido. Verificar tramos de acceso al agua para el perro.",
-    "riesgo_procesionaria": "medio"
+    "riesgo_procesionaria": "medio",
+    "como_llegar": "Inicio en el parking del parque geológico de Chera."
   },
   {
     "nombre": "Ruta Albufera – Dehesa del Saler",
@@ -410,12 +428,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 20,
     "coordenadas_inicio": [
-      39.35,
-      -0.33
+      39.349308,
+      -0.323673
     ],
     "confianza_dato": "probable",
     "notas": "Espacio Natural Protegido — correa obligatoria. Sin sombra en verano. La más cercana a Valencia ciudad.",
-    "riesgo_procesionaria": "bajo"
+    "riesgo_procesionaria": "bajo",
+    "como_llegar": "Comienza en el centro de información del Parque Natural de la Albufera, en El Saler."
   },
   {
     "nombre": "Xàtiva – Cova Negra – Bellús",
@@ -432,12 +451,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 60,
     "coordenadas_inicio": [
-      38.99,
-      -0.52
+      38.987688,
+      -0.529688
     ],
     "confianza_dato": "probable",
     "notas": "90% senda. Varias fuentes en el camino. Llevar agua extra en verano.",
-    "riesgo_procesionaria": "medio"
+    "riesgo_procesionaria": "medio",
+    "como_llegar": "Inicio en el área de aparcamiento de la ermita de Sant Feliu, en Xàtiva."
   },
   {
     "nombre": "Río Turia – Manises a Vilamarxant",
@@ -454,12 +474,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 20,
     "coordenadas_inicio": [
-      39.5,
-      -0.47
+      39.495867,
+      -0.348408
     ],
     "confianza_dato": "probable",
     "notas": "Parque Natural del Turia — correa obligatoria. Muy accesible desde Valencia. Ideal para días entre semana.",
-    "riesgo_procesionaria": "bajo"
+    "riesgo_procesionaria": "bajo",
+    "como_llegar": "El sendero comienza en el Parque Fluvial del Turia a las afueras de Manises."
   },
   {
     "nombre": "Río Sellent (Bolbaite)",
@@ -476,12 +497,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 75,
     "coordenadas_inicio": [
-      39.06,
-      -0.65
+      39.058365,
+      -0.674305
     ],
     "confianza_dato": "probable",
     "notas": "Mucha sombra y agua — de las mejores para verano. Muy tranquila entre semana.",
-    "riesgo_procesionaria": "bajo"
+    "riesgo_procesionaria": "bajo",
+    "como_llegar": "Inicio en el área recreativa del río Sellent, cerca de Bolbaite."
   },
   {
     "nombre": "Ruta de les Caves (Requena)",
@@ -498,12 +520,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 65,
     "coordenadas_inicio": [
-      39.49,
-      -1.1
+      39.48725,
+      -1.099798
     ],
     "confianza_dato": "probable",
     "notas": "Ruta cultural por bodegas subterráneas. Sin agua natural — llevar para el perro.",
-    "riesgo_procesionaria": "bajo"
+    "riesgo_procesionaria": "bajo",
+    "como_llegar": "El recorrido parte de la Plaza de la Villa de Requena."
   },
   {
     "nombre": "Cova Negra (Carcaixent)",
@@ -520,12 +543,13 @@
     "parking": true,
     "acceso_desde_valencia_min": 45,
     "coordenadas_inicio": [
-      39.12,
-      -0.44
+      39.11689,
+      -0.446965
     ],
     "confianza_dato": "pendiente",
     "notas": "Datos pendientes de verificación in situ. Publicar con aviso de confianza.",
-    "riesgo_procesionaria": "medio"
+    "riesgo_procesionaria": "medio",
+    "como_llegar": "Inicio desde la estación de Renfe de Carcaixent, en el casco urbano."
   },
   {
     "nombre": "Barranco del Agua Negra (Bocairent)",
@@ -547,6 +571,7 @@
     ],
     "confianza_dato": "pendiente",
     "notas": "Mucha sombra y agua. Datos pendientes de verificación. Publicar con aviso.",
-    "riesgo_procesionaria": "alto"
+    "riesgo_procesionaria": "alto",
+    "como_llegar": "Punto de inicio pendiente de verificación. Consulta Wikiloc antes de salir."
   }
 ]

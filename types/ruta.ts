@@ -24,4 +24,5 @@ export interface Ruta {
   confianza_dato: ConfianzaDato;
   notas: string;
   riesgo_procesionaria: RiesgoProcesionaria;
+  como_llegar?: string;
 }
