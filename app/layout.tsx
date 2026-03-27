@@ -1,6 +1,7 @@
 ﻿import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { Analytics } from "@vercel/analytics/next";
 import SeasonalAlertBanner from "@/components/SeasonalAlertBanner";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
@@ -65,6 +66,7 @@ export default function RootLayout({
           </header>
           <main>{children}</main>
         </div>
+        <Analytics />
       </body>
     </html>
   );
