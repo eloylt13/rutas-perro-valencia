@@ -81,6 +81,8 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
   }
 
   const [latitude, longitude] = ruta.coordenadas_inicio;
+  const comoLlegar = ruta.como_llegar?.trim();
+  const showComoLlegarWarning = comoLlegar?.toLowerCase().includes("pendiente de verificaci\u00f3n");
   const contenido = getContenidoRuta(ruta.slug);
   const description = buildDescription(ruta);
   const descripcionParrafos = contenido?.descripcion.split("\n\n") ?? [];
@@ -221,6 +223,15 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
                 <dd className="mt-1 text-lg font-semibold text-bosque">
                   {latitude}, {longitude}
                 </dd>
+                {comoLlegar ? (
+                  <>
+                    <dt className="mt-3 text-sm text-grafito/60">C\u00f3mo llegar al inicio</dt>
+                    <dd className="mt-1 text-sm leading-6 text-grafito/70">
+                      {showComoLlegarWarning ? "\u26a0\ufe0f " : null}
+                      {comoLlegar}
+                    </dd>
+                  </>
+                ) : null}
                 <a
                   href={`https://maps.google.com/?q=${latitude},${longitude}`}
                   target="_blank"
