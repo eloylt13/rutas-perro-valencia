@@ -1,13 +1,17 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  getRutas,
+  formatDificultad,
+  formatZona,
+  getRutaBySlug,
   getTipoDescription,
   getTipoLabel,
   getZonas,
   getZonaSlug,
+  sanitizeText,
   TIPOS_SOPORTADOS
 } from "@/lib/rutas";
+import type { Ruta } from "@/types/ruta";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://rutasperrovalencia.es"),
@@ -18,25 +22,129 @@ export const metadata: Metadata = {
   }
 };
 
+type FeaturedBlock = {
+  title: string;
+  subtitle: string;
+  slugs: string[];
+};
+
 const featureItems = [
   {
     title: "Rutas verificadas",
-    description: "Consulta fichas con datos de acceso, dificultad, agua, sombra y notas útiles para salir con perro."
+    description:
+      "Consulta fichas con datos de acceso, dificultad, agua, sombra y notas \u00fatiles para salir con perro."
   },
   {
     title: "Explora por zona",
-    description: "Encuentra rápidamente áreas como Los Serranos, la Calderona o la Ribera Alta."
+    description: "Encuentra r\u00e1pidamente \u00e1reas como Los Serranos, la Calderona o la Ribera Alta."
   },
   {
     title: "Filtra por necesidad",
-    description: "Accede a selecciones de rutas con agua, fáciles o especialmente cerca de Valencia."
+    description: "Accede a selecciones de rutas con agua, f\u00e1ciles o especialmente cerca de Valencia."
   }
 ];
 
+const featuredBlocks: FeaturedBlock[] = [
+  {
+    title: "Rutas con agua \u2014 perfectas para el verano",
+    subtitle: "Rutas donde tu perro puede refrescarse en r\u00edos, pozas o embalses",
+    slugs: [
+      "parque-fluvial-turia-masia-traver",
+      "gorgo-escalera-anna",
+      "xativa-cova-negra-bellus"
+    ]
+  },
+  {
+    title: "Escapadas r\u00e1pidas \u2014 a menos de 45 minutos",
+    subtitle: "Sal con tu perro sin planificar demasiado \u2014 a media hora de Valencia",
+    slugs: [
+      "rio-turia-manises-vilamarxant",
+      "cueva-turche",
+      "cova-negra-carcaixent"
+    ]
+  },
+  {
+    title: "Rutas imprescindibles",
+    subtitle: "Las rutas m\u00e1s completas y representativas de la provincia",
+    slugs: [
+      "puentes-colgantes-chulilla",
+      "ruta-del-agua-chelva",
+      "acueducto-romano-pena-cortada"
+    ]
+  }
+];
+
+function getFeaturedRuta(slug: string): Ruta {
+  const ruta = getRutaBySlug(slug);
+
+  if (!ruta) {
+    throw new Error(`Ruta no encontrada para la home destacada: ${slug}`);
+  }
+
+  return ruta;
+}
+
+function FeaturedRouteCard({ ruta }: { ruta: Ruta }) {
+  return (
+    <article className="panel flex h-full flex-col p-5 hover:border-bosque/35">
+      <div className="flex items-center justify-between gap-3">
+        <p className="text-sm font-medium text-grafito/70">{formatZona(ruta.zona)}</p>
+        <p className="text-sm font-semibold text-bosque/75">
+          Desde Valencia: {ruta.acceso_desde_valencia_min} min
+        </p>
+      </div>
+
+      <h3 className="mt-3 text-xl font-semibold text-bosque">
+        <Link href={`/rutas/${ruta.slug}`} className="hover:text-grafito">
+          {sanitizeText(ruta.nombre)}
+        </Link>
+      </h3>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        <span className="chip border-bosque/15 bg-bosque/5 text-bosque">
+          {formatDificultad(ruta.dificultad)}
+        </span>
+        <span className="chip border-rio/25 bg-rio/10 text-rio">
+          {ruta.agua ? "\u{1F4A7} Agua" : "\u2717 Sin agua"}
+        </span>
+        <span className="chip border-sol/30 bg-sol/20 text-bosque">
+          {ruta.correa_obligatoria
+            ? "\u{1F534} Correa obligatoria"
+            : "\u{1F7E2} Sin correa obligatoria"}
+        </span>
+      </div>
+
+      <p className="mt-4 text-sm leading-6 text-grafito/75">{sanitizeText(ruta.notas)}</p>
+    </article>
+  );
+}
+
+function FeaturedRoutesSection({ block }: { block: FeaturedBlock }) {
+  const rutas = block.slugs.map(getFeaturedRuta);
+
+  return (
+    <section className="panel px-6 py-7 sm:px-8">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div className="max-w-2xl">
+          <h2 className="text-2xl font-bold text-bosque">{block.title}</h2>
+          <p className="mt-2 text-base leading-7 text-grafito/80">{block.subtitle}</p>
+        </div>
+        <Link href="/rutas" className="text-sm font-semibold text-bosque hover:text-grafito">
+          {"Ver todas las rutas \u2192"}
+        </Link>
+      </div>
+
+      <div className="mt-6 grid gap-4 lg:grid-cols-3">
+        {rutas.map((ruta) => (
+          <FeaturedRouteCard key={ruta.slug} ruta={ruta} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function HomePage() {
-  const rutas = getRutas();
   const zonas = getZonas();
-  const destacadas = rutas.slice(0, 6);
 
   return (
     <div className="space-y-10">
@@ -54,7 +162,7 @@ export default function HomePage() {
                 Escapadas perrunas para playa, monte y riberas a un salto de Valencia.
               </h2>
               <p className="max-w-2xl text-lg leading-8 text-grafito/80">
-                Este proyecto organiza rutas reales con información útil para decidir dónde ir según
+                Este proyecto organiza rutas reales con informaci\u00f3n \u00fatil para decidir d\u00f3nde ir seg\u00fan
                 tiempo de acceso, agua, dificultad o zona.
               </p>
             </div>
@@ -85,6 +193,12 @@ export default function HomePage() {
         </div>
       </section>
 
+      <div className="space-y-6">
+        {featuredBlocks.map((block) => (
+          <FeaturedRoutesSection key={block.title} block={block} />
+        ))}
+      </div>
+
       <section className="grid gap-6 lg:grid-cols-[1fr_1fr]">
         <div className="panel px-6 py-7 sm:px-8">
           <div className="mb-5 flex items-end justify-between gap-4">
@@ -92,7 +206,7 @@ export default function HomePage() {
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
                 Tipos destacados
               </p>
-              <h2 className="mt-2 text-2xl font-bold text-bosque">Entradas rápidas por necesidad</h2>
+              <h2 className="mt-2 text-2xl font-bold text-bosque">Entradas r\u00e1pidas por necesidad</h2>
             </div>
           </div>
           <div className="grid gap-4">
@@ -107,7 +221,7 @@ export default function HomePage() {
                     <h3 className="text-lg font-semibold text-bosque">{getTipoLabel(tipo)}</h3>
                     <p className="mt-1 text-sm text-grafito/75">{getTipoDescription(tipo)}</p>
                   </div>
-                  <span className="text-2xl text-bosque/35">→</span>
+                  <span className="text-2xl text-bosque/35">{"\u2192"}</span>
                 </div>
               </Link>
             ))}
@@ -118,7 +232,7 @@ export default function HomePage() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
             Explorar por zona
           </p>
-          <h2 className="mt-2 text-2xl font-bold text-bosque">Comarcas y áreas disponibles</h2>
+          <h2 className="mt-2 text-2xl font-bold text-bosque">Comarcas y \u00e1reas disponibles</h2>
           <div className="mt-5 flex flex-wrap gap-3">
             {zonas.map((zona) => (
               <Link
@@ -130,50 +244,6 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="space-y-5">
-        <div className="flex items-end justify-between gap-4">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
-              Primeras rutas
-            </p>
-            <h2 className="mt-2 text-2xl font-bold text-bosque">Selección inicial del catálogo</h2>
-          </div>
-          <Link href="/rutas" className="text-sm font-semibold text-bosque hover:text-grafito">
-            Ver catálogo completo
-          </Link>
-        </div>
-        <div className="route-grid">
-          {destacadas.map((ruta) => (
-            <Link
-              key={ruta.slug}
-              href={`/rutas/${ruta.slug}`}
-              className="panel p-5 hover:border-bosque/35"
-            >
-              <div className="flex flex-wrap gap-2">
-                <span className="chip border-rio/25 bg-rio/10 text-rio">{ruta.zona}</span>
-                <span className="chip border-bosque/15 bg-bosque/5 text-bosque">{ruta.tipo_ruta}</span>
-              </div>
-              <h3 className="mt-4 text-xl font-semibold text-bosque">{ruta.nombre}</h3>
-              <p className="mt-3 text-sm leading-6 text-grafito/75">{ruta.notas}</p>
-              <dl className="mt-5 grid grid-cols-3 gap-3 text-sm">
-                <div>
-                  <dt className="text-grafito/55">Distancia</dt>
-                  <dd className="font-semibold text-bosque">{ruta.distancia_km} km</dd>
-                </div>
-                <div>
-                  <dt className="text-grafito/55">Desnivel</dt>
-                  <dd className="font-semibold text-bosque">{ruta.desnivel_m} m</dd>
-                </div>
-                <div>
-                  <dt className="text-grafito/55">Acceso</dt>
-                  <dd className="font-semibold text-bosque">{ruta.acceso_desde_valencia_min} min</dd>
-                </div>
-              </dl>
-            </Link>
-          ))}
         </div>
       </section>
     </div>
