@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/Breadcrumb";
+import FormularioReporte from "@/components/FormularioReporte";
 import { getContenidoRuta } from "@/data/contenido-rutas";
 import {
   buildBreadcrumbJsonLd,
@@ -289,6 +290,8 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
                   ))}
                 </div>
               </article>
+
+              <FormularioReporte nombreRuta={ruta.nombre} />
             </>
           ) : null}
 
