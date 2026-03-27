@@ -32,22 +32,22 @@ const featureItems = [
   {
     title: "Rutas verificadas",
     description:
-      "Consulta fichas con datos de acceso, dificultad, agua, sombra y notas \u00fatiles para salir con perro."
+      "Consulta fichas con datos de acceso, dificultad, agua, sombra y notas útiles para salir con perro."
   },
   {
     title: "Explora por zona",
-    description: "Encuentra r\u00e1pidamente \u00e1reas como Los Serranos, la Calderona o la Ribera Alta."
+    description: "Encuentra rápidamente áreas como Los Serranos, la Calderona o la Ribera Alta."
   },
   {
     title: "Filtra por necesidad",
-    description: "Accede a selecciones de rutas con agua, f\u00e1ciles o especialmente cerca de Valencia."
+    description: "Accede a selecciones de rutas con agua, fáciles o especialmente cerca de Valencia."
   }
 ];
 
 const featuredBlocks: FeaturedBlock[] = [
   {
     title: "Rutas con agua \u2014 perfectas para el verano",
-    subtitle: "Rutas donde tu perro puede refrescarse en r\u00edos, pozas o embalses",
+    subtitle: "Rutas donde tu perro puede refrescarse en ríos, pozas o embalses",
     slugs: [
       "parque-fluvial-turia-masia-traver",
       "gorgo-escalera-anna",
@@ -55,7 +55,7 @@ const featuredBlocks: FeaturedBlock[] = [
     ]
   },
   {
-    title: "Escapadas r\u00e1pidas \u2014 a menos de 45 minutos",
+    title: "Escapadas rápidas \u2014 a menos de 45 minutos",
     subtitle: "Sal con tu perro sin planificar demasiado \u2014 a media hora de Valencia",
     slugs: [
       "rio-turia-manises-vilamarxant",
@@ -65,7 +65,7 @@ const featuredBlocks: FeaturedBlock[] = [
   },
   {
     title: "Rutas imprescindibles",
-    subtitle: "Las rutas m\u00e1s completas y representativas de la provincia",
+    subtitle: "Las rutas más completas y representativas de la provincia",
     slugs: [
       "puentes-colgantes-chulilla",
       "ruta-del-agua-chelva",
@@ -162,7 +162,7 @@ export default function HomePage() {
                 Escapadas perrunas para playa, monte y riberas a un salto de Valencia.
               </h2>
               <p className="max-w-2xl text-lg leading-8 text-grafito/80">
-                Este proyecto organiza rutas reales con informaci\u00f3n \u00fatil para decidir d\u00f3nde ir seg\u00fan
+                Este proyecto organiza rutas reales con información útil para decidir dónde ir según
                 tiempo de acceso, agua, dificultad o zona.
               </p>
             </div>
@@ -206,7 +206,7 @@ export default function HomePage() {
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
                 Tipos destacados
               </p>
-              <h2 className="mt-2 text-2xl font-bold text-bosque">Entradas r\u00e1pidas por necesidad</h2>
+              <h2 className="mt-2 text-2xl font-bold text-bosque">Entradas rápidas por necesidad</h2>
             </div>
           </div>
           <div className="grid gap-4">
@@ -232,7 +232,7 @@ export default function HomePage() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
             Explorar por zona
           </p>
-          <h2 className="mt-2 text-2xl font-bold text-bosque">Comarcas y \u00e1reas disponibles</h2>
+          <h2 className="mt-2 text-2xl font-bold text-bosque">Comarcas y áreas disponibles</h2>
           <div className="mt-5 flex flex-wrap gap-3">
             {zonas.map((zona) => (
               <Link
