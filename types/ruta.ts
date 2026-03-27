@@ -9,6 +9,7 @@ export type RiesgoProcesionaria = "alto" | "medio" | "bajo" | string;
 export interface Ruta {
   nombre: string;
   slug: string;
+  foto_credito?: string;
   zona: string;
   distancia_km: number;
   desnivel_m: number;
@@ -26,3 +27,4 @@ export interface Ruta {
   riesgo_procesionaria: RiesgoProcesionaria;
   como_llegar?: string;
 }
+

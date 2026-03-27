@@ -1,4 +1,7 @@
-﻿import type { Metadata } from "next";
+﻿import fs from "node:fs";
+import path from "node:path";
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AcordeonComoLlegar from "@/components/AcordeonComoLlegar";
@@ -29,6 +32,13 @@ export function generateStaticParams() {
 }
 
 export const dynamicParams = false;
+
+function getRutaImagePath(slug: string): string | null {
+  const relativePath = `/img/rutas/${slug}.jpg`;
+  const absolutePath = path.join(process.cwd(), "public", "img", "rutas", `${slug}.jpg`);
+
+  return fs.existsSync(absolutePath) ? relativePath : null;
+}
 
 function buildDescription(ruta: Ruta): string {
   const contenido = getContenidoRuta(ruta.slug);
@@ -93,6 +103,8 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
   const description = buildDescription(ruta);
   const descripcionParrafos = contenido?.descripcion.split("\n\n") ?? [];
   const isPendiente = ruta.confianza_dato.toLowerCase() === "pendiente";
+  const imagePath = getRutaImagePath(ruta.slug);
+  const photoLicense = ruta.foto_credito?.match(/\(([^)]+)\)/)?.[1];
   const breadcrumbItems = [
     { label: "Inicio", href: "/" },
     { label: "Rutas", href: "/rutas" },
@@ -135,6 +147,27 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
 
       <section className="panel px-6 py-8 sm:px-8">
         <Breadcrumb items={breadcrumbItems} />
+        <div className="mt-4">
+          {imagePath ? (
+            <>
+              <Image
+                src={imagePath}
+                alt={`${sanitizeText(ruta.nombre)} con perro en Valencia`}
+                width={800}
+                height={450}
+                className="w-full rounded-lg object-cover"
+                priority
+              />
+              {photoLicense ? (
+                <p className="mt-2 text-sm text-grafito/60">Foto: Wikimedia Commons ({photoLicense})</p>
+              ) : null}
+            </>
+          ) : (
+            <div className="flex min-h-[240px] items-center justify-center rounded-lg bg-stone-100 px-6 py-12 text-center text-xl font-semibold text-bosque/70">
+              {sanitizeText(ruta.nombre)}
+            </div>
+          )}
+        </div>
         <div className="mt-4 flex flex-wrap gap-3">
           <span className="chip border-rio/25 bg-rio/10 text-rio">{formatZona(ruta.zona)}</span>
           <span className="chip border-bosque/15 bg-bosque/5 text-bosque capitalize">

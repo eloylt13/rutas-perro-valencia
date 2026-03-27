@@ -20,7 +20,8 @@
     "confianza_dato": "verificado",
     "notas": "Variante lineal 9-10 km ida y vuelta hasta embalse Loriguilla. Variante circular 16 km. Dentro del Paraje Natural Municipal Los Calderones — correa obligatoria.",
     "riesgo_procesionaria": "alto",
-    "como_llegar": "Aparca en el parking de la Urbanización Santa Bárbara, junto a la carretera CV-394 a las afueras de Chulilla."
+    "como_llegar": "Aparca en el parking de la Urbanización Santa Bárbara, junto a la carretera CV-394 a las afueras de Chulilla.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
   },
   {
     "nombre": "Ruta del Agua de Chelva",
@@ -43,7 +44,8 @@
     "confianza_dato": "verificado",
     "notas": "Comienza en Plaza Mayor de Chelva. Fuentes, acequias y merenderos en el recorrido.",
     "riesgo_procesionaria": "medio",
-    "como_llegar": "El inicio está en el Área Recreativa Molino Puerto, en Chelva. Hay aparcamiento gratuito en la zona."
+    "como_llegar": "El inicio está en el Área Recreativa Molino Puerto, en Chelva. Hay aparcamiento gratuito en la zona.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
   },
   {
     "nombre": "Acueducto Romano de la Peña Cortada",
@@ -66,7 +68,8 @@
     "confianza_dato": "verificado",
     "notas": "Precaución en zona del acueducto romano: paso estrecho sin protección de unos 2 metros de ancho.",
     "riesgo_procesionaria": "alto",
-    "como_llegar": "Aparca junto a una fuente cerca de Calles, en las coordenadas del inicio. Desde allí parte la pista hacia el sendero."
+    "como_llegar": "Aparca junto a una fuente cerca de Calles, en las coordenadas del inicio. Desde allí parte la pista hacia el sendero.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
   },
   {
     "nombre": "Ruta de los Pantaneros – Embalse de Loriguilla",
@@ -89,7 +92,8 @@
     "confianza_dato": "verificado",
     "notas": "Ruta alternativa a los Puentes Colgantes. Zona protegida Los Calderones.",
     "riesgo_procesionaria": "alto",
-    "como_llegar": "Acceso desde el área de aparcamiento junto al embalse de Loriguilla, cerca de Chulilla."
+    "como_llegar": "Acceso desde el área de aparcamiento junto al embalse de Loriguilla, cerca de Chulilla.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 2.0)"
   },
   {
     "nombre": "Parque Fluvial del Turia – Masía de Traver",
@@ -112,7 +116,8 @@
     "confianza_dato": "verificado",
     "notas": "Ideal para principiantes y perros mayores. Zona de río con acceso al agua.",
     "riesgo_procesionaria": "bajo",
-    "como_llegar": "Comienza en el Área Recreativa de Masía Traver, en Riba-roja de Túria. Parking disponible en la zona."
+    "como_llegar": "Comienza en el Área Recreativa de Masía Traver, en Riba-roja de Túria. Parking disponible en la zona.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
   },
   {
     "nombre": "Cruz de Montepicayo (GR-10)",
@@ -135,7 +140,8 @@
     "confianza_dato": "verificado",
     "notas": "Muy pedregosa. Llevar calzado adecuado. Sin agua en el recorrido — llevar para el perro.",
     "riesgo_procesionaria": "alto",
-    "como_llegar": "El sendero arranca en el área de aparcamiento junto al municipio de Puçol, en la Sierra Calderona."
+    "como_llegar": "El sendero arranca en el área de aparcamiento junto al municipio de Puçol, en la Sierra Calderona.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
   },
   {
     "nombre": "Gátova – Pico del Águila – Molino de la Ceja",
@@ -158,7 +164,8 @@
     "confianza_dato": "verificado",
     "notas": "Vistas panorámicas desde el Pico del Águila. Sin agua — llevar suficiente para el perro.",
     "riesgo_procesionaria": "alto",
-    "como_llegar": "Inicio en la Plaza del Ayuntamiento de Gátova. Aparcamiento en el pueblo."
+    "como_llegar": "Inicio en la Plaza del Ayuntamiento de Gátova. Aparcamiento en el pueblo.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
   },
   {
     "nombre": "Buñol – Molino de la Luz – Alborache",
@@ -181,7 +188,8 @@
     "confianza_dato": "verificado",
     "notas": "Río Buñol accesible en varios puntos. Apta para perros de cualquier condición física.",
     "riesgo_procesionaria": "medio",
-    "como_llegar": "Sale del Parque Maestro Manuel Carrascosa de Buñol, en la Avenida de la Hoya de Buñol."
+    "como_llegar": "Sale del Parque Maestro Manuel Carrascosa de Buñol, en la Avenida de la Hoya de Buñol.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
   },
   {
     "nombre": "Embalse de Bellús",
@@ -204,7 +212,8 @@
     "confianza_dato": "verificado",
     "notas": "Construido en 1995 sobre el río Albaida. Terreno llano, ideal para perros mayores o con movilidad reducida.",
     "riesgo_procesionaria": "bajo",
-    "como_llegar": "El recorrido comienza en el dique del embalse de Bellús. Hay aparcamiento junto al acceso."
+    "como_llegar": "El recorrido comienza en el dique del embalse de Bellús. Hay aparcamiento junto al acceso.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
   },
   {
     "nombre": "Ontinyent – Senda dels Enginyers",
@@ -227,7 +236,8 @@
     "confianza_dato": "verificado",
     "notas": "Mezcla de asfalto y sendero. Buena opción de entrenamiento para perros activos.",
     "riesgo_procesionaria": "medio",
-    "como_llegar": "Inicio junto al cementerio municipal de Ontinyent. Aparcamiento disponible en la zona."
+    "como_llegar": "Inicio junto al cementerio municipal de Ontinyent. Aparcamiento disponible en la zona.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
   },
   {
     "nombre": "Sierra de Aledua – Pico Besori",
@@ -250,7 +260,8 @@
     "confianza_dato": "verificado",
     "notas": "Senda técnica con bajadas en piedra. Llevar agua abundante para el perro.",
     "riesgo_procesionaria": "alto",
-    "como_llegar": "Acceso desde la pista forestal de Alfarp. Aparca al inicio de la pista."
+    "como_llegar": "Acceso desde la pista forestal de Alfarp. Aparca al inicio de la pista.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
   },
   {
     "nombre": "Cañones del Júcar (Jalance)",
@@ -273,7 +284,8 @@
     "confianza_dato": "verificado",
     "notas": "Río Júcar accesible en varios puntos. La más larga del MVP — perros con buena condición física.",
     "riesgo_procesionaria": "medio",
-    "como_llegar": "El sendero parte del Área Recreativa del Castillo de Jalance. Hay aparcamiento gratuito."
+    "como_llegar": "El sendero parte del Área Recreativa del Castillo de Jalance. Hay aparcamiento gratuito.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 2.0)"
   },
   {
     "nombre": "Senda del Portalet (Gandía)",
@@ -296,7 +308,8 @@
     "confianza_dato": "verificado",
     "notas": "Muy corta — ideal como primer contacto con el senderismo. Formaciones calcáreas espectaculares.",
     "riesgo_procesionaria": "medio",
-    "como_llegar": "Inicio en el Área Recreativa de la Font de la Murta, en Gandía."
+    "como_llegar": "Inicio en el Área Recreativa de la Font de la Murta, en Gandía.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
   },
   {
     "nombre": "Cueva Turche (Buñol)",
@@ -319,7 +332,8 @@
     "confianza_dato": "probable",
     "notas": "Cascada y zona de baño al final del recorrido. Muy frecuentada en verano.",
     "riesgo_procesionaria": "medio",
-    "como_llegar": "Aparca en el pequeño parking junto a la rambla, antes de llegar a la cueva."
+    "como_llegar": "Aparca en el pequeño parking junto a la rambla, antes de llegar a la cueva.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
   },
   {
     "nombre": "Gorgo de la Escalera (Anna)",
@@ -342,7 +356,8 @@
     "confianza_dato": "probable",
     "notas": "Zona de pozas naturales. Ideal para perros a los que les gusta el agua.",
     "riesgo_procesionaria": "bajo",
-    "como_llegar": "El sendero comienza en el aparcamiento de la zona recreativa, desde donde se desciende al barranco."
+    "como_llegar": "El sendero comienza en el aparcamiento de la zona recreativa, desde donde se desciende al barranco.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
   },
   {
     "nombre": "Salto de la Novia (Navajas)",
@@ -365,7 +380,8 @@
     "confianza_dato": "probable",
     "notas": "Cascada de 30 m. Muy concurrida en fines de semana. Correa recomendada por aglomeración.",
     "riesgo_procesionaria": "medio",
-    "como_llegar": "Inicio cerca del aparcamiento de Navajas, junto al acceso al sendero del Salto de la Novia."
+    "como_llegar": "Inicio cerca del aparcamiento de Navajas, junto al acceso al sendero del Salto de la Novia.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
   },
   {
     "nombre": "Descenso del Río Fraile (Cortes de Pallás)",
@@ -388,7 +404,8 @@
     "confianza_dato": "probable",
     "notas": "Descenso de río — solo para perros acostumbrados a nadar. Llevar bolsa estanca.",
     "riesgo_procesionaria": "bajo",
-    "como_llegar": "El recorrido parte del aparcamiento de la Fuente de los Botijos, junto al camping de Bicorp."
+    "como_llegar": "El recorrido parte del aparcamiento de la Fuente de los Botijos, junto al camping de Bicorp.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
   },
   {
     "nombre": "Ruta de Chera",
@@ -411,7 +428,8 @@
     "confianza_dato": "probable",
     "notas": "Cascada en el recorrido. Verificar tramos de acceso al agua para el perro.",
     "riesgo_procesionaria": "medio",
-    "como_llegar": "Inicio en el parking del parque geológico de Chera."
+    "como_llegar": "Inicio en el parking del parque geológico de Chera.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
   },
   {
     "nombre": "Ruta Albufera – Dehesa del Saler",
@@ -434,7 +452,8 @@
     "confianza_dato": "probable",
     "notas": "Espacio Natural Protegido — correa obligatoria. Sin sombra en verano. La más cercana a Valencia ciudad.",
     "riesgo_procesionaria": "bajo",
-    "como_llegar": "Comienza en el centro de información del Parque Natural de la Albufera, en El Saler."
+    "como_llegar": "Comienza en el centro de información del Parque Natural de la Albufera, en El Saler.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
   },
   {
     "nombre": "Xàtiva – Cova Negra – Bellús",
@@ -457,7 +476,8 @@
     "confianza_dato": "probable",
     "notas": "90% senda. Varias fuentes en el camino. Llevar agua extra en verano.",
     "riesgo_procesionaria": "medio",
-    "como_llegar": "Inicio en el área de aparcamiento de la ermita de Sant Feliu, en Xàtiva."
+    "como_llegar": "Inicio en el área de aparcamiento de la ermita de Sant Feliu, en Xàtiva.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
   },
   {
     "nombre": "Río Turia – Manises a Vilamarxant",
@@ -480,7 +500,8 @@
     "confianza_dato": "probable",
     "notas": "Parque Natural del Turia — correa obligatoria. Muy accesible desde Valencia. Ideal para días entre semana.",
     "riesgo_procesionaria": "bajo",
-    "como_llegar": "El sendero comienza en el Parque Fluvial del Turia a las afueras de Manises."
+    "como_llegar": "El sendero comienza en el Parque Fluvial del Turia a las afueras de Manises.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
   },
   {
     "nombre": "Río Sellent (Bolbaite)",
@@ -503,7 +524,8 @@
     "confianza_dato": "probable",
     "notas": "Mucha sombra y agua — de las mejores para verano. Muy tranquila entre semana.",
     "riesgo_procesionaria": "bajo",
-    "como_llegar": "Inicio en el área recreativa del río Sellent, cerca de Bolbaite."
+    "como_llegar": "Inicio en el área recreativa del río Sellent, cerca de Bolbaite.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
   },
   {
     "nombre": "Ruta de les Caves (Requena)",
@@ -526,7 +548,8 @@
     "confianza_dato": "probable",
     "notas": "Ruta cultural por bodegas subterráneas. Sin agua natural — llevar para el perro.",
     "riesgo_procesionaria": "bajo",
-    "como_llegar": "El recorrido parte de la Plaza de la Villa de Requena."
+    "como_llegar": "El recorrido parte de la Plaza de la Villa de Requena.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
   },
   {
     "nombre": "Cova Negra (Carcaixent)",
@@ -549,7 +572,8 @@
     "confianza_dato": "pendiente",
     "notas": "Datos pendientes de verificación in situ. Publicar con aviso de confianza.",
     "riesgo_procesionaria": "medio",
-    "como_llegar": "Inicio desde la estación de Renfe de Carcaixent, en el casco urbano."
+    "como_llegar": "Inicio desde la estación de Renfe de Carcaixent, en el casco urbano.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
   },
   {
     "nombre": "Barranco del Agua Negra (Bocairent)",
@@ -572,6 +596,7 @@
     "confianza_dato": "pendiente",
     "notas": "Mucha sombra y agua. Datos pendientes de verificación. Publicar con aviso.",
     "riesgo_procesionaria": "alto",
-    "como_llegar": "Punto de inicio pendiente de verificación. Consulta Wikiloc antes de salir."
+    "como_llegar": "Punto de inicio pendiente de verificación. Consulta Wikiloc antes de salir.",
+    "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
   }
 ]

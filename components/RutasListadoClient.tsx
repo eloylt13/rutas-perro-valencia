@@ -1,9 +1,10 @@
 ﻿"use client";
 
-import { useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import type { Ruta } from "@/types/ruta";
+import { useMemo, useState } from "react";
 import { capitalize, formatDificultad, formatZona, sanitizeText } from "@/lib/rutas";
+import type { Ruta } from "@/types/ruta";
 
 type RutasListadoClientProps = {
   rutas: Ruta[];
@@ -15,6 +16,7 @@ const dificultades = ["fácil", "media", "difícil"] as const;
 
 export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
   const [zona, setZona] = useState(allFilterValue);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
   const [dificultad, setDificultad] = useState<typeof allFilterValue | (typeof dificultades)[number]>(
     allFilterValue
   );
@@ -224,39 +226,65 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
       {rutasFiltradas.length > 0 ? (
         <section className="route-grid">
           {rutasFiltradas.map((ruta) => (
-            <Link key={ruta.slug} href={`/rutas/${ruta.slug}`} className="panel p-5 hover:border-bosque/35">
-              <div className="flex flex-wrap gap-2">
-                <span className="chip border-rio/25 bg-rio/10 text-rio">{formatZona(ruta.zona)}</span>
-                <span className="chip border-bosque/15 bg-bosque/5 text-bosque">
-                  {formatDificultad(ruta.dificultad)}
-                </span>
+            <Link
+              key={ruta.slug}
+              href={`/rutas/${ruta.slug}`}
+              className="panel overflow-hidden p-0 hover:border-bosque/35"
+            >
+              {imageErrors[ruta.slug] ? (
+                <div className="flex h-[225px] items-center justify-center bg-stone-100 px-6 text-center text-lg font-semibold text-bosque/70">
+                  {sanitizeText(ruta.nombre)}
+                </div>
+              ) : (
+                <Image
+                  src={`/img/rutas/${ruta.slug}.jpg`}
+                  alt={`${sanitizeText(ruta.nombre)} con perro en Valencia`}
+                  width={400}
+                  height={225}
+                  className="h-[225px] w-full rounded-t-lg object-cover"
+                  onError={() =>
+                    setImageErrors((current) => ({
+                      ...current,
+                      [ruta.slug]: true
+                    }))
+                  }
+                />
+              )}
+
+              <div className="p-5">
+                <div className="flex flex-wrap gap-2">
+                  <span className="chip border-rio/25 bg-rio/10 text-rio">{formatZona(ruta.zona)}</span>
+                  <span className="chip border-bosque/15 bg-bosque/5 text-bosque">
+                    {formatDificultad(ruta.dificultad)}
+                  </span>
+                </div>
+                <h3 className="mt-4 text-xl font-semibold text-bosque">{sanitizeText(ruta.nombre)}</h3>
+                <p className="mt-3 text-sm leading-6 text-grafito/75">{sanitizeText(ruta.notas)}</p>
+                <dl className="mt-5 grid grid-cols-2 gap-3 text-sm lg:grid-cols-5">
+                  <div>
+                    <dt className="text-grafito/55">Distancia</dt>
+                    <dd className="font-semibold text-bosque">{ruta.distancia_km} km</dd>
+                  </div>
+                  <div>
+                    <dt className="text-grafito/55">Tipo</dt>
+                    <dd className="font-semibold capitalize text-bosque">{ruta.tipo_ruta}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-grafito/55">Desde Valencia en coche</dt>
+                    <dd className="font-semibold text-bosque">{ruta.acceso_desde_valencia_min} min</dd>
+                  </div>
+                  <div>
+                    <dt className="text-grafito/55">Agua</dt>
+                    <dd className="font-semibold text-bosque">{ruta.agua ? "\u{1F4A7} S\u00ED" : "\u{1F4A7} No"}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-grafito/55">Correa</dt>
+                    <dd className="font-semibold text-bosque">
+                      {ruta.correa_obligatoria ? "\u{1F534} Obligatoria" : "\u{1F7E2} No obligatoria"}
+                    </dd>
+                  </div>
+                </dl>
               </div>
-              <h3 className="mt-4 text-xl font-semibold text-bosque">{sanitizeText(ruta.nombre)}</h3>
-              <p className="mt-3 text-sm leading-6 text-grafito/75">{sanitizeText(ruta.notas)}</p>
-              <dl className="mt-5 grid grid-cols-2 gap-3 text-sm lg:grid-cols-5">
-                <div>
-                  <dt className="text-grafito/55">Distancia</dt>
-                  <dd className="font-semibold text-bosque">{ruta.distancia_km} km</dd>
-                </div>
-                <div>
-                  <dt className="text-grafito/55">Tipo</dt>
-                  <dd className="font-semibold capitalize text-bosque">{ruta.tipo_ruta}</dd>
-                </div>
-                <div>
-                  <dt className="text-grafito/55">Desde Valencia en coche</dt>
-                  <dd className="font-semibold text-bosque">{ruta.acceso_desde_valencia_min} min</dd>
-                </div>
-                <div>
-                  <dt className="text-grafito/55">Agua</dt>
-                  <dd className="font-semibold text-bosque">{ruta.agua ? "\u{1F4A7} S\u00ED" : "\u{1F4A7} No"}</dd>
-                </div>
-                <div>
-                  <dt className="text-grafito/55">Correa</dt>
-                  <dd className="font-semibold text-bosque">
-                    {ruta.correa_obligatoria ? "\u{1F534} Obligatoria" : "\u{1F7E2} No obligatoria"}
-                  </dd>
-                </div>
-              </dl>
             </Link>
           ))}
         </section>

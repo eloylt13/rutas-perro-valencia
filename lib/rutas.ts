@@ -94,6 +94,7 @@ function sanitizeRuta(ruta: Ruta): Ruta {
     ...ruta,
     nombre: fixUtf8Mojibake(ruta.nombre),
     slug: fixUtf8Mojibake(ruta.slug),
+    foto_credito: ruta.foto_credito ? fixUtf8Mojibake(ruta.foto_credito) : undefined,
     zona: fixUtf8Mojibake(ruta.zona),
     tipo_ruta: fixUtf8Mojibake(ruta.tipo_ruta),
     dificultad: fixUtf8Mojibake(ruta.dificultad),
@@ -238,3 +239,4 @@ export function buildBreadcrumbJsonLd(items: BreadcrumbListItem[]) {
     }))
   };
 }
+
