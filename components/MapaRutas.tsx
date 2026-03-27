@@ -360,11 +360,11 @@ export default function MapaRutas() {
                       </div>
                       <div className="flex justify-between gap-3">
                         <dt className="font-medium">Agua</dt>
-                        <dd>{ruta.agua ? "💧 Sí" : "✗ No"}</dd>
+                        <dd>{ruta.agua ? "\u{1F4A7} S\u00ED" : "\u{1F4A7} No"}</dd>
                       </div>
                       <div className="flex justify-between gap-3">
                         <dt className="font-medium">Correa</dt>
-                        <dd>{ruta.correa_obligatoria ? "🔴 Sí" : "✓ No"}</dd>
+                        <dd>{ruta.correa_obligatoria ? "\u{1F534} Obligatoria" : "\u{1F7E2} No obligatoria"}</dd>
                       </div>
                     </dl>
                     {ruta.distanciaUsuarioKm !== null ? (

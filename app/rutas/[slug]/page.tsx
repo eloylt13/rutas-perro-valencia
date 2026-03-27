@@ -194,7 +194,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
               </div>
               <div className="rounded-2xl bg-bosque/5 p-4">
                 <dt className="text-sm text-grafito/60">Agua</dt>
-                <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.agua ? "Sí" : "No"}</dd>
+                <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.agua ? "\u{1F4A7} S\u00ED" : "\u{1F4A7} No"}</dd>
               </div>
               <div className="rounded-2xl bg-bosque/5 p-4">
                 <dt className="text-sm text-grafito/60">Sombra</dt>
@@ -209,7 +209,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
               <div className="rounded-2xl bg-bosque/5 p-4">
                 <dt className="text-sm text-grafito/60">Correa</dt>
                 <dd className="mt-1 text-lg font-semibold text-bosque">
-                  {ruta.correa_obligatoria ? "Obligatoria" : "No obligatoria"}
+                  {ruta.correa_obligatoria ? "\u{1F534} Obligatoria" : "\u{1F7E2} No obligatoria"}
                 </dd>
               </div>
               <div className="rounded-2xl bg-bosque/5 p-4">

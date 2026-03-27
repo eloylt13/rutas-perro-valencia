@@ -244,12 +244,12 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
                 </div>
                 <div>
                   <dt className="text-grafito/55">Agua</dt>
-                  <dd className="font-semibold text-bosque">{ruta.agua ? "Si" : "No"}</dd>
+                  <dd className="font-semibold text-bosque">{ruta.agua ? "\u{1F4A7} S\u00ED" : "\u{1F4A7} No"}</dd>
                 </div>
                 <div>
                   <dt className="text-grafito/55">Correa</dt>
                   <dd className="font-semibold text-bosque">
-                    {ruta.correa_obligatoria ? "Si obligatoria" : "No obligatoria"}
+                    {ruta.correa_obligatoria ? "\u{1F534} Obligatoria" : "\u{1F7E2} No obligatoria"}
                   </dd>
                 </div>
               </dl>
