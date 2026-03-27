@@ -5,7 +5,7 @@ import Link from "next/link";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import L from "leaflet";
 import rutasData from "@/data/rutas-verified.json";
-import type { Ruta } from "@/types/ruta";
+import type { Ruta, RiesgoProcesionaria } from "@/types/ruta";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -17,6 +17,7 @@ L.Icon.Default.mergeOptions({
 const rutas = rutasData as Ruta[];
 const mapCenter: [number, number] = [39.47, -0.37];
 const defaultFilter = "todas";
+const riesgosProcesionaria: RiesgoProcesionaria[] = ["bajo", "medio", "alto"];
 
 const zonas = [...new Set(rutas.map((ruta) => ruta.zona))].sort((a, b) =>
   a.localeCompare(b, "es")
@@ -25,9 +26,25 @@ const dificultades = [...new Set(rutas.map((ruta) => ruta.dificultad))].sort((a,
   a.localeCompare(b, "es")
 );
 
+const riesgoConfig: Record<"bajo" | "medio" | "alto", { label: string; className: string }> = {
+  bajo: {
+    label: "🟢 Bajo riesgo procesionaria",
+    className: "border-emerald-200 bg-emerald-50 text-emerald-800"
+  },
+  medio: {
+    label: "🟡 Medio riesgo procesionaria",
+    className: "border-amber-200 bg-amber-50 text-amber-800"
+  },
+  alto: {
+    label: "🔴 Alto riesgo procesionaria",
+    className: "border-rose-200 bg-rose-50 text-rose-800"
+  }
+};
+
 export default function MapaRutas() {
   const [dificultad, setDificultad] = useState(defaultFilter);
   const [zona, setZona] = useState(defaultFilter);
+  const [procesionaria, setProcesionaria] = useState(defaultFilter);
   const [soloConAgua, setSoloConAgua] = useState(false);
   const [soloConCorrea, setSoloConCorrea] = useState(false);
   const [isReady, setIsReady] = useState(false);
@@ -42,6 +59,13 @@ export default function MapaRutas() {
     }
 
     if (zona !== defaultFilter && ruta.zona !== zona) {
+      return false;
+    }
+
+    if (
+      procesionaria !== defaultFilter &&
+      ruta.riesgo_procesionaria !== procesionaria
+    ) {
       return false;
     }
 
@@ -68,8 +92,7 @@ export default function MapaRutas() {
               Explora rutas dog-friendly sobre el mapa
             </h2>
             <p className="text-base leading-7 text-grafito/80">
-              Filtra por dificultad, zona o necesidades prácticas y abre cada ficha
-              completa desde su marcador.
+              Filtra por dificultad, zona, riesgo de procesionaria o necesidades prácticas y abre cada ficha completa desde su marcador.
             </p>
           </div>
           <div className="rounded-2xl border border-bosque/10 bg-bosque/5 px-4 py-3 text-sm text-grafito/80">
@@ -77,7 +100,7 @@ export default function MapaRutas() {
           </div>
         </div>
 
-        <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
           <label className="space-y-2">
             <span className="text-sm font-semibold text-bosque">Dificultad</span>
             <select
@@ -105,6 +128,22 @@ export default function MapaRutas() {
               {zonas.map((option) => (
                 <option key={option} value={option}>
                   {option}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label className="space-y-2">
+            <span className="text-sm font-semibold text-bosque">Procesionaria</span>
+            <select
+              value={procesionaria}
+              onChange={(event) => setProcesionaria(event.target.value)}
+              className="w-full rounded-2xl border border-bosque/15 bg-white px-4 py-3 text-sm text-grafito outline-none transition focus:border-bosque/40"
+            >
+              <option value={defaultFilter}>Todos</option>
+              {riesgosProcesionaria.map((option) => (
+                <option key={option} value={option}>
+                  {option[0].toUpperCase() + option.slice(1)}
                 </option>
               ))}
             </select>
@@ -155,6 +194,13 @@ export default function MapaRutas() {
                         {ruta.zona}
                       </p>
                     </div>
+                    <p
+                      className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${
+                        riesgoConfig[ruta.riesgo_procesionaria as "bajo" | "medio" | "alto"].className
+                      }`}
+                    >
+                      {riesgoConfig[ruta.riesgo_procesionaria as "bajo" | "medio" | "alto"].label}
+                    </p>
                     <dl className="space-y-1">
                       <div className="flex justify-between gap-3">
                         <dt className="font-medium">Distancia</dt>

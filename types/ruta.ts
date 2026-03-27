@@ -4,6 +4,7 @@ export type DificultadRuta = "fácil" | "media" | string;
 export type TipoRuta = "lineal" | "circular" | string;
 export type SombraRuta = "poca" | "moderada" | "mucha" | string;
 export type ConfianzaDato = "verificado" | "probable" | "pendiente" | string;
+export type RiesgoProcesionaria = "alto" | "medio" | "bajo" | string;
 
 export interface Ruta {
   nombre: string;
@@ -22,4 +23,5 @@ export interface Ruta {
   coordenadas_inicio: CoordenadasInicio;
   confianza_dato: ConfianzaDato;
   notas: string;
+  riesgo_procesionaria: RiesgoProcesionaria;
 }

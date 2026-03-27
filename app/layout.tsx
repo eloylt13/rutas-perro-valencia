@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
+import SeasonalAlertBanner from "@/components/SeasonalAlertBanner";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
+        <SeasonalAlertBanner />
         <div className="page-shell">
           <header className="panel mb-8 overflow-hidden">
             <div className="bg-hero px-6 py-8 sm:px-8">
