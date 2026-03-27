@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/Breadcrumb";
+import contenidoZonas from "@/data/contenido-zonas";
 import {
   buildBreadcrumbJsonLd,
   formatDificultad,
@@ -27,6 +28,21 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
+function truncateDescription(text: string, maxLength = 155): string {
+  if (text.length <= maxLength) {
+    return text;
+  }
+
+  const truncated = text.slice(0, maxLength).trimEnd();
+  const lastSpaceIndex = truncated.lastIndexOf(" ");
+
+  if (lastSpaceIndex <= 0) {
+    return `${truncated}...`;
+  }
+
+  return `${truncated.slice(0, lastSpaceIndex)}...`;
+}
+
 export async function generateMetadata({
   params
 }: ZonaPageProps): Promise<Metadata> {
@@ -38,10 +54,15 @@ export async function generateMetadata({
     };
   }
 
+  const zonaFormateada = formatZona(zona);
+  const contenidoZona = contenidoZonas[zonaFormateada];
+
   return {
     metadataBase: new URL("https://rutasperrovalencia.es"),
-    title: `Rutas en ${formatZona(zona)}`,
-    description: `Listado de rutas con perro en ${formatZona(zona)}.`,
+    title: `Rutas con perro en ${zonaFormateada} | Rutas Perro Valencia`,
+    description: truncateDescription(
+      contenidoZona?.intro[0] ?? `Rutas con perro en ${zonaFormateada}.`
+    ),
     alternates: {
       canonical: `/zona/${params.zona}`
     }
@@ -57,6 +78,7 @@ export default function ZonaPage({ params }: ZonaPageProps) {
 
   const rutas = getRutasByZona(zona);
   const zonaFormateada = formatZona(zona);
+  const contenidoZona = contenidoZonas[zonaFormateada];
 
   if (rutas.length === 0) {
     notFound();
@@ -93,6 +115,23 @@ export default function ZonaPage({ params }: ZonaPageProps) {
           {rutas.length} rutas disponibles para esta zona, con acceso rápido a la ficha individual
           de cada recorrido.
         </p>
+        {contenidoZona ? (
+          <div className="mt-6 space-y-4">
+            {contenidoZona.intro.map((parrafo) => (
+              <p key={parrafo} className="max-w-3xl text-base leading-7 text-grafito/80">
+                {parrafo}
+              </p>
+            ))}
+            <div className="max-w-3xl rounded-3xl border border-bosque/10 bg-bosque/5 px-5 py-4">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
+                Ideal para
+              </p>
+              <p className="mt-2 text-base leading-7 text-grafito/85">
+                Ideal para: {contenidoZona.mejorPara}
+              </p>
+            </div>
+          </div>
+        ) : null}
       </section>
 
       <section className="route-grid">
