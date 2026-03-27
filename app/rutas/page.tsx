@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from "next";
-import Link from "next/link";
-import { formatDificultad, formatZona, getRutas, sanitizeText } from "@/lib/rutas";
+import RutasListadoClient from "@/components/RutasListadoClient";
+import { getRutas } from "@/lib/rutas";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://rutasperrovalencia.es"),
@@ -27,44 +27,7 @@ export default function RutasPage() {
         </p>
       </section>
 
-      <section className="route-grid">
-        {rutas.map((ruta) => (
-          <Link key={ruta.slug} href={`/rutas/${ruta.slug}`} className="panel p-5 hover:border-bosque/35">
-            <div className="flex flex-wrap gap-2">
-              <span className="chip border-rio/25 bg-rio/10 text-rio">{formatZona(ruta.zona)}</span>
-              <span className="chip border-bosque/15 bg-bosque/5 text-bosque">
-                {formatDificultad(ruta.dificultad)}
-              </span>
-            </div>
-            <h3 className="mt-4 text-xl font-semibold text-bosque">{sanitizeText(ruta.nombre)}</h3>
-            <p className="mt-3 text-sm leading-6 text-grafito/75">{sanitizeText(ruta.notas)}</p>
-            <dl className="mt-5 grid grid-cols-2 gap-3 text-sm lg:grid-cols-5">
-              <div>
-                <dt className="text-grafito/55">Distancia</dt>
-                <dd className="font-semibold text-bosque">{ruta.distancia_km} km</dd>
-              </div>
-              <div>
-                <dt className="text-grafito/55">Tipo</dt>
-                <dd className="font-semibold capitalize text-bosque">{ruta.tipo_ruta}</dd>
-              </div>
-              <div>
-                <dt className="text-grafito/55">Desde Valencia en coche</dt>
-                <dd className="font-semibold text-bosque">{ruta.acceso_desde_valencia_min} min</dd>
-              </div>
-              <div>
-                <dt className="text-grafito/55">Agua</dt>
-                <dd className="font-semibold text-bosque">{ruta.agua ? "💧 Sí" : "✗ No"}</dd>
-              </div>
-              <div>
-                <dt className="text-grafito/55">Correa</dt>
-                <dd className="font-semibold text-bosque">
-                  {ruta.correa_obligatoria ? "🔴 Sí obligatoria" : "✓ No obligatoria"}
-                </dd>
-              </div>
-            </dl>
-          </Link>
-        ))}
-      </section>
+      <RutasListadoClient rutas={rutas} />
     </div>
   );
 }
