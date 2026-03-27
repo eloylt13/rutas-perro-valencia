@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
+  formatDificultad,
+  formatZona,
   getRutasByTipo,
   getTipoDescription,
   getTipoLabel,
   isTipoSoportado,
+  sanitizeText,
   TIPOS_SOPORTADOS
 } from "@/lib/rutas";
 
@@ -68,11 +71,13 @@ export default function TipoPage({ params }: TipoPageProps) {
         {rutas.map((ruta) => (
           <Link key={ruta.slug} href={`/rutas/${ruta.slug}`} className="panel p-5 hover:border-bosque/35">
             <div className="flex flex-wrap gap-2">
-              <span className="chip border-rio/25 bg-rio/10 text-rio">{ruta.zona}</span>
-              <span className="chip border-bosque/15 bg-bosque/5 text-bosque">{ruta.dificultad}</span>
+              <span className="chip border-rio/25 bg-rio/10 text-rio">{formatZona(ruta.zona)}</span>
+              <span className="chip border-bosque/15 bg-bosque/5 text-bosque">
+                {formatDificultad(ruta.dificultad)}
+              </span>
             </div>
-            <h3 className="mt-4 text-xl font-semibold text-bosque">{ruta.nombre}</h3>
-            <p className="mt-3 text-sm leading-6 text-grafito/75">{ruta.notas}</p>
+            <h3 className="mt-4 text-xl font-semibold text-bosque">{sanitizeText(ruta.nombre)}</h3>
+            <p className="mt-3 text-sm leading-6 text-grafito/75">{sanitizeText(ruta.notas)}</p>
             <p className="mt-4 text-sm font-semibold text-bosque">
               Acceso desde Valencia: {ruta.acceso_desde_valencia_min} min
             </p>

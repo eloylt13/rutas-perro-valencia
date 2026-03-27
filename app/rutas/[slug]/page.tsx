@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getRutaBySlug, getRutas, getZonaSlug } from "@/lib/rutas";
+import {
+  formatDificultad,
+  formatZona,
+  getRutaBySlug,
+  getRutas,
+  getZonaSlug,
+  sanitizeText
+} from "@/lib/rutas";
 import type { Ruta } from "@/types/ruta";
 
 type RutaPageProps = {
@@ -19,7 +26,7 @@ export function generateStaticParams() {
 export const dynamicParams = false;
 
 function buildDescription(ruta: Ruta): string {
-  return `${ruta.nombre} en ${ruta.zona}. ${ruta.distancia_km} km, dificultad ${ruta.dificultad}, acceso desde Valencia en ${ruta.acceso_desde_valencia_min} minutos.`;
+  return `${sanitizeText(ruta.nombre)} en ${formatZona(ruta.zona)}. ${ruta.distancia_km} km, dificultad ${formatDificultad(ruta.dificultad)}, acceso desde Valencia en ${ruta.acceso_desde_valencia_min} minutos.`;
 }
 
 function getConfidenceBadgeStyles(confianza: string): string {
@@ -47,7 +54,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${ruta.nombre} | ${ruta.zona}`,
+    title: `${sanitizeText(ruta.nombre)} | ${formatZona(ruta.zona)}`,
     description: buildDescription(ruta)
   };
 }
@@ -64,12 +71,12 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "TouristAttraction",
-    name: ruta.nombre,
+    name: sanitizeText(ruta.nombre),
     description,
     touristType: "Senderismo con perro",
     address: {
       "@type": "PostalAddress",
-      addressLocality: ruta.zona,
+      addressLocality: formatZona(ruta.zona),
       addressRegion: "Valencia"
     },
     geo: {
@@ -88,7 +95,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
 
       <section className="panel px-6 py-8 sm:px-8">
         <div className="flex flex-wrap gap-3">
-          <span className="chip border-rio/25 bg-rio/10 text-rio">{ruta.zona}</span>
+          <span className="chip border-rio/25 bg-rio/10 text-rio">{formatZona(ruta.zona)}</span>
           <span className="chip border-bosque/15 bg-bosque/5 text-bosque capitalize">
             {ruta.tipo_ruta}
           </span>
@@ -103,7 +110,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
           </Link>
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-bosque sm:text-4xl">
-              {ruta.nombre}
+              {sanitizeText(ruta.nombre)}
             </h2>
             <p className="mt-3 max-w-3xl text-lg leading-8 text-grafito/80">{description}</p>
           </div>
@@ -124,10 +131,12 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
             </div>
             <div className="rounded-2xl bg-bosque/5 p-4">
               <dt className="text-sm text-grafito/60">Dificultad</dt>
-              <dd className="mt-1 text-lg font-semibold text-bosque">{ruta.dificultad}</dd>
+              <dd className="mt-1 text-lg font-semibold text-bosque">
+                {formatDificultad(ruta.dificultad)}
+              </dd>
             </div>
             <div className="rounded-2xl bg-bosque/5 p-4">
-              <dt className="text-sm text-grafito/60">Acceso desde Valencia</dt>
+              <dt className="text-sm text-grafito/60">Desde Valencia en coche</dt>
               <dd className="mt-1 text-lg font-semibold text-bosque">
                 {ruta.acceso_desde_valencia_min} min
               </dd>
@@ -135,7 +144,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
             <div className="rounded-2xl bg-bosque/5 p-4">
               <dt className="text-sm text-grafito/60">Agua</dt>
               <dd className="mt-1 text-lg font-semibold text-bosque">
-                {ruta.agua ? "Sí" : "No"}
+                {ruta.agua ? "💧 Sí" : "✗ No"}
               </dd>
             </div>
             <div className="rounded-2xl bg-bosque/5 p-4">
@@ -149,9 +158,9 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
               </dd>
             </div>
             <div className="rounded-2xl bg-bosque/5 p-4">
-              <dt className="text-sm text-grafito/60">Correa obligatoria</dt>
+              <dt className="text-sm text-grafito/60">Correa</dt>
               <dd className="mt-1 text-lg font-semibold text-bosque">
-                {ruta.correa_obligatoria ? "Sí" : "No"}
+                {ruta.correa_obligatoria ? "🔴 Sí obligatoria" : "✓ No obligatoria"}
               </dd>
             </div>
             <div className="rounded-2xl bg-bosque/5 p-4">
@@ -172,7 +181,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
         <aside className="space-y-6">
           <article className="panel px-6 py-7 sm:px-8">
             <h3 className="text-xl font-semibold text-bosque">Notas de la ruta</h3>
-            <p className="mt-4 text-base leading-7 text-grafito/80">{ruta.notas}</p>
+            <p className="mt-4 text-base leading-7 text-grafito/80">{sanitizeText(ruta.notas)}</p>
           </article>
 
           <article className="panel px-6 py-7 sm:px-8">
@@ -182,7 +191,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
                 href={`/zona/${getZonaSlug(ruta.zona)}`}
                 className="rounded-2xl border border-bosque/10 bg-white px-4 py-3 font-semibold text-bosque hover:border-bosque/35"
               >
-                Ver más rutas en {ruta.zona}
+                Ver más rutas en {formatZona(ruta.zona)}
               </Link>
               <Link
                 href={`/tipo/${ruta.agua ? "con-agua" : "cerca-de-valencia"}`}
