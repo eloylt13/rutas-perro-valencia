@@ -78,6 +78,7 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
     setSoloSinCorreaObligatoria(false);
     setSoloAptasEnVerano(false);
     setProcesionaria(allFilterValue);
+    setIsFiltersOpen(false);
   }
 
   return (
@@ -96,7 +97,10 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
               <span>{isFiltersOpen ? "\u25B2" : "\u25BE"}</span>
             </button>
 
-            <div className="rounded-2xl border border-bosque/10 bg-bosque/5 px-4 py-3 text-sm text-grafito/80">
+            <div
+              className="rounded-2xl border border-bosque/10 bg-bosque/5 px-4 py-3 text-sm text-grafito/80"
+              aria-live="polite"
+            >
               {rutasFiltradas.length} rutas encontradas
             </div>
           </div>

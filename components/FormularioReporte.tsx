@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 
@@ -68,12 +68,12 @@ export default function FormularioReporte({ nombreRuta }: FormularioReporteProps
 
   if (estado === "success") {
     return (
-      <section className="rounded-3xl border border-bosque/10 bg-bosque/5 px-6 py-7 shadow-card sm:px-8">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
+      <section className="rounded-3xl border border-emerald-200 bg-emerald-50 px-6 py-7 shadow-card sm:px-8">
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-800">
           Reporte enviado
         </p>
-        <p className="mt-3 max-w-2xl text-base leading-7 text-grafito/80">
-          ¡Gracias por tu reporte! Lo revisaremos para mantener la información actualizada.
+        <p className="mt-3 max-w-2xl text-base leading-7 text-emerald-950">
+          ✓ ¡Gracias por tu reporte! Lo revisaremos para mantener la información actualizada.
         </p>
       </section>
     );
@@ -135,7 +135,7 @@ export default function FormularioReporte({ nombreRuta }: FormularioReporteProps
 
         {estado === "error" ? (
           <p className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-            Hubo un problema al enviar. Inténtalo de nuevo.
+            ✗ Hubo un problema al enviar. Inténtalo de nuevo.
           </p>
         ) : null}
 

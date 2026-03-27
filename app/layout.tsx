@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { Analytics } from "@vercel/analytics/next";
@@ -11,6 +11,20 @@ export const metadata: Metadata = {
   description:
     "Colección de rutas verificadas para disfrutar con perro cerca de Valencia, organizadas por zona, tipo y ficha detallada.",
   metadataBase: new URL("https://rutasperrovalencia.es"),
+  openGraph: {
+    title: "Rutas con perro en Valencia",
+    description:
+      "25 rutas verificadas con perro en Valencia. Mapa interactivo, filtros caninos y fichas detalladas.",
+    url: "https://rutasperrovalencia.es",
+    siteName: "Rutas Perro Valencia",
+    locale: "es_ES",
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rutas con perro en Valencia",
+    description: "25 rutas verificadas con perro en Valencia con mapa interactivo."
+  },
   verification: {
     google: "6Cr92jGfY8D6cZX4sdEC1v1vECb_mgjBy8Jd9qoUfI4"
   }
@@ -20,7 +34,7 @@ const navigation = [
   { href: "/", label: "Inicio" },
   { href: "/rutas", label: "Rutas" },
   { href: "/mapa", label: "Mapa" },
-  { href: "/guias/cerca-de-valencia", label: "Guías" }
+  { href: "/guias", label: "Guías" }
 ];
 
 export default function RootLayout({

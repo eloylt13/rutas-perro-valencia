@@ -155,12 +155,12 @@ export default function HomePage() {
               25 rutas verificadas y clasificadas
             </span>
             <div className="space-y-3">
-              <h1 className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
                 Rutas con perro en Valencia
-              </h1>
-              <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-bosque sm:text-4xl">
+              </p>
+              <h1 className="max-w-3xl text-3xl font-bold tracking-tight text-bosque sm:text-4xl">
                 Escapadas perrunas para playa, monte y riberas a un salto de Valencia.
-              </h2>
+              </h1>
               <p className="max-w-2xl text-lg leading-8 text-grafito/80">
                 Este proyecto organiza rutas reales con información útil para decidir dónde ir según
                 tiempo de acceso, agua, dificultad o zona.
