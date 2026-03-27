@@ -2,20 +2,31 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
-import type { RiesgoProcesionaria } from "@/types/ruta";
+import type { RiesgoProcesionaria, Ruta } from "@/types/ruta";
 import { capitalize, getRutas } from "@/lib/rutas";
 
-delete (L.Icon.Default.prototype as any)._getIconUrl;
+delete (L.Icon.Default.prototype as { _getIconUrl?: string })._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconUrl: "/leaflet/marker-icon.png",
   iconRetinaUrl: "/leaflet/marker-icon-2x.png",
   shadowUrl: "/leaflet/marker-shadow.png"
 });
 
+const userIcon = L.divIcon({
+  className: "",
+  html: `<div style="width:16px;height:16px;border-radius:50%;
+         background:#3b82f6;border:3px solid white;
+         box-shadow:0 0 0 2px #3b82f6"></div>`,
+  iconSize: [16, 16],
+  iconAnchor: [8, 8]
+});
+
 const rutas = getRutas();
 const mapCenter: [number, number] = [39.47, -0.37];
+const defaultZoom = 9;
+const userLocationZoom = 11;
 const defaultFilter = "todas";
 const riesgosProcesionaria: RiesgoProcesionaria[] = ["bajo", "medio", "alto"];
 
@@ -41,18 +52,62 @@ const riesgoConfig: Record<"bajo" | "medio" | "alto", { label: string; className
   }
 };
 
-export default function MapaRutas() {
-  const [dificultad, setDificultad] = useState(defaultFilter);
-  const [zona, setZona] = useState(defaultFilter);
-  const [procesionaria, setProcesionaria] = useState(defaultFilter);
-  const [soloConAgua, setSoloConAgua] = useState(false);
-  const [soloConCorrea, setSoloConCorrea] = useState(false);
-  const [isReady, setIsReady] = useState(false);
+type RutaConDistanciaUsuario = Ruta & {
+  distanciaUsuarioKm: number | null;
+};
+
+function degreesToRadians(value: number) {
+  return (value * Math.PI) / 180;
+}
+
+function haversineDistance(from: [number, number], to: [number, number]) {
+  const earthRadiusKm = 6371;
+  const latitudeDelta = degreesToRadians(to[0] - from[0]);
+  const longitudeDelta = degreesToRadians(to[1] - from[1]);
+  const fromLatitude = degreesToRadians(from[0]);
+  const toLatitude = degreesToRadians(to[0]);
+
+  const a =
+    Math.sin(latitudeDelta / 2) * Math.sin(latitudeDelta / 2) +
+    Math.cos(fromLatitude) *
+      Math.cos(toLatitude) *
+      Math.sin(longitudeDelta / 2) *
+      Math.sin(longitudeDelta / 2);
+
+  return earthRadiusKm * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function MapViewController({
+  center,
+  zoom
+}: {
+  center: [number, number];
+  zoom: number;
+}) {
+  const map = useMap();
 
   useEffect(() => {
-    setIsReady(true);
-  }, []);
+    map.setView(center, zoom);
+  }, [center, map, zoom]);
 
+  return null;
+}
+
+function getRutasFiltradas({
+  dificultad,
+  zona,
+  procesionaria,
+  soloConAgua,
+  soloConCorrea,
+  userLocation
+}: {
+  dificultad: string;
+  zona: string;
+  procesionaria: string;
+  soloConAgua: boolean;
+  soloConCorrea: boolean;
+  userLocation: [number, number] | null;
+}) {
   const rutasFiltradas = rutas.filter((ruta) => {
     if (dificultad !== defaultFilter && ruta.dificultad !== dificultad) {
       return false;
@@ -76,6 +131,75 @@ export default function MapaRutas() {
 
     return true;
   });
+
+  const rutasConDistancia = rutasFiltradas.map((ruta) => ({
+    ...ruta,
+    distanciaUsuarioKm: userLocation
+      ? haversineDistance(userLocation, ruta.coordenadas_inicio)
+      : null
+  }));
+
+  if (!userLocation) {
+    return rutasConDistancia;
+  }
+
+  return rutasConDistancia.sort(
+    (rutaA, rutaB) => (rutaA.distanciaUsuarioKm ?? 0) - (rutaB.distanciaUsuarioKm ?? 0)
+  );
+}
+
+export default function MapaRutas() {
+  const [dificultad, setDificultad] = useState(defaultFilter);
+  const [zona, setZona] = useState(defaultFilter);
+  const [procesionaria, setProcesionaria] = useState(defaultFilter);
+  const [soloConAgua, setSoloConAgua] = useState(false);
+  const [soloConCorrea, setSoloConCorrea] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+  const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
+  const [currentCenter, setCurrentCenter] = useState(mapCenter);
+  const [currentZoom, setCurrentZoom] = useState(defaultZoom);
+  const [locationError, setLocationError] = useState("");
+
+  useEffect(() => {
+    setIsReady(true);
+  }, []);
+
+  const rutasFiltradas: RutaConDistanciaUsuario[] = getRutasFiltradas({
+    dificultad,
+    zona,
+    procesionaria,
+    soloConAgua,
+    soloConCorrea,
+    userLocation
+  });
+
+  function resetToDefaultMap(message: string) {
+    setLocationError(message);
+    setUserLocation(null);
+    setCurrentCenter(mapCenter);
+    setCurrentZoom(defaultZoom);
+  }
+
+  function handleLocateUser() {
+    if (!navigator.geolocation) {
+      resetToDefaultMap("Activa la ubicación para ver rutas cercanas");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        const nextLocation: [number, number] = [coords.latitude, coords.longitude];
+
+        setUserLocation(nextLocation);
+        setLocationError("");
+        setCurrentCenter(nextLocation);
+        setCurrentZoom(userLocationZoom);
+      },
+      () => {
+        resetToDefaultMap("Activa la ubicación para ver rutas cercanas");
+      }
+    );
+  }
 
   return (
     <section className="space-y-6">
@@ -169,19 +293,45 @@ export default function MapaRutas() {
         </div>
       </div>
 
+      <div className="space-y-3">
+        <button
+          type="button"
+          onClick={handleLocateUser}
+          className="inline-flex items-center justify-center rounded-full bg-bosque px-5 py-3 text-sm font-semibold text-white transition hover:bg-grafito"
+        >
+          📍 Ver rutas cerca de mí
+        </button>
+        {locationError ? (
+          <p className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+            {locationError}
+          </p>
+        ) : null}
+      </div>
+
       <div className="panel overflow-hidden">
         {isReady ? (
           <MapContainer
-            center={mapCenter}
-            zoom={9}
+            center={currentCenter}
+            zoom={currentZoom}
             scrollWheelZoom
             style={{ height: "600px", width: "100%" }}
             className="h-[420px] w-full sm:h-[560px]"
           >
+            <MapViewController center={currentCenter} zoom={currentZoom} />
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
+            {userLocation ? (
+              <Marker position={userLocation} icon={userIcon}>
+                <Popup>
+                  <div className="space-y-1 text-sm text-grafito">
+                    <p className="font-semibold text-bosque">Tu ubicación</p>
+                    <p>Mostrando rutas ordenadas por cercanía.</p>
+                  </div>
+                </Popup>
+              </Marker>
+            ) : null}
             {rutasFiltradas.map((ruta) => (
               <Marker key={ruta.slug} position={ruta.coordenadas_inicio}>
                 <Popup>
@@ -217,6 +367,11 @@ export default function MapaRutas() {
                         <dd>{ruta.correa_obligatoria ? "🔴 Sí" : "✓ No"}</dd>
                       </div>
                     </dl>
+                    {ruta.distanciaUsuarioKm !== null ? (
+                      <p className="text-xs font-medium text-bosque/70">
+                        A {ruta.distanciaUsuarioKm.toFixed(1)} km de tu ubicación
+                      </p>
+                    ) : null}
                     <Link
                       href={`/rutas/${ruta.slug}`}
                       className="inline-flex rounded-full bg-bosque px-4 py-2 font-semibold text-white hover:bg-grafito"
