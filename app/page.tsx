@@ -7,8 +7,8 @@ import {
   getRutaBySlug,
   getTipoDescription,
   getTipoLabel,
-  getZonas,
   getZonaSlug,
+  getZonas,
   sanitizeText,
   TIPOS_SOPORTADOS
 } from "@/lib/rutas";
@@ -33,22 +33,22 @@ const featureItems = [
   {
     title: "Rutas verificadas",
     description:
-      "Consulta fichas con datos de acceso, dificultad, agua, sombra y notas Ãºtiles para salir con perro."
+      "Consulta fichas con datos de acceso, dificultad, agua, sombra y notas útiles para salir con perro."
   },
   {
     title: "Explora por zona",
-    description: "Encuentra rÃ¡pidamente Ã¡reas como Los Serranos, la Calderona o la Ribera Alta."
+    description: "Encuentra rápidamente áreas como Los Serranos, la Calderona o la Ribera Alta."
   },
   {
     title: "Filtra por necesidad",
-    description: "Accede a selecciones de rutas con agua, fÃ¡ciles o especialmente cerca de Valencia."
+    description: "Accede a selecciones de rutas con agua, fáciles o especialmente cerca de Valencia."
   }
 ];
 
 const featuredBlocks: FeaturedBlock[] = [
   {
-    title: "Rutas con agua \u2014 perfectas para el verano",
-    subtitle: "Rutas donde tu perro puede refrescarse en rÃ­os, pozas o embalses",
+    title: "Rutas con agua — perfectas para el verano",
+    subtitle: "Rutas donde tu perro puede refrescarse en ríos, pozas o embalses",
     slugs: [
       "parque-fluvial-turia-masia-traver",
       "gorgo-escalera-anna",
@@ -56,8 +56,8 @@ const featuredBlocks: FeaturedBlock[] = [
     ]
   },
   {
-    title: "Escapadas rÃ¡pidas \u2014 a menos de 45 minutos",
-    subtitle: "Sal con tu perro sin planificar demasiado \u2014 a media hora de Valencia",
+    title: "Escapadas rápidas — a menos de 45 minutos",
+    subtitle: "Sal con tu perro sin planificar demasiado — a media hora de Valencia",
     slugs: [
       "rio-turia-manises-vilamarxant",
       "cueva-turche",
@@ -66,7 +66,7 @@ const featuredBlocks: FeaturedBlock[] = [
   },
   {
     title: "Rutas imprescindibles",
-    subtitle: "Las rutas mÃ¡s completas y representativas de la provincia",
+    subtitle: "Las rutas más completas y representativas de la provincia",
     slugs: [
       "puentes-colgantes-chulilla",
       "ruta-del-agua-chelva",
@@ -150,20 +150,17 @@ export default function HomePage() {
   return (
     <div className="space-y-10">
       <section className="panel px-6 py-8 sm:px-8">
-        <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr]">
-          <div className="space-y-5">
-            <span className="chip border-sol/40 bg-sol/15 text-bosque">
-              25 rutas verificadas y clasificadas
-            </span>
+        <div className="flex items-center gap-8 md:grid md:grid-cols-[3fr_2fr]">
+          <div className="space-y-5 md:max-w-none">
             <div className="space-y-3">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
-                Rutas con perro en Valencia
+                SENDERISMO DOG-FRIENDLY
               </p>
               <h1 className="max-w-3xl text-3xl font-bold tracking-tight text-bosque sm:text-4xl">
-                Escapadas perrunas para playa, monte y riberas a un salto de Valencia.
+                Rutas con perro en Valencia
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-grafito/80">
-                Este proyecto organiza rutas reales con informaciÃ³n Ãºtil para decidir dÃ³nde ir segÃºn
+                Este proyecto organiza rutas reales con información útil para decidir dónde ir según
                 tiempo de acceso, agua, dificultad o zona.
               </p>
             </div>
@@ -183,15 +180,26 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-            {featureItems.map((item) => (
-              <article key={item.title} className="rounded-3xl border border-bosque/10 bg-bosque/5 p-5">
-                <h3 className="text-lg font-semibold text-bosque">{item.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-grafito/75">{item.description}</p>
-              </article>
-            ))}
+          <div className="hidden items-center justify-center md:flex md:justify-end">
+            <Image
+              src="/nala.png"
+              alt="Nala — la perrita de las rutas"
+              width={320}
+              height={320}
+              className="h-auto w-full max-w-[320px]"
+              style={{ objectFit: "contain" }}
+            />
           </div>
         </div>
+      </section>
+
+      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {featureItems.map((item) => (
+          <article key={item.title} className="rounded-3xl border border-bosque/10 bg-bosque/5 p-5">
+            <h3 className="text-lg font-semibold text-bosque">{item.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-grafito/75">{item.description}</p>
+          </article>
+        ))}
       </section>
 
       <div className="space-y-6">
@@ -207,7 +215,7 @@ export default function HomePage() {
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
                 Tipos destacados
               </p>
-              <h2 className="mt-2 text-2xl font-bold text-bosque">Entradas rÃ¡pidas por necesidad</h2>
+              <h2 className="mt-2 text-2xl font-bold text-bosque">Entradas rápidas por necesidad</h2>
             </div>
           </div>
           <div className="grid gap-4">
@@ -233,7 +241,7 @@ export default function HomePage() {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
             Explorar por zona
           </p>
-          <h2 className="mt-2 text-2xl font-bold text-bosque">Comarcas y Ã¡reas disponibles</h2>
+          <h2 className="mt-2 text-2xl font-bold text-bosque">Comarcas y áreas disponibles</h2>
           <div className="mt-5 flex flex-wrap gap-3">
             {zonas.map((zona) => (
               <Link
@@ -246,21 +254,6 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
-
-      <section style={{ margin: "1.5rem 0" }}>
-        <Image
-          src="/nala.png"
-          alt="Nala — la perrita de las rutas"
-          width={180}
-          height={180}
-          style={{
-            borderRadius: "50%",
-            objectFit: "cover",
-            display: "block",
-            margin: "0 auto"
-          }}
-        />
       </section>
     </div>
   );

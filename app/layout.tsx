@@ -10,7 +10,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Rutas con perro en Valencia",
   description:
-    "ColecciÃ³n de rutas verificadas para disfrutar con perro cerca de Valencia, organizadas por zona, tipo y ficha detallada.",
+    "Colección de rutas verificadas para disfrutar con perro cerca de Valencia, organizadas por zona, tipo y ficha detallada.",
   metadataBase: new URL("https://rutasperrovalencia.es"),
   openGraph: {
     title: "Rutas con perro en Valencia",
@@ -35,7 +35,7 @@ const navigation = [
   { href: "/", label: "Inicio" },
   { href: "/rutas", label: "Rutas" },
   { href: "/mapa", label: "Mapa" },
-  { href: "/guias", label: "GuÃ­as" }
+  { href: "/guias", label: "Guías" }
 ];
 
 export default function RootLayout({
@@ -61,9 +61,8 @@ export default function RootLayout({
                     </p>
                   </Link>
                   <p className="max-w-xl text-base leading-7 text-grafito/80 sm:text-lg">
-                    Una base sencilla y clara para encontrar escapadas por zona,
-                    cercanÃ­a o perfil de ruta, con datos prÃ¡cticos para salir con tu
-                    perro con mÃ¡s confianza.
+                    Una base sencilla y clara para encontrar escapadas por zona, cercanía o perfil de ruta,
+                    con datos prácticos para salir con tu perro con más confianza.
                   </p>
                 </div>
                 <nav className="flex flex-wrap gap-3">
@@ -81,54 +80,27 @@ export default function RootLayout({
             </div>
           </header>
           <main>{children}</main>
-          <footer
-            style={{
-              borderTop: "1px solid #e5e7eb",
-              marginTop: "4rem",
-              padding: "1.5rem",
-              background: "transparent"
-            }}
-          >
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                gap: "1rem",
-                alignItems: "end"
-              }}
-            >
-              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+          <footer className="mt-16 border-t border-black/10 px-6 py-6 sm:px-8">
+            <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
+              <div className="flex flex-col items-center gap-1.5 md:items-start">
                 <Image
                   src="/logo-iamagica.png"
                   alt="IAMagica"
                   width={100}
                   height={28}
-                  style={{ height: "28px", width: "auto", objectFit: "contain" }}
+                  className="h-7 w-auto object-contain"
                 />
-                <p style={{ fontSize: "12px", color: "#9ca3af", margin: 0 }}>
-                  © 2026 IAMagica
-                </p>
+                <p className="m-0 text-xs text-grafito/55">© 2026 IAMagica</p>
               </div>
-              <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <a
-                  href="mailto:info@iamagica.es"
-                  style={{
-                    fontSize: "13px",
-                    color: "#6b7280",
-                    textDecoration: "none",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "flex-end",
-                    gap: "6px",
-                    flexWrap: "wrap"
-                  }}
-                >
-                  <span style={{ fontSize: "18px", lineHeight: 1 }} aria-hidden="true">
-                    ✉
-                  </span>
-                  <span>info@iamagica.es</span>
-                </a>
-              </div>
+              <a
+                href="mailto:info@iamagica.es"
+                className="inline-flex items-center gap-2 text-sm text-grafito/75 no-underline hover:text-bosque"
+              >
+                <span className="text-[20px] leading-none" aria-hidden="true">
+                  ✉
+                </span>
+                <span>info@iamagica.es</span>
+              </a>
             </div>
           </footer>
         </div>
