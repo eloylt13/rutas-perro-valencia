@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Analytics } from "@vercel/analytics/next";
+import Footer from "@/components/Footer";
 import SeasonalAlertBanner from "@/components/SeasonalAlertBanner";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
@@ -93,29 +94,7 @@ export default function RootLayout({
             </div>
           </header>
           <main>{children}</main>
-          <footer className="mt-16 border-t border-black/10 px-6 py-6 sm:px-8">
-            <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
-              <div className="flex flex-col items-center gap-1.5 md:items-start">
-                <Image
-                  src="/logo-iamagica.png"
-                  alt="IAMagica"
-                  width={100}
-                  height={28}
-                  className="h-7 w-auto object-contain"
-                />
-                <p className="m-0 text-xs text-grafito/55">© 2026 IAMagica</p>
-              </div>
-              <a
-                href="mailto:info@iamagica.es"
-                className="inline-flex items-center gap-2 text-sm text-grafito/75 no-underline hover:text-bosque"
-              >
-                <span className="text-[20px] leading-none" aria-hidden="true">
-                  ✉
-                </span>
-                <span>info@iamagica.es</span>
-              </a>
-            </div>
-          </footer>
+          <Footer />
         </div>
         <Analytics />
       </body>
