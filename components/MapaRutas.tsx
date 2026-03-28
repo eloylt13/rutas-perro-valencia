@@ -29,6 +29,7 @@ const defaultZoom = 9;
 const userLocationZoom = 11;
 const defaultFilter = "todas";
 const riesgosProcesionaria: RiesgoProcesionaria[] = ["bajo", "medio", "alto"];
+const allRouteCoordinates = rutas.map((ruta) => ruta.coordenadas_inicio);
 
 const zonas = [...new Set(rutas.map((ruta) => ruta.zona))].sort((a, b) =>
   a.localeCompare(b, "es")
@@ -78,17 +79,28 @@ function haversineDistance(from: [number, number], to: [number, number]) {
 }
 
 function MapViewController({
+  bounds,
   center,
-  zoom
+  zoom,
+  isUserLocationActive
 }: {
+  bounds: [number, number][];
   center: [number, number];
   zoom: number;
+  isUserLocationActive: boolean;
 }) {
   const map = useMap();
 
   useEffect(() => {
-    map.setView(center, zoom);
-  }, [center, map, zoom]);
+    if (isUserLocationActive) {
+      map.setView(center, zoom);
+      return;
+    }
+
+    if (bounds.length > 0) {
+      map.fitBounds(bounds, { padding: [40, 40] });
+    }
+  }, [bounds, center, isUserLocationActive, map, zoom]);
 
   return null;
 }
@@ -151,6 +163,7 @@ export default function MapaRutas() {
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
   const [currentCenter, setCurrentCenter] = useState(mapCenter);
   const [currentZoom, setCurrentZoom] = useState(defaultZoom);
+  const [isUserLocationActive, setIsUserLocationActive] = useState(false);
   const [locationError, setLocationError] = useState("");
 
   useEffect(() => {
@@ -162,12 +175,17 @@ export default function MapaRutas() {
     zona,
     procesionaria,
     soloConAgua,
-      userLocation
+    userLocation
   });
+  const visibleRouteCoordinates =
+    rutasFiltradas.length > 0
+      ? rutasFiltradas.map((ruta) => ruta.coordenadas_inicio)
+      : allRouteCoordinates;
 
   function resetToDefaultMap(message: string) {
     setLocationError(message);
     setUserLocation(null);
+    setIsUserLocationActive(false);
     setCurrentCenter(mapCenter);
     setCurrentZoom(defaultZoom);
   }
@@ -184,6 +202,7 @@ export default function MapaRutas() {
 
         setUserLocation(nextLocation);
         setLocationError("");
+        setIsUserLocationActive(true);
         setCurrentCenter(nextLocation);
         setCurrentZoom(userLocationZoom);
       },
@@ -272,7 +291,6 @@ export default function MapaRutas() {
             />
             <span>Solo rutas con agua</span>
           </label>
-
         </div>
       </div>
 
@@ -294,13 +312,18 @@ export default function MapaRutas() {
       <div className="panel overflow-hidden">
         {isReady ? (
           <MapContainer
-            center={currentCenter}
-            zoom={currentZoom}
+            center={visibleRouteCoordinates[0] ?? currentCenter}
+            zoom={defaultZoom}
             scrollWheelZoom
             style={{ height: "600px", width: "100%" }}
             className="h-[420px] w-full sm:h-[560px]"
           >
-            <MapViewController center={currentCenter} zoom={currentZoom} />
+            <MapViewController
+              bounds={visibleRouteCoordinates}
+              center={currentCenter}
+              zoom={currentZoom}
+              isUserLocationActive={isUserLocationActive}
+            />
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

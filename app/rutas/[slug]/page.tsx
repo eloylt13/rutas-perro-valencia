@@ -286,9 +286,9 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
                   {latitude}, {longitude}
                 </dd>
                 <AcordeonComoLlegar
-                  latitude={latitude}
-                  longitude={longitude}
-                  comoLlegar={comoLlegar}
+                  texto={comoLlegar ?? ""}
+                  lat={latitude}
+                  lng={longitude}
                 />
               </div>
             </dl>

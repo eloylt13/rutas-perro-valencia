@@ -3,20 +3,18 @@
 import { useState } from "react";
 
 type AcordeonComoLlegarProps = {
-  latitude: number;
-  longitude: number;
-  comoLlegar?: string;
+  texto: string;
+  lat: number;
+  lng: number;
 };
 
 export default function AcordeonComoLlegar({
-  latitude,
-  longitude,
-  comoLlegar
+  texto,
+  lat,
+  lng
 }: AcordeonComoLlegarProps) {
   const [abierto, setAbierto] = useState(false);
-  const showComoLlegarWarning = comoLlegar
-    ?.toLowerCase()
-    .includes("pendiente de verificación");
+  const showComoLlegarWarning = texto.toLowerCase().includes("pendiente de verificación");
 
   return (
     <div className="mt-3">
@@ -31,10 +29,10 @@ export default function AcordeonComoLlegar({
 
       {abierto ? (
         <div className="mt-3 space-y-3">
-          {comoLlegar ? (
+          {texto ? (
             <p className="text-sm leading-6 text-grafito/70">
               {showComoLlegarWarning ? "⚠️ " : null}
-              {comoLlegar}
+              {texto}
             </p>
           ) : (
             <p className="text-sm leading-6 text-grafito/70">
@@ -43,7 +41,7 @@ export default function AcordeonComoLlegar({
           )}
 
           <a
-            href={`https://maps.google.com/?q=${latitude},${longitude}`}
+            href={`https://maps.google.com/?q=${lat},${lng}`}
             target="_blank"
             rel="noreferrer"
             className="inline-flex text-sm font-semibold text-bosque hover:text-grafito"

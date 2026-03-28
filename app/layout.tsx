@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Analytics } from "@vercel/analytics/next";
 import Footer from "@/components/Footer";
+import NavMenu from "@/components/NavMenu";
 import SeasonalAlertBanner from "@/components/SeasonalAlertBanner";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   title: "Rutas con perro en Valencia",
   description:
     "Colección de rutas verificadas para disfrutar con perro cerca de Valencia, organizadas por zona, tipo y ficha detallada.",
-  metadataBase: new URL('https://rutasperrovalencia.es'),
+  metadataBase: new URL("https://rutasperrovalencia.es"),
   openGraph: {
     title: "Rutas con perro en Valencia",
     description:
@@ -31,13 +32,6 @@ export const metadata: Metadata = {
     google: "TgjWuJcE63weWJL-9P9WqaKz0ZA7TZstiDb0KN9tybI"
   }
 };
-
-const navigation = [
-  { href: "/", label: "Inicio" },
-  { href: "/rutas", label: "Rutas" },
-  { href: "/mapa", label: "Mapa" },
-  { href: "/guias", label: "Guías" }
-];
 
 export default function RootLayout({
   children
@@ -65,17 +59,7 @@ export default function RootLayout({
                     Una base sencilla y clara para encontrar escapadas por zona, cercanía o perfil de ruta,
                     con datos prácticos para salir con tu perro con más confianza.
                   </p>
-                  <nav className="flex flex-wrap gap-3 pt-1">
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="rounded-full border border-bosque/15 bg-white/85 px-4 py-2 text-sm font-semibold text-bosque hover:border-bosque/40 hover:text-grafito"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </nav>
+                  <NavMenu />
                 </div>
                 <div className="hidden items-center justify-center md:flex md:justify-end">
                   <Image
