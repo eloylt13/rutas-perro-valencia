@@ -210,8 +210,7 @@ export default function ProcesionariaPerrosPage() {
               <li className="list-none space-y-2 pl-0 text-grafito/80">
                 <p>
                   Llevar siempre agua embotellada es imprescindible — sirve para hidratar y
-                  para lavar en caso de contacto. Este bebedero portátil nos ha salvado más
-                  de una salida.
+                  para lavar en caso de contacto.
                 </p>
                 <a
                   href="https://amzn.to/4uXEM8I"
@@ -219,7 +218,7 @@ export default function ProcesionariaPerrosPage() {
                   rel="nofollow sponsored"
                   className={affiliateLinkClassName}
                 >
-                  El que llevamos →
+                  Este es el que llevamos →
                 </a>
               </li>
               <li className="list-decimal">
@@ -337,7 +336,7 @@ export default function ProcesionariaPerrosPage() {
             <div className="mt-5 border-t border-bosque/10 pt-4 text-grafito/80">
               <p className="text-base leading-7">
                 En rutas con riesgo alto, lleva siempre un kit de primeros auxilios para
-                perros. Más vale tenerlo y no necesitarlo.
+                perros.
               </p>
               <a
                 href="https://amzn.to/4tbVSOn"
