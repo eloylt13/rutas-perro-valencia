@@ -10,7 +10,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Rutas con perro en Valencia",
   description:
-    "ColecciÃ³n de rutas verificadas para disfrutar con perro cerca de Valencia, organizadas por zona, tipo y ficha detallada.",
+    "Colección de rutas verificadas para disfrutar con perro cerca de Valencia, organizadas por zona, tipo y ficha detallada.",
   metadataBase: new URL("https://rutasperrovalencia.es"),
   openGraph: {
     title: "Rutas con perro en Valencia",
@@ -35,7 +35,7 @@ const navigation = [
   { href: "/", label: "Inicio" },
   { href: "/rutas", label: "Rutas" },
   { href: "/mapa", label: "Mapa" },
-  { href: "/guias", label: "GuÃ­as" }
+  { href: "/guias", label: "Guías" }
 ];
 
 export default function RootLayout({
@@ -62,8 +62,8 @@ export default function RootLayout({
                   </Link>
                   <p className="max-w-xl text-base leading-7 text-grafito/80 sm:text-lg">
                     Una base sencilla y clara para encontrar escapadas por zona,
-                    cercanÃ­a o perfil de ruta, con datos prÃ¡cticos para salir con tu
-                    perro con mÃ¡s confianza.
+                    cercanía o perfil de ruta, con datos prácticos para salir con tu
+                    perro con más confianza.
                   </p>
                 </div>
                 <nav className="flex flex-wrap gap-3">
@@ -81,42 +81,37 @@ export default function RootLayout({
             </div>
           </header>
           <main>{children}</main>
-          <footer className="mt-10 border-t border-bosque/12 px-2 pb-8 pt-6 text-sm text-grafito/70">
-            <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-              <div className="space-y-3">
-                <a
-                  href="https://iamagica.es"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center opacity-90 hover:opacity-100"
-                >
-                  <Image
-                    src="/logo-iamagica.png"
-                    alt="IAMagica â€” webs y apps con IA"
-                    width={120}
-                    height={32}
-                    style={{ objectFit: "contain" }}
-                  />
-                </a>
-                <p className="leading-6 text-grafito/70">Webs y apps creadas con IA</p>
-              </div>
-              <div className="max-w-sm space-y-1 leading-6 md:text-right">
-                <p>Â¿Has hecho alguna de estas rutas con tu perro?</p>
-                <p>EscrÃ­benos con fotos o informaciÃ³n:</p>
-                <a
-                  href="mailto:info@iamagica.es"
-                  className="font-medium text-bosque hover:text-grafito"
-                >
-                  info@iamagica.es
-                </a>
-              </div>
-            </div>
-            <div className="mt-6 space-y-2 border-t border-bosque/10 pt-4 text-xs leading-5 text-grafito/60">
-              <p>
-                Algunos enlaces son de afiliado. Si compras a travÃ©s de ellos recibimos
-                una pequeÃ±a comisiÃ³n sin coste adicional para ti.
+          <footer
+            style={{
+              borderTop: "1px solid #e5e7eb",
+              marginTop: "4rem",
+              padding: "1.5rem 1rem"
+            }}
+          >
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              <Image
+                src="/logo-iamagica.png"
+                alt="IAMagica"
+                width={100}
+                height={28}
+                style={{ objectFit: "contain", alignSelf: "flex-start" }}
+              />
+              <a
+                href="mailto:info@iamagica.es"
+                style={{
+                  fontSize: "13px",
+                  color: "#6b7280",
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px"
+                }}
+              >
+                ✉ Contacto: info@iamagica.es
+              </a>
+              <p style={{ fontSize: "12px", color: "#9ca3af", margin: 0 }}>
+                © 2026 IAMagica
               </p>
-              <p>Â© 2026 IAMagica</p>
             </div>
           </footer>
         </div>
