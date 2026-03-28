@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description: "25 rutas verificadas con perro en Valencia con mapa interactivo."
   },
   verification: {
-    google: "6Cr92jGfY8D6cZX4sdEC1v1vECb_mgjBy8Jd9qoUfI4"
+    google: "TgjWuJcE63weWJL-9P9WqaKz0ZA7TZstiDb0KN9tybI"
   }
 };
 
