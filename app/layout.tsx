@@ -10,7 +10,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Rutas con perro en Valencia",
   description:
-    "Colección de rutas verificadas para disfrutar con perro cerca de Valencia, organizadas por zona, tipo y ficha detallada.",
+    "ColecciÃ³n de rutas verificadas para disfrutar con perro cerca de Valencia, organizadas por zona, tipo y ficha detallada.",
   metadataBase: new URL("https://rutasperrovalencia.es"),
   openGraph: {
     title: "Rutas con perro en Valencia",
@@ -35,7 +35,7 @@ const navigation = [
   { href: "/", label: "Inicio" },
   { href: "/rutas", label: "Rutas" },
   { href: "/mapa", label: "Mapa" },
-  { href: "/guias", label: "Guías" }
+  { href: "/guias", label: "GuÃ­as" }
 ];
 
 export default function RootLayout({
@@ -62,8 +62,8 @@ export default function RootLayout({
                   </Link>
                   <p className="max-w-xl text-base leading-7 text-grafito/80 sm:text-lg">
                     Una base sencilla y clara para encontrar escapadas por zona,
-                    cercanía o perfil de ruta, con datos prácticos para salir con tu
-                    perro con más confianza.
+                    cercanÃ­a o perfil de ruta, con datos prÃ¡cticos para salir con tu
+                    perro con mÃ¡s confianza.
                   </p>
                 </div>
                 <nav className="flex flex-wrap gap-3">
@@ -85,33 +85,50 @@ export default function RootLayout({
             style={{
               borderTop: "1px solid #e5e7eb",
               marginTop: "4rem",
-              padding: "1.5rem 1rem"
+              padding: "1.5rem",
+              background: "transparent"
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              <Image
-                src="/logo-iamagica.png"
-                alt="IAMagica"
-                width={100}
-                height={28}
-                style={{ objectFit: "contain", alignSelf: "flex-start" }}
-              />
-              <a
-                href="mailto:info@iamagica.es"
-                style={{
-                  fontSize: "13px",
-                  color: "#6b7280",
-                  textDecoration: "none",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px"
-                }}
-              >
-                ✉ Contacto: info@iamagica.es
-              </a>
-              <p style={{ fontSize: "12px", color: "#9ca3af", margin: 0 }}>
-                © 2026 IAMagica
-              </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                gap: "1rem",
+                alignItems: "end"
+              }}
+            >
+              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                <Image
+                  src="/logo-iamagica.png"
+                  alt="IAMagica"
+                  width={100}
+                  height={28}
+                  style={{ height: "28px", width: "auto", objectFit: "contain" }}
+                />
+                <p style={{ fontSize: "12px", color: "#9ca3af", margin: 0 }}>
+                  © 2026 IAMagica
+                </p>
+              </div>
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                <a
+                  href="mailto:info@iamagica.es"
+                  style={{
+                    fontSize: "13px",
+                    color: "#6b7280",
+                    textDecoration: "none",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "flex-end",
+                    gap: "6px",
+                    flexWrap: "wrap"
+                  }}
+                >
+                  <span style={{ fontSize: "18px", lineHeight: 1 }} aria-hidden="true">
+                    ✉
+                  </span>
+                  <span>info@iamagica.es</span>
+                </a>
+              </div>
             </div>
           </footer>
         </div>
