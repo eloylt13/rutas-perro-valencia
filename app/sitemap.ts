@@ -2,7 +2,7 @@ import { getRutas } from '@/lib/rutas'
 
 export default function sitemap() {
   const rutas = getRutas()
-  const base = 'https://rutasperrovalencia.es'
+  const base = "https://rutasperrovalencia.es"
 
   const rutasUrls = rutas.map(r => ({
     url: `${base}/rutas/${r.slug}`,

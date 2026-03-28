@@ -1,4 +1,4 @@
-﻿import type { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/"
     },
-    host: "https://rutasperrovalencia.es",
-    sitemap: "https://rutasperrovalencia.es/sitemap.xml"
+    host: 'https://rutasperrovalencia.es',
+    sitemap: 'https://rutasperrovalencia.es/sitemap.xml'
   };
 }
