@@ -33,6 +33,16 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
+const affiliateLinkClassName =
+  "inline-flex items-center gap-1 text-sm font-semibold text-bosque no-underline hover:underline underline-offset-4";
+
+type AffiliateSuggestion = {
+  key: string;
+  message: string;
+  href: string;
+  label: string;
+};
+
 function getRutaImagePath(slug: string): string | null {
   const relativePath = `/img/rutas/${slug}.jpg`;
   const absolutePath = path.join(process.cwd(), "public", "img", "rutas", `${slug}.jpg`);
@@ -105,6 +115,39 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
   const isPendiente = ruta.confianza_dato.toLowerCase() === "pendiente";
   const imagePath = getRutaImagePath(ruta.slug);
   const photoLicense = ruta.foto_credito?.match(/\(([^)]+)\)/)?.[1];
+  const affiliateSuggestions: AffiliateSuggestion[] = [];
+
+  if (!ruta.agua) {
+    affiliateSuggestions.push({
+      key: "water",
+      message:
+        "Sin fuentes en el recorrido, lleva agua suficiente para tu perro. Un bebedero portátil te lo pone fácil.",
+      href: "https://amzn.to/4uXEM8I",
+      label: "Ver bebedero portátil →"
+    });
+  }
+
+  if (ruta.correa_obligatoria) {
+    affiliateSuggestions.push({
+      key: "harness",
+      message:
+        "La correa es obligatoria en esta ruta. Un arnés cómodo mejora mucho la experiencia para el perro en recorridos largos.",
+      href: "https://amzn.to/4uVULUN",
+      label: "Ver arnés recomendado →"
+    });
+  }
+
+  if (ruta.dificultad.toLowerCase() === "media" && ruta.acceso_desde_valencia_min > 60) {
+    affiliateSuggestions.push({
+      key: "first-aid",
+      message:
+        "En rutas alejadas de núcleos urbanos conviene llevar un kit básico de primeros auxilios para perros.",
+      href: "https://amzn.to/4tbVSOn",
+      label: "Ver kit de primeros auxilios →"
+    });
+  }
+
+  const visibleAffiliateSuggestions = affiliateSuggestions.slice(0, 2);
   const breadcrumbItems = [
     { label: "Inicio", href: "/" },
     { label: "Rutas", href: "/rutas" },
@@ -323,6 +366,23 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
                     </li>
                   ))}
                 </ol>
+                {visibleAffiliateSuggestions.length > 0 ? (
+                  <div className="mt-5 space-y-4 border-t border-bosque/10 pt-4 text-grafito/80">
+                    {visibleAffiliateSuggestions.map((suggestion) => (
+                      <div key={suggestion.key} className="space-y-2">
+                        <p className="text-base leading-7">{suggestion.message}</p>
+                        <a
+                          href={suggestion.href}
+                          target="_blank"
+                          rel="nofollow sponsored"
+                          className={affiliateLinkClassName}
+                        >
+                          {suggestion.label}
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
               </article>
 
               <article className="panel border border-amber-200 bg-amber-50 px-6 py-7 sm:px-8">

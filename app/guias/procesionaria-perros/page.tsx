@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   }
 };
 
+const affiliateLinkClassName =
+  "inline-flex items-center gap-1 text-sm font-semibold text-bosque no-underline hover:underline underline-offset-4";
+
 const sections = [
   { id: "que-es", label: "¿Qué es la procesionaria del pino?" },
   { id: "por-que-peligrosa", label: "¿Por qué es tan peligrosa para los perros?" },
@@ -204,6 +207,21 @@ export default function ProcesionariaPerrosPage() {
               <li className="list-decimal">
                 Lava la zona con agua abundante y templada, desde dentro hacia fuera.
               </li>
+              <li className="list-none space-y-2 pl-0 text-grafito/80">
+                <p>
+                  Llevar siempre agua embotellada de sobra es imprescindible: sirve tanto
+                  para hidratar como para lavar en caso de contacto. Un bebedero portátil
+                  te lo facilita.
+                </p>
+                <a
+                  href="https://amzn.to/4uXEM8I"
+                  target="_blank"
+                  rel="nofollow sponsored"
+                  className={affiliateLinkClassName}
+                >
+                  Ver bebedero portátil →
+                </a>
+              </li>
               <li className="list-decimal">
                 No le dejes lamerse, rascarse ni beber agua de charcos.
               </li>
@@ -316,6 +334,20 @@ export default function ProcesionariaPerrosPage() {
                 Consulta nuestra web antes de cada ruta para comprobar el nivel de riesgo.
               </li>
             </ol>
+            <div className="mt-5 border-t border-bosque/10 pt-4 text-grafito/80">
+              <p className="text-base leading-7">
+                En rutas con riesgo alto, lleva siempre un kit de primeros auxilios para
+                perros.
+              </p>
+              <a
+                href="https://amzn.to/4tbVSOn"
+                target="_blank"
+                rel="nofollow sponsored"
+                className={`${affiliateLinkClassName} mt-2`}
+              >
+                Ver kit de primeros auxilios →
+              </a>
+            </div>
           </article>
         </div>
 

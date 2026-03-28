@@ -80,6 +80,12 @@ export default function RootLayout({
             </div>
           </header>
           <main>{children}</main>
+          <footer className="mt-8 px-2 pb-8">
+            <p className="text-sm leading-6 text-grafito/70">
+              Algunos enlaces son de afiliado. Si compras a través de ellos recibimos una
+              pequeña comisión sin coste adicional para ti.
+            </p>
+          </footer>
         </div>
         <Analytics />
       </body>
