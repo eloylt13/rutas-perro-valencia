@@ -112,6 +112,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
   const contenido = getContenidoRuta(ruta.slug);
   const description = buildDescription(ruta);
   const descripcionParrafos = contenido?.descripcion.split("\n\n") ?? [];
+  const consejosVisibles = contenido?.consejos.filter((consejo) => !/correa/i.test(consejo)) ?? [];
   const isPendiente = ruta.confianza_dato.toLowerCase() === "pendiente";
   const imagePath = getRutaImagePath(ruta.slug);
   const photoLicense = ruta.foto_credito?.match(/\(([^)]+)\)/)?.[1];
@@ -127,15 +128,6 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
     });
   }
 
-  if (ruta.correa_obligatoria) {
-    affiliateSuggestions.push({
-      key: "harness",
-      message:
-        "La correa es obligatoria en esta ruta. Un arnés cómodo marca la diferencia en recorridos largos.",
-      href: "https://amzn.to/4uVULUN",
-      label: "Este es el que usamos →"
-    });
-  }
 
   if (ruta.dificultad.toLowerCase() === "media" && ruta.acceso_desde_valencia_min > 60) {
     affiliateSuggestions.push({
@@ -288,12 +280,6 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
                   {ruta.parking ? "Disponible" : "No indicado"}
                 </dd>
               </div>
-              <div className="rounded-2xl bg-bosque/5 p-4">
-                <dt className="text-sm text-grafito/60">Correa</dt>
-                <dd className="mt-1 text-lg font-semibold text-bosque">
-                  {ruta.correa_obligatoria ? "\u{1F534} Obligatoria" : "\u{1F7E2} No obligatoria"}
-                </dd>
-              </div>
               <div className="rounded-2xl bg-bosque/5 p-4 sm:col-span-2">
                 <dt className="text-sm text-grafito/60">Coordenadas</dt>
                 <dd className="mt-1 text-lg font-semibold text-bosque">
@@ -360,7 +346,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
               <article className="panel px-6 py-7 sm:px-8">
                 <h3 className="text-xl font-semibold text-bosque">Consejos para ir con tu perro</h3>
                 <ol className="mt-4 space-y-3 pl-6 text-base leading-7 text-grafito/80">
-                  {contenido.consejos.map((consejo) => (
+                  {consejosVisibles.map((consejo) => (
                     <li key={consejo} className="list-decimal">
                       {consejo}
                     </li>
@@ -420,6 +406,24 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
                   ))}
                 </div>
               </article>
+
+
+              <div
+                style={{
+                  background: '#fefce8',
+                  border: '1px solid #fde047',
+                  borderRadius: '8px',
+                  padding: '12px 16px',
+                  fontSize: '13px',
+                  color: '#713f12',
+                  marginTop: '2rem'
+                }}
+              >
+                ⚠️ <strong>Normativa:</strong> La Ley 7/2023 obliga a mantener el control del animal
+                en todo momento. En espacios naturales protegidos la correa es obligatoria. En
+                rutas no protegidas se recomienda su uso. Consulta la normativa específica de cada
+                espacio antes de salir.
+              </div>
 
               <FormularioReporte nombreRuta={ruta.nombre} />
             </>

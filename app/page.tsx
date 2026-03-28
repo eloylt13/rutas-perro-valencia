@@ -108,11 +108,6 @@ function FeaturedRouteCard({ ruta }: { ruta: Ruta }) {
         <span className="chip border-rio/25 bg-rio/10 text-rio">
           {ruta.agua ? "\u{1F4A7} Agua" : "\u2717 Sin agua"}
         </span>
-        <span className="chip border-sol/30 bg-sol/20 text-bosque">
-          {ruta.correa_obligatoria
-            ? "\u{1F534} Correa obligatoria"
-            : "\u{1F7E2} Sin correa obligatoria"}
-        </span>
       </div>
 
       <p className="mt-4 text-sm leading-6 text-grafito/75">{sanitizeText(ruta.notas)}</p>

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -98,14 +98,12 @@ function getRutasFiltradas({
   zona,
   procesionaria,
   soloConAgua,
-  soloConCorrea,
   userLocation
 }: {
   dificultad: string;
   zona: string;
   procesionaria: string;
   soloConAgua: boolean;
-  soloConCorrea: boolean;
   userLocation: [number, number] | null;
 }) {
   const rutasFiltradas = rutas.filter((ruta) => {
@@ -122,10 +120,6 @@ function getRutasFiltradas({
     }
 
     if (soloConAgua && !ruta.agua) {
-      return false;
-    }
-
-    if (soloConCorrea && !ruta.correa_obligatoria) {
       return false;
     }
 
@@ -153,7 +147,6 @@ export default function MapaRutas() {
   const [zona, setZona] = useState(defaultFilter);
   const [procesionaria, setProcesionaria] = useState(defaultFilter);
   const [soloConAgua, setSoloConAgua] = useState(false);
-  const [soloConCorrea, setSoloConCorrea] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
   const [currentCenter, setCurrentCenter] = useState(mapCenter);
@@ -169,8 +162,7 @@ export default function MapaRutas() {
     zona,
     procesionaria,
     soloConAgua,
-    soloConCorrea,
-    userLocation
+      userLocation
   });
 
   function resetToDefaultMap(message: string) {
@@ -222,7 +214,7 @@ export default function MapaRutas() {
           </div>
         </div>
 
-        <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+        <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           <label className="space-y-2">
             <span className="text-sm font-semibold text-bosque">Dificultad</span>
             <select
@@ -281,15 +273,6 @@ export default function MapaRutas() {
             <span>Solo rutas con agua</span>
           </label>
 
-          <label className="flex items-center gap-3 rounded-2xl border border-bosque/15 bg-white px-4 py-3 text-sm text-grafito">
-            <input
-              type="checkbox"
-              checked={soloConCorrea}
-              onChange={(event) => setSoloConCorrea(event.target.checked)}
-              className="h-4 w-4 accent-bosque"
-            />
-            <span>Solo correa obligatoria</span>
-          </label>
         </div>
       </div>
 
@@ -361,10 +344,6 @@ export default function MapaRutas() {
                       <div className="flex justify-between gap-3">
                         <dt className="font-medium">Agua</dt>
                         <dd>{ruta.agua ? "\u{1F4A7} S\u00ED" : "\u{1F4A7} No"}</dd>
-                      </div>
-                      <div className="flex justify-between gap-3">
-                        <dt className="font-medium">Correa</dt>
-                        <dd>{ruta.correa_obligatoria ? "\u{1F534} Obligatoria" : "\u{1F7E2} No obligatoria"}</dd>
                       </div>
                     </dl>
                     {ruta.distanciaUsuarioKm !== null ? (

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -21,7 +21,6 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
     allFilterValue
   );
   const [soloConAgua, setSoloConAgua] = useState(false);
-  const [soloSinCorreaObligatoria, setSoloSinCorreaObligatoria] = useState(false);
   const [soloAptasEnVerano, setSoloAptasEnVerano] = useState(false);
   const [procesionaria, setProcesionaria] = useState<
     typeof allFilterValue | (typeof riesgosProcesionaria)[number]
@@ -37,7 +36,6 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
     zona !== allFilterValue ||
     dificultad !== allFilterValue ||
     soloConAgua ||
-    soloSinCorreaObligatoria ||
     soloAptasEnVerano ||
     procesionaria !== allFilterValue;
 
@@ -56,10 +54,6 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
           return false;
         }
 
-        if (soloSinCorreaObligatoria && ruta.correa_obligatoria) {
-          return false;
-        }
-
         if (soloAptasEnVerano && !ruta.apta_verano) {
           return false;
         }
@@ -70,14 +64,13 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
 
         return true;
       }),
-    [dificultad, procesionaria, rutas, soloAptasEnVerano, soloConAgua, soloSinCorreaObligatoria, zona]
+    [dificultad, procesionaria, rutas, soloAptasEnVerano, soloConAgua, zona]
   );
 
   function resetFilters() {
     setZona(allFilterValue);
     setDificultad(allFilterValue);
     setSoloConAgua(false);
-    setSoloSinCorreaObligatoria(false);
     setSoloAptasEnVerano(false);
     setProcesionaria(allFilterValue);
     setIsFiltersOpen(false);
@@ -109,7 +102,7 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
 
           <div
             id="rutas-filtros"
-            className={`${isFiltersOpen ? "grid" : "hidden"} gap-3 md:grid md:grid-cols-2 xl:grid-cols-6`}
+            className={`${isFiltersOpen ? "grid" : "hidden"} gap-3 md:grid md:grid-cols-2 xl:grid-cols-5`}
           >
             <label className="space-y-2 xl:col-span-2">
               <span className="text-sm font-semibold text-bosque">Zona</span>
@@ -168,15 +161,6 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
               <span>Solo rutas con agua</span>
             </label>
 
-            <label className="flex items-center gap-3 rounded-2xl border border-bosque/15 bg-white px-4 py-3 text-sm text-grafito">
-              <input
-                type="checkbox"
-                checked={soloSinCorreaObligatoria}
-                onChange={(event) => setSoloSinCorreaObligatoria(event.target.checked)}
-                className="h-4 w-4 accent-bosque"
-              />
-              <span>Solo sin correa obligatoria</span>
-            </label>
 
             <label className="flex items-center gap-3 rounded-2xl border border-bosque/15 bg-white px-4 py-3 text-sm text-grafito">
               <input
@@ -260,7 +244,7 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
                 </div>
                 <h3 className="mt-4 text-xl font-semibold text-bosque">{sanitizeText(ruta.nombre)}</h3>
                 <p className="mt-3 text-sm leading-6 text-grafito/75">{sanitizeText(ruta.notas)}</p>
-                <dl className="mt-5 grid grid-cols-2 gap-3 text-sm lg:grid-cols-5">
+                <dl className="mt-5 grid grid-cols-2 gap-3 text-sm lg:grid-cols-4">
                   <div>
                     <dt className="text-grafito/55">Distancia</dt>
                     <dd className="font-semibold text-bosque">{ruta.distancia_km} km</dd>
@@ -276,12 +260,6 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
                   <div>
                     <dt className="text-grafito/55">Agua</dt>
                     <dd className="font-semibold text-bosque">{ruta.agua ? "\u{1F4A7} S\u00ED" : "\u{1F4A7} No"}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-grafito/55">Correa</dt>
-                    <dd className="font-semibold text-bosque">
-                      {ruta.correa_obligatoria ? "\u{1F534} Obligatoria" : "\u{1F7E2} No obligatoria"}
-                    </dd>
                   </div>
                 </dl>
               </div>
