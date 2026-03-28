@@ -149,50 +149,6 @@ export default function HomePage() {
 
   return (
     <div className="space-y-10">
-      <section className="panel px-6 py-8 sm:px-8">
-        <div className="flex items-center gap-8 md:grid md:grid-cols-[3fr_2fr]">
-          <div className="space-y-5 md:max-w-none">
-            <div className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
-                SENDERISMO DOG-FRIENDLY
-              </p>
-              <h1 className="max-w-3xl text-3xl font-bold tracking-tight text-bosque sm:text-4xl">
-                Rutas con perro en Valencia
-              </h1>
-              <p className="max-w-2xl text-lg leading-8 text-grafito/80">
-                Este proyecto organiza rutas reales con información útil para decidir dónde ir según
-                tiempo de acceso, agua, dificultad o zona.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/rutas"
-                className="rounded-full bg-bosque px-5 py-3 text-sm font-semibold text-white hover:bg-grafito"
-              >
-                Ver todas las rutas
-              </Link>
-              <Link
-                href="/mapa"
-                className="rounded-full border border-bosque/20 px-5 py-3 text-sm font-semibold text-bosque hover:border-bosque/50"
-              >
-                Ir al mapa
-              </Link>
-            </div>
-          </div>
-
-          <div className="hidden items-center justify-center md:flex md:justify-end">
-            <Image
-              src="/nala.png"
-              alt="Nala — la perrita de las rutas"
-              width={320}
-              height={320}
-              className="h-auto w-full max-w-[320px]"
-              style={{ objectFit: "contain" }}
-            />
-          </div>
-        </div>
-      </section>
-
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {featureItems.map((item) => (
           <article key={item.title} className="rounded-3xl border border-bosque/10 bg-bosque/5 p-5">

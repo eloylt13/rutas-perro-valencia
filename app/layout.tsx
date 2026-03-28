@@ -50,8 +50,8 @@ export default function RootLayout({
         <div className="page-shell">
           <header className="panel mb-8 overflow-hidden">
             <div className="bg-hero px-6 py-8 sm:px-8">
-              <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-                <div className="max-w-2xl space-y-3">
+              <div className="flex flex-col gap-8 md:grid md:grid-cols-[3fr_2fr] md:items-center">
+                <div className="space-y-4 md:max-w-none">
                   <p className="text-sm font-semibold uppercase tracking-[0.24em] text-bosque/70">
                     Senderismo dog-friendly
                   </p>
@@ -64,18 +64,31 @@ export default function RootLayout({
                     Una base sencilla y clara para encontrar escapadas por zona, cercanía o perfil de ruta,
                     con datos prácticos para salir con tu perro con más confianza.
                   </p>
+                  <nav className="flex flex-wrap gap-3 pt-1">
+                    {navigation.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className="rounded-full border border-bosque/15 bg-white/85 px-4 py-2 text-sm font-semibold text-bosque hover:border-bosque/40 hover:text-grafito"
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </nav>
                 </div>
-                <nav className="flex flex-wrap gap-3">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="rounded-full border border-bosque/15 bg-white/85 px-4 py-2 text-sm font-semibold text-bosque hover:border-bosque/40 hover:text-grafito"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </nav>
+                <div className="hidden items-center justify-center md:flex md:justify-end">
+                  <Image
+                    src="/nala.png"
+                    alt="Nala — la perrita de las rutas"
+                    width={320}
+                    height={320}
+                    className="h-auto w-full max-w-[320px]"
+                    style={{
+                      objectFit: "contain",
+                      mixBlendMode: "multiply"
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </header>
