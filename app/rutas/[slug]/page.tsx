@@ -1,4 +1,4 @@
-﻿import fs from "node:fs";
+import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -121,9 +121,9 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
     affiliateSuggestions.push({
       key: "water",
       message:
-        "Sin fuentes en el recorrido, lleva agua suficiente para tu perro. Un bebedero portátil te lo pone fácil.",
+        "Sin fuentes en el recorrido, lleva agua suficiente para tu perro. Este bebedero portátil nos ha salvado más de una salida.",
       href: "https://amzn.to/4uXEM8I",
-      label: "Ver bebedero portátil →"
+      label: "El que llevamos →"
     });
   }
 
@@ -131,9 +131,9 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
     affiliateSuggestions.push({
       key: "harness",
       message:
-        "La correa es obligatoria en esta ruta. Un arnés cómodo mejora mucho la experiencia para el perro en recorridos largos.",
+        "La correa es obligatoria en esta ruta. Un arnés cómodo marca la diferencia en recorridos largos — este es el que usamos.",
       href: "https://amzn.to/4uVULUN",
-      label: "Ver arnés recomendado →"
+      label: "El que usamos →"
     });
   }
 
@@ -141,9 +141,9 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
     affiliateSuggestions.push({
       key: "first-aid",
       message:
-        "En rutas alejadas de núcleos urbanos conviene llevar un kit básico de primeros auxilios para perros.",
+        "En rutas alejadas conviene llevar un kit básico de primeros auxilios para perros. Más vale tenerlo y no necesitarlo.",
       href: "https://amzn.to/4tbVSOn",
-      label: "Ver kit de primeros auxilios →"
+      label: "El que llevamos →"
     });
   }
 
