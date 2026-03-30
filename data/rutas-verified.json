@@ -1,4 +1,4 @@
-[
+﻿[
     {
         "nombre": "Puentes Colgantes de Chulilla",
         "slug": "puentes-colgantes-chulilla",
@@ -399,24 +399,24 @@
         "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
     },
     {
-        "nombre": "Xàtiva – Cova Negra – Bellús",
+        "nombre": "Cova Negra – Estret de les Aigües (Bellús)",
         "slug": "xativa-cova-negra-bellus",
         "zona": "La Costera",
-        "distancia_km": 10,
-        "desnivel_m": 350,
+        "distancia_km": 5.2,
+        "desnivel_m": 65,
         "tipo_ruta": "circular",
-        "dificultad": "media",
+        "dificultad": "fácil",
         "agua": true,
-        "sombra": "moderada",
+        "sombra": "bastante",
         "correa_obligatoria": true,
         "apta_verano": true,
         "parking": true,
         "acceso_desde_valencia_min": 60,
-        "coordenadas_inicio": [38.987688, -0.529688],
-        "confianza_dato": "probable",
-        "notas": "90% senda. Varias fuentes en el camino. Llevar agua extra en verano.",
+        "coordenadas_inicio": [38.955967, -0.486445],
+        "confianza_dato": "verificado",
+        "notas": "Paraje Natural Municipal. Sendero junto al río Albaida con acceso a la Cova Negra, yacimiento prehistórico neandertal. Parking pequeño — si el coche es grande aparcar antes de bajar la cuesta.",
         "riesgo_procesionaria": "medio",
-        "como_llegar": "Inicio en el área de aparcamiento de la ermita de Sant Feliu, en Xàtiva.",
+        "como_llegar": "Desde Xàtiva por la N-340 dirección Alfarrasí. A los 3 km, desvío a la izquierda por el Camí del Pont Sec hasta el aparcamiento del paraje junto al río Albaida.",
         "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
     },
     {
@@ -504,3 +504,4 @@
         "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
     }
 ]
+
