@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Analytics } from "@vercel/analytics/next";
 import Footer from "@/components/Footer";
+import HeroImage from "@/components/HeroImage";
 import NavMenu from "@/components/NavMenu";
 import SeasonalAlertBanner from "@/components/SeasonalAlertBanner";
 import "leaflet/dist/leaflet.css";
@@ -60,6 +61,9 @@ export default function RootLayout({
                     con datos prácticos para salir con tu perro con más confianza.
                   </p>
                   <NavMenu />
+                </div>
+                <div className="hidden items-center justify-center md:flex md:justify-end">
+                  <HeroImage />
                 </div>
               </div>
             </div>
