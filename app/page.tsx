@@ -61,7 +61,7 @@ const featuredBlocks: FeaturedBlock[] = [
     slugs: [
       "rio-turia-manises-vilamarxant",
       "cueva-turche",
-      "cova-negra-carcaixent"
+      "ruta-albufera-saler"
     ]
   },
   {

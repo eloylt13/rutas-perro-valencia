@@ -114,12 +114,12 @@ const contenidoZonas: Record<string, ContenidoZona> = {
   },
   "La Ribera Alta": {
     intro: [
-      "La Ribera Alta es una zona muy útil para quienes quieren rutas con perro en Valencia de dificultad media pero sin que todas sean iguales. Con Sierra Aledua Pico Besori y Cova Negra Carcaixent, la zona mezcla una opción sin agua y otra con agua, lo que amplía bastante su atractivo.",
-      "Esa combinación permite que La Ribera Alta se adapte bien a distintos momentos del año y también al tipo de salida que busque cada dueño. Hay margen para elegir entre una ruta media más seca o una alternativa también media pero con agua, algo que no siempre ocurre dentro de una misma zona.",
-      "Para una web especializada, La Ribera Alta puede presentarse como una zona versátil dentro del nivel medio. Es una buena referencia para quienes ya tienen algo de costumbre haciendo senderismo con su perro y quieren seguir descubriendo rutas con perro en Valencia con más variedad."
+      "La Ribera Alta aporta una opción útil para quienes quieren rutas con perro en Valencia de dificultad media y un perfil más seco. Sierra Aledua Pico Besori concentra el interés de la zona con desnivel moderado, terreno de montaña y una experiencia distinta a las rutas de agua más frecuentes.",
+      "Eso hace que la comarca encaje mejor en días templados o cuando buscas una salida senderista sin necesidad de ríos, pozas o embalses. No es la zona más variada del proyecto, pero sí una alternativa clara para quienes prefieren secano y algo más de exigencia.",
+      "Para una web especializada, La Ribera Alta sigue siendo una referencia válida dentro del nivel medio porque aporta un tipo de ruta diferente y ayuda a equilibrar la oferta general de rutas con perro en Valencia."
     ],
     mejorPara:
-      "Para dueños que ya hacen rutas medias y quieren elegir entre una salida con agua o una alternativa más seca."
+      "Para dueños que ya hacen rutas medias y buscan una salida de secano con perfil más senderista."
   },
   "Plana d'Utiel-Requena": {
     intro: [

@@ -27,7 +27,6 @@ const fotos = [
   { slug: "rio-turia-manises-vilamarxant", url: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Sender_al_Parc_Natural_del_T%C3%BAria.jpg" },
   { slug: "rio-sellent-bolbaite", url: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Bolbaite_y_sus_2_puentes_sobre_el_r%C3%ADo_Sellent.jpg" },
   { slug: "ruta-caves-requena", url: "https://upload.wikimedia.org/wikipedia/commons/e/e2/Bodega_de_la_Calle_Postes_15.jpg" },
-  { slug: "cova-negra-carcaixent", url: "https://upload.wikimedia.org/wikipedia/commons/2/20/Sima_del_Agua_-_panoramio.jpg" },
   { slug: "barranco-agua-negra", url: "https://upload.wikimedia.org/wikipedia/commons/4/4c/201902-K5_18511a_F_-_Barranco_del_Agua_Negra.jpg" }
 ];
 

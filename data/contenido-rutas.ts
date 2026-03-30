@@ -682,35 +682,6 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
       { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Bajo. Aún asíí, vigila las pinadas en los parques cercanos." }
     ]
   },
-  "cova-negra-carcaixent": {
-    mejor: [
-      "Agua durante el recorrido",
-      "Perro puede ir suelto",
-      "Sirve para época cálida"
-    ],
-    peor: ["Datos aún por verificar", "Nivel medio, no paseo fácil"],
-    resumen:
-      "La ruta Cova Negra (Carcaixent) con perro Valencia es un circuito de 5 km con dificultad media y cuenta con agua y sombra moderada. Los datos están pendientes de verificación in situ.",
-    descripcion:
-      "Situada en la Ribera Alta, esta ruta recorre 5 km con 150 m de desnivel. Se tarda unos 45 minutos en llegar desde Valencia. La senda atraviesa bosques mediterráneos con sombra moderada y puntos de agua para refrescarse.\n\nLa correa no es obligatoria, aunque se recomienda en zonas concurridas. La ruta es apta en verano gracias a la presencia de agua y sombra. Sin embargo, la información de esta ficha aún debe ser contrastada sobre el terreno.",
-    consejos: [
-      "Lleva suficiente agua y comprueba previamente los puntos de hidratación.",
-      "La correa no es obligatoria, pero útilízala si hay otros senderistas.",
-      "Aprovecha la sombra moderada para evitar las horas más calurosas.",
-      "Sigue las indicaciones y no te salgas del camino para proteger el entorno.",
-      "Revisa la ruta antes de ir, ya que algunos datos están pendientes de verificación."
-    ],
-    mejorEpoca:
-      "Primavera y otoño son épocas óptimas, pero al haber agua y sombra también es apta en verano.",
-    advertencias:
-      "Los datos de la ruta aún no han sido verificados in situ, así que conviene ser prudente. El riesgo de procesionaria es medio.",
-    faq: [
-      { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, pueden ir sin correa." },
-      { pregunta: "¿Hay agua para el perro?", respuesta: "Sí, hay agua en el recorrido." },
-      { pregunta: "¿Es necesaria la correa?", respuesta: "No obligatoria, pero recomendable en zonas de tránsito." },
-      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Medio. Evita la ruta en los meses de más actividad." }
-    ]
-  },
   "barranco-agua-negra": {
     mejor: [
       "Mucha sombra durante la ruta",

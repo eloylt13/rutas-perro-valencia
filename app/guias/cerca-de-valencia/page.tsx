@@ -178,14 +178,6 @@ const routeSections: RouteSection[] = [
         agua: "sí",
         correa: "sí"
       },
-      {
-        slug: "cova-negra-carcaixent",
-        nombre: "Cova Negra Carcaixent",
-        tiempo: "45 min",
-        dificultad: "media",
-        agua: "sí",
-        correa: "no"
-      }
     ]
   },
   {
@@ -286,7 +278,7 @@ const faqItems = [
   {
     question: "¿Qué rutas con perro se pueden hacer en menos de una hora?",
     answer:
-      "Tienes muchas opciones: Albufera, Río Turia, Cruz Montepicayo, Parque Fluvial Turia, Buñol Molino de la Luz, Sierra Aledua, Cueva Turche, Pantaneros Loriguilla, Puentes Colgantes, Gátova, Embalse Bellús, Salto Novia Navajas, Xàtiva Cova Negra y Cova Negra Carcaixent."
+      "Tienes muchas opciones: Albufera, Río Turia, Cruz Montepicayo, Parque Fluvial Turia, Buñol Molino de la Luz, Sierra Aledua, Cueva Turche, Pantaneros Loriguilla, Puentes Colgantes, Gátova, Embalse Bellús, Salto Novia Navajas, Xàtiva Cova Negra."
   },
   {
     question: "¿Hay rutas con perro cerca de Valencia aptas para verano?",

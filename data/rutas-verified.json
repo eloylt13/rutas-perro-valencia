@@ -483,27 +483,6 @@
         "foto_credito": "Wikimedia Commons (CC BY-SA 4.0)"
     },
     {
-        "nombre": "Cova Negra (Carcaixent)",
-        "slug": "cova-negra-carcaixent",
-        "zona": "La Ribera Alta",
-        "distancia_km": 5,
-        "desnivel_m": 150,
-        "tipo_ruta": "circular",
-        "dificultad": "media",
-        "agua": true,
-        "sombra": "moderada",
-        "correa_obligatoria": false,
-        "apta_verano": true,
-        "parking": true,
-        "acceso_desde_valencia_min": 45,
-        "coordenadas_inicio": [39.11689, -0.446965],
-        "confianza_dato": "pendiente",
-        "notas": "Ruta con pozas y vegetación de ribera en la Ribera Alta. Datos en proceso de verificación.",
-        "riesgo_procesionaria": "medio",
-        "como_llegar": "Inicio desde la estación de Renfe de Carcaixent, en el casco urbano.",
-        "foto_credito": "Wikimedia Commons (CC BY-SA 3.0)"
-    },
-    {
         "nombre": "Barranco del Agua Negra (Bocairent)",
         "slug": "barranco-agua-negra",
         "zona": "La Vall d'Albaida",
