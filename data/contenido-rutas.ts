@@ -32,7 +32,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
       "Lleva correa y útilízala en todo el recorrido, ya que es obligatoria según las normas del Paraje Natural.",
       "Aprovecha los puntos junto al río Turia para refrescar a tu perro, pero recuerda que hay poca sombra.",
       "Evita las horas centrales del día y los meses más calurosos; la ruta no está recomendada en verano.",
-      "Sí eliges la variante circular de 16 km, asegúrate de que tu perro esté en buena forma y lleva suficiente agua.",
+      "Si eliges la variante circular de 16 km, asegúrate de que tu perro esté en buena forma y lleva suficiente agua.",
       "Usa calzado antideslizante y controla a tu perro en los tramos estrechos de pasarela y puentes."
     ],
     mejorEpoca:

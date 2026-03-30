@@ -221,9 +221,6 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
             <h1 className="text-sm font-semibold uppercase tracking-[0.2em] text-bosque/60">
               Ruta {sanitizeText(ruta.nombre)} con perro en Valencia
             </h1>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-bosque sm:text-4xl">
-              {sanitizeText(ruta.nombre)}
-            </h2>
             <p className="mt-3 max-w-3xl text-lg leading-8 text-grafito/80">{description}</p>
           </div>
         </div>

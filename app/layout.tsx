@@ -61,19 +61,6 @@ export default function RootLayout({
                   </p>
                   <NavMenu />
                 </div>
-                <div className="hidden items-center justify-center md:flex md:justify-end">
-                  <Image
-                    src="/nala.png"
-                    alt="Nala — la perrita de las rutas"
-                    width={320}
-                    height={320}
-                    className="h-auto w-full max-w-[320px]"
-                    style={{
-                      objectFit: "contain",
-                      mixBlendMode: "multiply"
-                    }}
-                  />
-                </div>
               </div>
             </div>
           </header>

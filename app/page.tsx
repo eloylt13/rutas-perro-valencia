@@ -143,7 +143,21 @@ export default function HomePage() {
   const zonas = getZonas();
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 relative">
+      <div className="hidden items-center justify-center md:absolute md:-top-72 md:right-8 md:flex md:w-[320px] lg:right-16 pointer-events-none">
+        <Image
+          src="/nala.png"
+          alt="Nala — la perrita de las rutas"
+          width={320}
+          height={320}
+          className="h-auto w-full max-w-[320px] pointer-events-auto"
+          style={{
+            objectFit: "contain",
+            mixBlendMode: "multiply"
+          }}
+        />
+      </div>
+
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {featureItems.map((item) => (
           <article key={item.title} className="rounded-3xl border border-bosque/10 bg-bosque/5 p-5">
