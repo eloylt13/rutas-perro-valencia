@@ -54,7 +54,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
     ],
     peor: ["Sombra solo moderada"],
     resumen:
-      "La ruta Ruta del Agua de Chelva con perro Valencia ofrece un agradable paseo circular de 7 km que recorre acequias y fuentes tradicionales. Es ideal para disfrutar con tu perro gracias a la presencia de agua y sombra moderada.",
+      "La Ruta del Agua de Chelva con perro Valencia ofrece un agradable paseo circular de 7 km que recorre acequias y fuentes tradicionales. Es ideal para disfrutar con tu perro gracias a la presencia de agua y sombra moderada.",
     descripcion:
       "Esta ruta comienza en la Plaza Mayor de Chelva y sigue un circuito de 7 km por el casco histórico, antiguas acequias y sendas junto al río. Su dificultad es baja, con un desnivel moderado de 250 m, y permite disfrutar con calma de los elementos patrimoniales y naturales de la zona.\n\nEl recorrido está salpicado de fuentes, pequeñas presas y merenderos, lo que lo convierte en un paseo especialmente atractivo para perros que disfrutan del agua. La sombra es moderada gracias a la vegetación de ribera, por lo que se puede realizar durante buena parte del año. El acceso desde Valencia requiere aproximadamente 70 minutos en coche y cuenta con aparcamiento en el pueblo.\n\nAunque es un itinerario sencillo, conviene llevar un calzado cómodo y respetar las áreas de riego y los cultivos. La ruta está muy bien señalizada y permite combinar naturaleza y cultura, por lo que es una opción perfecta para familias con perro.",
     consejos: [
@@ -488,9 +488,9 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
     ],
     peor: ["La más exigente por duración", "Mejor fuera de calor fuerte"],
     resumen:
-      "La ruta Canones del Júcar (Jalance) con perro Valencia es un recorrido lineal de 11 km que sigue el río Júcar y ofrece sombra moderada y numerosos accesos al agua. Su dificultad es media y requiere buena condición física.",
+      "La ruta Cañones del Júcar (Jalance) con perro Valencia es un recorrido lineal de 11 km que sigue el río Júcar y ofrece sombra moderada y numerosos accesos al agua. Su dificultad es media y requiere buena condición física.",
     descripcion:
-      "Este itinerario recorre los espectaculares canones excavados por el río Júcar en la comarca de Ayora-Cofrentes. Con 11 km de recorrido y 400 m de desnivel, es la ruta más larga del listado y se tarda unos 90 minutos en llegar desde Valencia.\n\nEl sendero sigue de cerca el cauce del Júcar, ofreciendo muchos puntos donde los perros pueden beber y refrescarse. La sombra es moderada gracias a los árboles de ribera. La correa no es obligatoria, pero se recomienda llevarla en tramos escarpados o concurridos.\n\nPor su longitud y desnivel, es adecuada para perros con buena condición física. La ruta no es apta en verano debido al calor y a la exposicion en algunos tramos.",
+      "Este itinerario recorre los espectaculares cañones excavados por el río Júcar en la comarca de Ayora-Cofrentes. Con 11 km de recorrido y 400 m de desnivel, es la ruta más larga del listado y se tarda unos 90 minutos en llegar desde Valencia.\n\nEl sendero sigue de cerca el cauce del Júcar, ofreciendo muchos puntos donde los perros pueden beber y refrescarse. La sombra es moderada gracias a los árboles de ribera. La correa no es obligatoria, pero se recomienda llevarla en tramos escarpados o concurridos.\n\nPor su longitud y desnivel, es adecuada para perros con buena condición física. La ruta no es apta en verano debido al calor y a la exposición en algunos tramos.",
     consejos: [
       "Planifica bien la ruta y lleva agua y alimento para tu perro; aunque hay agua en el río, conviene tener agua potable.",
       "Evita la ruta en verano; las temperaturas y la longitud la hacen exigente.",

@@ -147,14 +147,6 @@ const routeSections: RouteSection[] = [
         correa: "sí"
       },
       {
-        slug: "acueducto-romano-pena-cortada",
-        nombre: "Acueducto Romano Peña Cortada",
-        tiempo: "65 min",
-        dificultad: "media",
-        agua: "no",
-        correa: "no"
-      },
-      {
         slug: "embalse-bellus",
         nombre: "Embalse de Bellús",
         tiempo: "60 min",
@@ -185,6 +177,14 @@ const routeSections: RouteSection[] = [
     title: "Más de 60 minutos: merece la pena el viaje",
     intro: "Escapadas que requieren más planificación pero compensan.",
     routes: [
+      {
+        slug: "acueducto-romano-pena-cortada",
+        nombre: "Acueducto Romano Peña Cortada",
+        tiempo: "65 min",
+        dificultad: "media",
+        agua: "no",
+        correa: "no"
+      },
       {
         slug: "ontinyent-senda-enginyers",
         nombre: "Ontinyent Senda Enginyers",

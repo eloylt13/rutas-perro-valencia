@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/Breadcrumb";
@@ -127,7 +127,7 @@ export default function ZonaPage({ params }: ZonaPageProps) {
                 Ideal para
               </p>
               <p className="mt-2 text-base leading-7 text-grafito/85">
-                Ideal para: {contenidoZona.mejorPara}
+                {contenidoZona.mejorPara}
               </p>
             </div>
           </div>
