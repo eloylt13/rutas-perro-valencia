@@ -38,7 +38,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
     mejorEpoca:
       "La mejor época para visitar los Puentes Colgantes de Chulilla con tu perro es en otoño, invierno o primavera, cuando las temperaturas son suaves y el calor no aprieta. Dado que no hay mucha sombra y no es apta en verano, es preferible evitar los días más calurosos.",
     advertencias:
-      "Se trata de un espacio protegido con tramos estrechos, por lo que conviene mantener a los perros controlados y respetar la obligación de llevar correa. El riesgo de procesionaria es alto de noviembre a abril; evita la ruta en ese periodo.",
+      "Se trata de un espacio protegido con tramos estrechos, por lo que conviene mantener a los perros controlados y respetar la obligación de llevar correa. El riesgo de procesionaria es alto de noviembre a abril; evita la ruta en ese periodo. Acceso regulado: se cobra una tasa de 1€/persona/día. Muy concurrida en fines de semana y festivos — recomendable ir entre semana. El parking de la Urbanización Santa Bárbara puede llenarse; en ese caso aparcar en la rambla de Losa.",
     faq: [
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, siempre que vayan atados y se respete la normativa del paraje." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "Sí, el río Turia acompaña gran parte del recorrido." },
