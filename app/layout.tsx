@@ -69,7 +69,7 @@ export default function RootLayout({
             </div>
           </header>
           <main>{children}</main>
-          <Footer />
+          <Footer methodologyHref="/metodologia" />
         </div>
         <Analytics />
       </body>

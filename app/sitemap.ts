@@ -16,6 +16,7 @@ export default function sitemap() {
     { url: `${base}/mapa`, lastModified: new Date(), priority: 0.9 },
     { url: `${base}/rutas`, lastModified: new Date(), priority: 0.9 },
     { url: `${base}/guias`, lastModified: new Date(), priority: 0.7 },
+    { url: `${base}/metodologia`, lastModified: new Date(), priority: 0.6 },
     { url: `${base}/guias/cerca-de-valencia`, lastModified: new Date(), priority: 0.8 },
     { url: `${base}/guias/procesionaria-perros`, lastModified: new Date(), priority: 0.8 },
     { url: `${base}/tipo/con-agua`, lastModified: new Date(), priority: 0.8 },
