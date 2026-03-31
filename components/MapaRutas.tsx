@@ -58,7 +58,7 @@ const tileAttribution =
 
 const tileUrls = {
   home: "https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png",
-  full: "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+  full: "https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png"
 };
 
 type RutaConDistanciaUsuario = Ruta & {
@@ -90,12 +90,14 @@ function MapViewController({
   bounds,
   center,
   zoom,
-  isUserLocationActive
+  isUserLocationActive,
+  variant
 }: {
   bounds: [number, number][];
   center: [number, number];
   zoom: number;
   isUserLocationActive: boolean;
+  variant: "home" | "full";
 }) {
   const map = useMap();
 
@@ -105,10 +107,15 @@ function MapViewController({
       return;
     }
 
-    if (bounds.length > 0) {
-      map.fitBounds(bounds, { padding: [40, 40] });
+    if (variant === "home") {
+      map.setView(mapCenter, 11);
+      return;
     }
-  }, [bounds, center, isUserLocationActive, map, zoom]);
+
+    if (bounds.length > 0) {
+      map.fitBounds(bounds, { padding: [10, 10] });
+    }
+  }, [bounds, center, isUserLocationActive, map, variant, zoom]);
 
   return null;
 }
@@ -234,6 +241,7 @@ export default function MapaRutas({ variant = "full" }: { variant?: "home" | "fu
         center={currentCenter}
         zoom={currentZoom}
         isUserLocationActive={isUserLocationActive}
+        variant={variant}
       />
       <TileLayer attribution={tileAttribution} url={tileUrls[variant]} />
       {userLocation ? (
