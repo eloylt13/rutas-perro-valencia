@@ -67,7 +67,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
     mejorEpoca:
       "Gracias a la presencia de agua y a la sombra moderada, esta ruta es apta en verano. Primavera y otoño son ideales para disfrutar de los colores del paisaje y evitar las aglomeraciones.",
     advertencias:
-      "Parte del itinerario discurre por caminos vecinales y zonas de riego; respeta a los agricultores y mantén a tu perro bajo control. El riesgo de procesionaria es medio, así que conviene vigilar las pinadas cercanas durante los meses de enero a mayo.",
+      "Parte del itinerario discurre por caminos vecinales y zonas de riego; respeta a los agricultores y mantén a tu perro bajo control. El riesgo de procesionaria es medio, así que conviene vigilar las pinadas cercanas durante los meses de enero a mayo. ⚠️ La zona de baño de La Playeta no permite el acceso con perros. Consulta el estado de la normativa local antes de salir.",
     faq: [
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, los perros son bienvenidos y la correa no es obligatoria." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "Sí, encontrarás fuentes y acequias en el recorrido." },
