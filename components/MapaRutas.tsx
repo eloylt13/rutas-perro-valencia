@@ -108,7 +108,12 @@ function MapViewController({
     }
 
     if (variant === "home") {
-      map.setView([39.55, -0.8], 10);
+      const isMobile = window.innerWidth < 640;
+      if (isMobile) {
+        map.setView([39.45, -0.55], 9);
+      } else {
+        map.setView([39.55, -0.8], 10);
+      }
       return;
     }
 
