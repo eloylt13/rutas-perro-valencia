@@ -14,7 +14,7 @@ export default function SeasonalAlertBanner() {
 
   return (
     <div className="border-b border-amber-300/70 bg-amber-100 text-amber-950">
-      <div className="page-shell flex items-center justify-between gap-2 py-1.5">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-1 sm:px-6 lg:px-8">
         <p className="truncate text-xs font-medium leading-tight">
           ⚠️ Procesionaria (nov–abr): peligrosa para perros.{" "}
           <Link
