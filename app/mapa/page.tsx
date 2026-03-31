@@ -25,7 +25,7 @@ export default function MapaPage() {
         </h1>
       </section>
 
-      <MapaRutas />
+      <MapaRutas variant="full" />
 
       <section className="panel px-6 py-6 text-sm leading-7 text-grafito/65 sm:px-8">
         <p>

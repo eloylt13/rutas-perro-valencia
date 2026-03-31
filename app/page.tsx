@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import MapaTeaserSection from "@/components/MapaTeaserSection";
 import {
   formatDificultad,
   getRutaBySlug,
@@ -151,6 +151,8 @@ export default function HomePage() {
           </article>
         ))}
       </section>
+
+      <MapaTeaserSection />
 
       <div className="space-y-6">
         {featuredBlocks.map((block) => (

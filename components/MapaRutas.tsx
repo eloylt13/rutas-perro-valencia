@@ -53,6 +53,14 @@ const riesgoConfig: Record<"bajo" | "medio" | "alto", { label: string; className
   }
 };
 
+const tileAttribution =
+  '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
+const tileUrls = {
+  home: "https://tiles.stadiamaps.com/tiles/outdoors/{z}/{x}/{y}{r}.png",
+  full: "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+};
+
 type RutaConDistanciaUsuario = Ruta & {
   distanciaUsuarioKm: number | null;
 };
@@ -154,7 +162,7 @@ function getRutasFiltradas({
   );
 }
 
-export default function MapaRutas() {
+export default function MapaRutas({ variant = "full" }: { variant?: "home" | "full" }) {
   const [dificultad, setDificultad] = useState(defaultFilter);
   const [zona, setZona] = useState(defaultFilter);
   const [procesionaria, setProcesionaria] = useState(defaultFilter);
@@ -209,6 +217,109 @@ export default function MapaRutas() {
       () => {
         resetToDefaultMap("Activa la ubicación para ver rutas cercanas");
       }
+    );
+  }
+
+  const mapHeightClass = variant === "home" ? "h-[260px] sm:h-[340px]" : "h-[420px] sm:h-[560px]";
+
+  const mapContent = isReady ? (
+    <MapContainer
+      center={visibleRouteCoordinates[0] ?? currentCenter}
+      zoom={defaultZoom}
+      scrollWheelZoom={variant === "full"}
+      style={{ height: "100%", width: "100%" }}
+    >
+      <MapViewController
+        bounds={visibleRouteCoordinates}
+        center={currentCenter}
+        zoom={currentZoom}
+        isUserLocationActive={isUserLocationActive}
+      />
+      <TileLayer attribution={tileAttribution} url={tileUrls[variant]} />
+      {userLocation ? (
+        <Marker position={userLocation} icon={userIcon}>
+          <Popup>
+            <div className="space-y-1 text-sm text-grafito">
+              <p className="font-semibold text-bosque">Tu ubicación</p>
+              <p>Mostrando rutas ordenadas por cercanía.</p>
+            </div>
+          </Popup>
+        </Marker>
+      ) : null}
+      {rutasFiltradas.map((ruta) => (
+        <Marker key={ruta.slug} position={ruta.coordenadas_inicio}>
+          <Popup>
+            <div className="min-w-[220px] space-y-3 text-sm text-grafito">
+              <div>
+                <p className="text-base font-semibold text-bosque">{ruta.nombre}</p>
+                <p className="text-xs tracking-[0.08em] text-bosque/60">
+                  {ruta.zona}
+                </p>
+              </div>
+              <p
+                className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${
+                  riesgoConfig[ruta.riesgo_procesionaria as "bajo" | "medio" | "alto"].className
+                }`}
+              >
+                {riesgoConfig[ruta.riesgo_procesionaria as "bajo" | "medio" | "alto"].label}
+              </p>
+              <dl className="space-y-1">
+                <div className="flex justify-between gap-3">
+                  <dt className="font-medium">Distancia</dt>
+                  <dd>{ruta.distancia_km} km</dd>
+                </div>
+                <div className="flex justify-between gap-3">
+                  <dt className="font-medium">Dificultad</dt>
+                  <dd>{ruta.dificultad}</dd>
+                </div>
+                <div className="flex justify-between gap-3">
+                  <dt className="font-medium">Agua</dt>
+                  <dd>{ruta.agua ? "\u{1F4A7} S\u00ED" : "\u{1F4A7} No"}</dd>
+                </div>
+              </dl>
+              {ruta.distanciaUsuarioKm !== null ? (
+                <p className="text-xs font-medium text-bosque/70">
+                  A {ruta.distanciaUsuarioKm.toFixed(1)} km de tu ubicación
+                </p>
+              ) : null}
+              <Link
+                href={`/rutas/${ruta.slug}`}
+                className="inline-flex rounded-full bg-bosque px-4 py-2 font-semibold text-white hover:bg-grafito"
+              >
+                Ver ruta
+              </Link>
+            </div>
+          </Popup>
+        </Marker>
+      ))}
+    </MapContainer>
+  ) : (
+    <div className="flex h-full items-center justify-center px-6 text-center text-sm text-grafito/70">
+      Cargando mapa interactivo...
+    </div>
+  );
+
+  if (variant === "home") {
+    return (
+      <div className="space-y-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={handleLocateUser}
+            className="inline-flex items-center justify-center rounded-full bg-bosque px-5 py-3 text-sm font-semibold text-white transition hover:bg-grafito"
+          >
+            📍 Usar mi ubicación
+          </button>
+        </div>
+        {locationError ? (
+          <p className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+            {locationError}
+          </p>
+        ) : null}
+        <div className={`${mapHeightClass} overflow-hidden rounded-2xl`}>
+          {mapContent}
+        </div>
+      </div>
     );
   }
 
@@ -310,86 +421,9 @@ export default function MapaRutas() {
       </div>
 
       <div className="panel overflow-hidden">
-        {isReady ? (
-          <MapContainer
-            center={visibleRouteCoordinates[0] ?? currentCenter}
-            zoom={defaultZoom}
-            scrollWheelZoom
-            style={{ height: "600px", width: "100%" }}
-            className="h-[420px] w-full sm:h-[560px]"
-          >
-            <MapViewController
-              bounds={visibleRouteCoordinates}
-              center={currentCenter}
-              zoom={currentZoom}
-              isUserLocationActive={isUserLocationActive}
-            />
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {userLocation ? (
-              <Marker position={userLocation} icon={userIcon}>
-                <Popup>
-                  <div className="space-y-1 text-sm text-grafito">
-                    <p className="font-semibold text-bosque">Tu ubicación</p>
-                    <p>Mostrando rutas ordenadas por cercanía.</p>
-                  </div>
-                </Popup>
-              </Marker>
-            ) : null}
-            {rutasFiltradas.map((ruta) => (
-              <Marker key={ruta.slug} position={ruta.coordenadas_inicio}>
-                <Popup>
-                  <div className="min-w-[220px] space-y-3 text-sm text-grafito">
-                    <div>
-                      <p className="text-base font-semibold text-bosque">{ruta.nombre}</p>
-                      <p className="text-xs tracking-[0.08em] text-bosque/60">
-                        {ruta.zona}
-                      </p>
-                    </div>
-                    <p
-                      className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${
-                        riesgoConfig[ruta.riesgo_procesionaria as "bajo" | "medio" | "alto"].className
-                      }`}
-                    >
-                      {riesgoConfig[ruta.riesgo_procesionaria as "bajo" | "medio" | "alto"].label}
-                    </p>
-                    <dl className="space-y-1">
-                      <div className="flex justify-between gap-3">
-                        <dt className="font-medium">Distancia</dt>
-                        <dd>{ruta.distancia_km} km</dd>
-                      </div>
-                      <div className="flex justify-between gap-3">
-                        <dt className="font-medium">Dificultad</dt>
-                        <dd>{ruta.dificultad}</dd>
-                      </div>
-                      <div className="flex justify-between gap-3">
-                        <dt className="font-medium">Agua</dt>
-                        <dd>{ruta.agua ? "\u{1F4A7} S\u00ED" : "\u{1F4A7} No"}</dd>
-                      </div>
-                    </dl>
-                    {ruta.distanciaUsuarioKm !== null ? (
-                      <p className="text-xs font-medium text-bosque/70">
-                        A {ruta.distanciaUsuarioKm.toFixed(1)} km de tu ubicación
-                      </p>
-                    ) : null}
-                    <Link
-                      href={`/rutas/${ruta.slug}`}
-                      className="inline-flex rounded-full bg-bosque px-4 py-2 font-semibold text-white hover:bg-grafito"
-                    >
-                      Ver ruta
-                    </Link>
-                  </div>
-                </Popup>
-              </Marker>
-            ))}
-          </MapContainer>
-        ) : (
-          <div className="flex h-[420px] items-center justify-center px-6 text-center text-sm text-grafito/70 sm:h-[560px]">
-            Cargando mapa interactivo...
-          </div>
-        )}
+        <div className={mapHeightClass}>
+          {mapContent}
+        </div>
       </div>
     </section>
   );
