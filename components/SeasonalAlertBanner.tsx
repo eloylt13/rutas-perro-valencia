@@ -16,7 +16,13 @@ export default function SeasonalAlertBanner() {
     <div className="border-b border-amber-300/70 bg-amber-100 text-amber-950">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-1 sm:px-6 lg:px-8">
         <p className="truncate text-xs font-medium leading-tight">
-          ⚠️ Procesionaria (nov–abr): peligrosa para perros.{" "}
+          <span className="md:hidden">
+            ⚠️ Procesionaria (nov–abr): peligrosa para perros.
+          </span>
+          <span className="hidden md:inline">
+            ⚠️ Temporada de procesionaria (nov–abr): peligrosa para perros. Evita rutas con riesgo alto.
+          </span>
+          {" "}
           <Link
             href="/guias/procesionaria-perros"
             className="underline decoration-amber-800/50 underline-offset-2 hover:decoration-amber-950"
