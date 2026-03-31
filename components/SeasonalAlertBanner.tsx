@@ -6,8 +6,9 @@ import Link from "next/link";
 export default function SeasonalAlertBanner() {
   const month = new Date().getMonth() + 1;
   const [isVisible, setIsVisible] = useState(true);
+  const isSeasonMonth = month >= 11 || month <= 4;
 
-  if (month < 1 || month > 5 || !isVisible) {
+  if (!isSeasonMonth || !isVisible) {
     return null;
   }
 
@@ -16,7 +17,7 @@ export default function SeasonalAlertBanner() {
       <div className="page-shell flex items-start justify-between gap-3 py-3 text-sm font-medium">
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
           <span>
-            ⚠️ Temporada de procesionaria (ene-may): peligrosa para perros. Evita rutas con riesgo alto.
+            ⚠️ Temporada de procesionaria (nov–abr): peligrosa para perros. Evita rutas con riesgo alto.
           </span>
           <Link
             href="/guias/procesionaria-perros"

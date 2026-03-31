@@ -38,12 +38,12 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
     mejorEpoca:
       "La mejor época para visitar los Puentes Colgantes de Chulilla con tu perro es en otoño, invierno o primavera, cuando las temperaturas son suaves y el calor no aprieta. Dado que no hay mucha sombra y no es apta en verano, es preferible evitar los días más calurosos.",
     advertencias:
-      "Se trata de un espacio protegido con tramos estrechos, por lo que conviene mantener a los perros controlados y respetar la obligación de llevar correa. El riesgo de procesionaria es alto de enero a mayo; evita la ruta en ese periodo.",
+      "Se trata de un espacio protegido con tramos estrechos, por lo que conviene mantener a los perros controlados y respetar la obligación de llevar correa. El riesgo de procesionaria es alto de noviembre a abril; evita la ruta en ese periodo.",
     faq: [
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, siempre que vayan atados y se respete la normativa del paraje." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "Sí, el río Turia acompaña gran parte del recorrido." },
       { pregunta: "¿Es necesaria la correa?", respuesta: "Sí, la correa es obligatoria en todo el recorrido." },
-      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Alto. Evita la ruta entre enero y mayo y mantén a tu perro alejado de los pinos." }
+      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Alto. Evita la ruta de noviembre a abril y mantén a tu perro alejado de los pinos." }
     ]
   },
   "ruta-del-agua-chelva": {
@@ -67,7 +67,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
     mejorEpoca:
       "Gracias a la presencia de agua y a la sombra moderada, esta ruta es apta en verano. Primavera y otoño son ideales para disfrutar de los colores del paisaje y evitar las aglomeraciones.",
     advertencias:
-      "Parte del itinerario discurre por caminos vecinales y zonas de riego; respeta a los agricultores y mantén a tu perro bajo control. El riesgo de procesionaria es medio, así que conviene vigilar las pinadas cercanas durante los meses de enero a mayo. ⚠️ La zona de baño de La Playeta no permite el acceso con perros. Consulta el estado de la normativa local antes de salir.",
+      "Parte del itinerario discurre por caminos vecinales y zonas de riego; respeta a los agricultores y mantén a tu perro bajo control. El riesgo de procesionaria es medio, así que conviene vigilar las pinadas cercanas durante los meses de noviembre a abril. ⚠️ La zona de baño de La Playeta no permite el acceso con perros. Consulta el estado de la normativa local antes de salir.",
     faq: [
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, los perros son bienvenidos y la correa no es obligatoria." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "Sí, encontrarás fuentes y acequias en el recorrido." },
@@ -212,7 +212,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
     mejorEpoca:
       "La ruta es apta en verano gracias a la presencia de agua y sombra moderada, pero la mejor época para disfrutarla sin aglomeraciones es la primavera o el otoño.",
     advertencias:
-      "Es un lugar muy concurrido; si tu perro se estresa con las multitudes, busca horarios tranquilos. El riesgo de procesionaria es medio; extrema la precaución entre enero y mayo.",
+      "Es un lugar muy concurrido; si tu perro se estresa con las multitudes, busca horarios tranquilos. El riesgo de procesionaria es medio; extrema la precaución de noviembre a abril.",
     faq: [
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, pero deben ir atados." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "Sí, hay una zona de baño en la base de la cascada." },
@@ -327,7 +327,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
     mejorEpoca:
       "La ruta es recomendable en otoño, invierno y primavera, cuando las temperaturas son más bajas y el sol no castiga tanto. No es apta en verano.",
     advertencias:
-      "El terreno es muy pedregoso; vigila las patas de tu perro y no olvides agua suficiente. El riesgo de procesionaria es alto, así que evita la ruta de enero a mayo.",
+      "El terreno es muy pedregoso; vigila las patas de tu perro y no olvides agua suficiente. El riesgo de procesionaria es alto, así que evita la ruta de noviembre a abril.",
     faq: [
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, pero deben ir con correa." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "No, no hay agua en el recorrido." },
@@ -361,7 +361,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, pueden ir sin correa, aunque es recomendable usarla en la zona del acueducto." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "No, no hay agua en la ruta." },
       { pregunta: "¿Es necesaria la correa?", respuesta: "No obligatoria, pero aconsejable en tramos peligrosos." },
-      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Alto. Mejor evitar los meses de enero a mayo." }
+      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Alto. Mejor evitar los meses de noviembre a abril." }
     ]
   },
   "gatova-pico-aguila-molino-ceja": {
@@ -390,7 +390,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, pero conviene llevarlos atados." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "No, no hay agua disponible." },
       { pregunta: "¿Es necesaria la correa?", respuesta: "No obligatoria, pero recomendable en tramos peligrosos." },
-      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Alto. Evita la ruta de enero a mayo y revisa a tu perro tras la caminata." }
+      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Alto. Evita la ruta de noviembre a abril y revisa a tu perro tras la caminata." }
     ]
   },
   "ruta-pantaneros-loriguilla": {
@@ -414,12 +414,12 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
     mejorEpoca:
       "Otoño, invierno y primavera son las épocas ideales. No se recomienda en verano debido a la falta de sombra y al calor.",
     advertencias:
-      "Es una zona protegida; respeta la flora y fauna y no dejes residuos. El riesgo de procesionaria es alto, por lo que conviene evitar los meses de enero a mayo.",
+      "Es una zona protegida; respeta la flora y fauna y no dejes residuos. El riesgo de procesionaria es alto, por lo que conviene evitar los meses de noviembre a abril.",
     faq: [
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, pero deben ir con correa." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "Sí, aunque los puntos de agua son limitados." },
       { pregunta: "¿Es necesaria la correa?", respuesta: "Sí, es obligatoria." },
-      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Alto. Evita la ruta entre enero y mayo." }
+      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Alto. Evita la ruta de noviembre a abril." }
     ]
   },
   "ontinyent-senda-enginyers": {
@@ -477,7 +477,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, y pueden ir sueltos en gran parte del recorrido." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "No, no hay agua disponible." },
       { pregunta: "¿Es necesaria la correa?", respuesta: "No obligatoria, pero recomendable en los tramos técnicos." },
-      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Alto. Evita los meses de enero a mayo y revisa a tu perro tras la excursión." }
+      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Alto. Evita los meses de noviembre a abril y revisa a tu perro tras la excursión." }
     ]
   },
   "canones-jucar-jalance": {
@@ -530,7 +530,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
     mejorEpoca:
       "Es preferible visitar en otoño, invierno o primavera, cuando hay menos afluencia y la temperatura es agradable. No se recomienda en verano.",
     advertencias:
-      "Las aglomeraciones pueden ser estresantes para algunos perros. El riesgo de procesionaria es medio; evita la ruta entre enero y mayo y vigila a tu perro en las zonas de pinos.",
+      "Las aglomeraciones pueden ser estresantes para algunos perros. El riesgo de procesionaria es medio; evita la ruta de noviembre a abril y vigila a tu perro en las zonas de pinos.",
     faq: [
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, pero deben ir con correa." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "Sí, el río Palancia ofrece puntos de agua." },
@@ -708,7 +708,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, pero deben ir con correa." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "Sí, el barranco ofrece agua en todo el recorrido." },
       { pregunta: "¿Es necesaria la correa?", respuesta: "Sí, es obligatoria." },
-      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Alto. Evita los meses de enero a mayo y vigila a tu perro en las zonas de pinos." }
+      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Alto. Evita los meses de noviembre a abril y vigila a tu perro en las zonas de pinos." }
     ]
   }
 };

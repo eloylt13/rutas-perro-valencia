@@ -237,10 +237,10 @@ export default function ProcesionariaPerrosPage() {
           <article id="temporada" className="panel px-6 py-7 sm:px-8">
             <h2 className="text-2xl font-bold text-bosque">Temporada en Valencia</h2>
             <p className="mt-4 text-base leading-7 text-grafito/80">
-              En la Comunitat Valenciana, la temporada de mayor riesgo se concentra entre enero y
+              En la Comunitat Valenciana, la temporada de mayor riesgo se concentra de noviembre a
               abril, siendo febrero y marzo los meses más críticos. El cambio climático está
               adelantando el ciclo: en los últimos años se han registrado procesiones desde finales
-              de noviembre. Extrema la precaución desde noviembre hasta abril, y mantente alerta
+              de noviembre. Extrema la precaución de noviembre a abril, y mantente alerta
               incluso fuera de estos meses en otoños cálidos.
             </p>
           </article>
@@ -315,7 +315,7 @@ export default function ProcesionariaPerrosPage() {
                 contacto.
               </li>
               <li className="list-decimal">
-                Mantén a tu perro atado en zonas con pinos entre noviembre y abril.
+                Mantén a tu perro atado en zonas con pinos de noviembre a abril.
               </li>
               <li className="list-decimal">
                 Aprende a mirar hacia arriba antes de entrar en una zona con pinos.
@@ -356,7 +356,7 @@ export default function ProcesionariaPerrosPage() {
             <div className="mt-4 grid gap-3">
               <div className="rounded-2xl bg-bosque/5 p-4">
                 <p className="text-sm text-grafito/60">Mayor riesgo</p>
-                <p className="mt-1 text-lg font-semibold text-bosque">Enero a abril</p>
+                <p className="mt-1 text-lg font-semibold text-bosque">Noviembre a abril</p>
               </div>
               <div className="rounded-2xl bg-bosque/5 p-4">
                 <p className="text-sm text-grafito/60">Señal de alarma</p>
