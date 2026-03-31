@@ -108,7 +108,7 @@ function MapViewController({
     }
 
     if (variant === "home") {
-      map.setView(mapCenter, 11);
+      map.setView([39.55, -0.8], 8);
       return;
     }
 
