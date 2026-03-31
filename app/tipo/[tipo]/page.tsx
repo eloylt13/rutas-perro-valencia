@@ -5,7 +5,6 @@ import Breadcrumb from "@/components/Breadcrumb";
 import {
   buildBreadcrumbJsonLd,
   formatDificultad,
-  formatZona,
   getRutasByTipo,
   getTipoDescription,
   getTipoLabel,
@@ -94,7 +93,7 @@ export default function TipoPage({ params }: TipoPageProps) {
         {rutas.map((ruta) => (
           <Link key={ruta.slug} href={`/rutas/${ruta.slug}`} className="panel p-5 hover:border-bosque/35">
             <div className="flex flex-wrap gap-2">
-              <span className="chip border-rio/25 bg-rio/10 text-rio">{formatZona(ruta.zona)}</span>
+              <span className="chip border-rio/25 bg-rio/10 text-rio">{ruta.zona}</span>
               <span className="chip border-bosque/15 bg-bosque/5 text-bosque">
                 {formatDificultad(ruta.dificultad)}
               </span>

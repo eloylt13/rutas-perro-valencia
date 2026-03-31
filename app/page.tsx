@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   formatDificultad,
-  formatZona,
   getRutaBySlug,
   getTipoDescription,
   getTipoLabel,
@@ -89,7 +88,7 @@ function FeaturedRouteCard({ ruta }: { ruta: Ruta }) {
   return (
     <article className="panel flex h-full flex-col p-5 hover:border-bosque/35">
       <div className="flex items-center justify-between gap-3">
-        <p className="text-sm font-medium text-grafito/70">{formatZona(ruta.zona)}</p>
+        <p className="text-sm font-medium text-grafito/70">{ruta.zona}</p>
         <p className="text-sm font-semibold text-bosque/75">
           Desde Valencia: {ruta.acceso_desde_valencia_min} min
         </p>

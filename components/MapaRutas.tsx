@@ -345,7 +345,7 @@ export default function MapaRutas() {
                     <div>
                       <p className="text-base font-semibold text-bosque">{ruta.nombre}</p>
                       <p className="text-xs tracking-[0.08em] text-bosque/60">
-                        {capitalize(ruta.zona)}
+                        {ruta.zona}
                       </p>
                     </div>
                     <p

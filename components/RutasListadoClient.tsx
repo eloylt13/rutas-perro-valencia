@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { capitalize, formatDificultad, formatZona, sanitizeText } from "@/lib/rutas";
+import { capitalize, formatDificultad, sanitizeText } from "@/lib/rutas";
 import type { Ruta } from "@/types/ruta";
 
 type RutasListadoClientProps = {
@@ -114,7 +114,7 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
                 <option value={allFilterValue}>Todas</option>
                 {zonas.map((option) => (
                   <option key={option} value={option}>
-                    {formatZona(option)}
+                    {option}
                   </option>
                 ))}
               </select>
@@ -237,7 +237,7 @@ export default function RutasListadoClient({ rutas }: RutasListadoClientProps) {
 
               <div className="p-5">
                 <div className="flex flex-wrap gap-2">
-                  <span className="chip border-rio/25 bg-rio/10 text-rio">{formatZona(ruta.zona)}</span>
+                  <span className="chip border-rio/25 bg-rio/10 text-rio">{ruta.zona}</span>
                   <span className="chip border-bosque/15 bg-bosque/5 text-bosque">
                     {formatDificultad(ruta.dificultad)}
                   </span>

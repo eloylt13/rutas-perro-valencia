@@ -11,7 +11,6 @@ import { getContenidoRuta } from "@/data/contenido-rutas";
 import {
   buildBreadcrumbJsonLd,
   formatDificultad,
-  formatZona,
   getRutaBySlug,
   getRutas,
   getZonaSlug,
@@ -57,7 +56,7 @@ function buildDescription(ruta: Ruta): string {
     return contenido.resumen;
   }
 
-  return `${sanitizeText(ruta.nombre)} en ${formatZona(ruta.zona)}. ${ruta.distancia_km} km, dificultad ${formatDificultad(ruta.dificultad)}, acceso desde Valencia en ${ruta.acceso_desde_valencia_min} minutos.`;
+  return `${sanitizeText(ruta.nombre)} en ${ruta.zona}. ${ruta.distancia_km} km, dificultad ${formatDificultad(ruta.dificultad)}, acceso desde Valencia en ${ruta.acceso_desde_valencia_min} minutos.`;
 }
 
 function getConfidenceBadgeStyles(confianza: string): string {
@@ -86,7 +85,7 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL("https://rutasperrovalencia.es"),
-    title: `${sanitizeText(ruta.nombre)} | ${formatZona(ruta.zona)}`,
+    title: `${sanitizeText(ruta.nombre)} | ${ruta.zona}`,
     description: buildDescription(ruta),
     openGraph: {
       title: `Ruta ${sanitizeText(ruta.nombre)} con perro en Valencia`,
@@ -159,7 +158,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
     touristType: "Senderismo con perro",
     address: {
       "@type": "PostalAddress",
-      addressLocality: formatZona(ruta.zona),
+      addressLocality: ruta.zona,
       addressRegion: "Valencia"
     },
     geo: {
@@ -204,7 +203,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
           )}
         </div>
         <div className="mt-4 flex flex-wrap gap-3">
-          <span className="chip border-rio/25 bg-rio/10 text-rio">{formatZona(ruta.zona)}</span>
+          <span className="chip border-rio/25 bg-rio/10 text-rio">{ruta.zona}</span>
           <span className="chip border-bosque/15 bg-bosque/5 text-bosque capitalize">
             {ruta.tipo_ruta}
           </span>
@@ -433,7 +432,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
                 href={`/zona/${getZonaSlug(ruta.zona)}`}
                 className="rounded-2xl border border-bosque/10 bg-white px-4 py-3 font-semibold text-bosque hover:border-bosque/35"
               >
-                Ver más rutas en {formatZona(ruta.zona)}
+                Ver más rutas en {ruta.zona}
               </Link>
               <Link
                 href={`/tipo/${ruta.agua ? "con-agua" : "cerca-de-valencia"}`}

@@ -6,7 +6,6 @@ import contenidoZonas from "@/data/contenido-zonas";
 import {
   buildBreadcrumbJsonLd,
   formatDificultad,
-  formatZona,
   getRutasByZona,
   getZonaBySlug,
   getZonaSlug,
@@ -54,7 +53,7 @@ export async function generateMetadata({
     };
   }
 
-  const zonaFormateada = formatZona(zona);
+  const zonaFormateada = zona;
   const contenidoZona = contenidoZonas[zonaFormateada];
 
   return {
@@ -77,7 +76,7 @@ export default function ZonaPage({ params }: ZonaPageProps) {
   }
 
   const rutas = getRutasByZona(zona);
-  const zonaFormateada = formatZona(zona);
+  const zonaFormateada = zona;
   const contenidoZona = contenidoZonas[zonaFormateada];
 
   if (rutas.length === 0) {
