@@ -1,15 +1,17 @@
-import { getRutas } from '@/lib/rutas'
+import type { MetadataRoute } from "next";
+import { getRutas } from "@/lib/rutas";
 
-export default function sitemap() {
-  const rutas = getRutas()
-  const base = "https://rutasperrovalencia.es"
+const base = "https://www.rutasperrovalencia.es";
 
-  const rutasUrls = rutas.map(r => ({
+export default function sitemap(): MetadataRoute.Sitemap {
+  const rutas = getRutas();
+
+  const rutasUrls = rutas.map((r) => ({
     url: `${base}/rutas/${r.slug}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }))
+    changeFrequency: "monthly" as const,
+    priority: 0.8
+  }));
 
   return [
     { url: base, lastModified: new Date(), priority: 1.0 },
@@ -22,6 +24,6 @@ export default function sitemap() {
     { url: `${base}/tipo/con-agua`, lastModified: new Date(), priority: 0.8 },
     { url: `${base}/tipo/faciles`, lastModified: new Date(), priority: 0.8 },
     { url: `${base}/tipo/cerca-de-valencia`, lastModified: new Date(), priority: 0.8 },
-    ...rutasUrls,
-  ]
+    ...rutasUrls
+  ];
 }

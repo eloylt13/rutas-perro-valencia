@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+const siteUrl = "https://www.rutasperrovalencia.es";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -7,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/"
     },
-    host: 'https://rutasperrovalencia.es',
-    sitemap: 'https://rutasperrovalencia.es/sitemap.xml'
+    host: siteUrl,
+    sitemap: `${siteUrl}/sitemap.xml`
   };
 }

@@ -10,16 +10,18 @@ import SeasonalAlertBanner from "@/components/SeasonalAlertBanner";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
+const siteUrl = "https://www.rutasperrovalencia.es";
+
 export const metadata: Metadata = {
   title: "Rutas con perro en Valencia",
   description:
     "Colección de rutas verificadas para disfrutar con perro cerca de Valencia, organizadas por zona, tipo y ficha detallada.",
-  metadataBase: new URL("https://rutasperrovalencia.es"),
+  metadataBase: new URL(siteUrl),
   openGraph: {
     title: "Rutas con perro en Valencia",
     description:
       "25 rutas verificadas con perro en Valencia. Mapa interactivo, filtros caninos y fichas detalladas.",
-    url: "https://rutasperrovalencia.es",
+    url: siteUrl,
     siteName: "Rutas Perro Valencia",
     locale: "es_ES",
     type: "website"
