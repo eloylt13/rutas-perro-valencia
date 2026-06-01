@@ -37,7 +37,7 @@ const sources = [
 export default function MetodologiaPage() {
   const breadcrumbItems = [
     { label: "Inicio", href: "/" },
-    { label: "Cómo verificamos las rutas" }
+    { label: "Cómo verificamos las rutas", href: "/metodologia" }
   ];
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: "Inicio", href: "/" },

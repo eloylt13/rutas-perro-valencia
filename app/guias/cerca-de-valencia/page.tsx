@@ -348,8 +348,8 @@ export default function CercaDeValenciaGuidePage() {
         <Breadcrumb
           items={[
             { label: "Inicio", href: "/" },
-            { label: "Guías" },
-            { label: "Rutas cerca de Valencia" }
+            { label: "Guías", href: "/guias" },
+            { label: "Rutas cerca de Valencia", href: "/guias/cerca-de-valencia" }
           ]}
         />
 

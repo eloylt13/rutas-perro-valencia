@@ -57,8 +57,8 @@ export default function ProcesionariaPerrosPage() {
         <Breadcrumb
           items={[
             { label: "Inicio", href: "/" },
-            { label: "Guías" },
-            { label: "Procesionaria" }
+            { label: "Guías", href: "/guias" },
+            { label: "Procesionaria", href: "/guias/procesionaria-perros" }
           ]}
         />
 

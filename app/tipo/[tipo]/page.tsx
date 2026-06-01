@@ -60,7 +60,7 @@ export default function TipoPage({ params }: TipoPageProps) {
 
   const breadcrumbItems = [
     { label: "Inicio", href: "/" },
-    { label: getTipoLabel(params.tipo) }
+    { label: getTipoLabel(params.tipo), href: `/tipo/${params.tipo}` }
   ];
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(
     breadcrumbItems.map((item) => ({

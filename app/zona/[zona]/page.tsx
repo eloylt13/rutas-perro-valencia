@@ -86,7 +86,7 @@ export default function ZonaPage({ params }: ZonaPageProps) {
   const breadcrumbItems = [
     { label: "Inicio", href: "/" },
     { label: "Zonas", href: "/#zonas" },
-    { label: zonaFormateada }
+    { label: zonaFormateada, href: `/zona/${params.zona}` }
   ];
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(
     breadcrumbItems.map((item) => ({

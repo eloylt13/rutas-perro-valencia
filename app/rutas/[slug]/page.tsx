@@ -142,7 +142,7 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
   const breadcrumbItems = [
     { label: "Inicio", href: "/" },
     { label: "Rutas", href: "/rutas" },
-    { label: sanitizeText(ruta.nombre) }
+    { label: sanitizeText(ruta.nombre), href: `/rutas/${ruta.slug}` }
   ];
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(
     breadcrumbItems.map((item) => ({

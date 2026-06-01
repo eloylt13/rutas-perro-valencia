@@ -29,7 +29,7 @@ const guideCards = [
 export default function GuiasIndexPage() {
   const breadcrumbItems = [
     { label: "Inicio", href: "/" },
-    { label: "Guías" }
+    { label: "Guías", href: "/guias" }
   ];
   const breadcrumbJsonLd = buildBreadcrumbJsonLd([
     { name: "Inicio", href: "/" },

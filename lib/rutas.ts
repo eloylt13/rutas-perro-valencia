@@ -220,10 +220,12 @@ export function getTipoSeoTitle(tipo: TipoSoportado): string {
 
 type BreadcrumbListItem = {
   name: string;
-  href?: string;
+  href: string;
 };
 
 export function buildBreadcrumbJsonLd(items: BreadcrumbListItem[]) {
+  const siteUrl = "https://www.rutasperrovalencia.es";
+
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -231,11 +233,7 @@ export function buildBreadcrumbJsonLd(items: BreadcrumbListItem[]) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      ...(item.href
-        ? {
-            item: `https://rutasperrovalencia.es${item.href}`
-          }
-        : {})
+      item: new URL(item.href, siteUrl).toString()
     }))
   };
 }
