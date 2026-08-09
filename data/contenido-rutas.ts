@@ -220,7 +220,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
       { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Medio. Evita la ruta en temporada de orugas y vigila los pinos." }
     ]
   },
-  "río-sellent-bolbaite": {
+  "rio-sellent-bolbaite": {
     mejor: [
       "Muchísima sombra durante la ruta",
       "Perro puede ir suelto",
@@ -278,7 +278,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
       { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Bajo. Sin embargo, vigila a tu perro en áreas con pinares." }
     ]
   },
-  "río-turia-manises-vilamarxant": {
+  "rio-turia-manises-vilamarxant": {
     mejor: [
       "Muy accesible y cómoda",
       "Agua junto al recorrido",
@@ -538,7 +538,7 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
       { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Medio. Evita la ruta en temporada de orugas y mantén a tu perro alejado de los pinos." }
     ]
   },
-  "descenso-río-fraile": {
+  "descenso-rio-fraile": {
     mejor: [
       "Tramo dentro del río",
       "Muy aventurera y diferente",
