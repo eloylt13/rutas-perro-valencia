@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import HeroImage from "@/components/HeroImage";
 import NavMenu from "@/components/NavMenu";
 import SeasonalAlertBanner from "@/components/SeasonalAlertBanner";
+import SiteTitle from "@/components/SiteTitle";
 import { getRutas } from "@/lib/rutas";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
@@ -56,9 +57,7 @@ export default function RootLayout({
                     Senderismo dog-friendly
                   </p>
                   <Link href="/" className="inline-block">
-                    <p className="font-serif text-4xl font-bold tracking-tight text-bosque sm:text-5xl">
-                      Rutas con perro en Valencia
-                    </p>
+                    <SiteTitle />
                   </Link>
                   <p className="max-w-xl text-base leading-7 text-grafito/80 sm:text-lg">
                     Una base sencilla y clara para encontrar escapadas por zona, cercanía o perfil de ruta,
