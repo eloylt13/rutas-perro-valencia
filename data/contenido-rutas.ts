@@ -178,7 +178,6 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
       "La correa no es obligatoria, pero es recomendable en los tramos de escalera o cerca de precipicios.",
       "Utiliza calzado antideslizante para bajar a las pozas, ya que el terreno puede estar húmedo.",
       "Evita las horas puntas de verano para encontrar el paraje menos concurrido y disfrutar del agua con tranquilidad.",
-      "Lleva una toalla para secar a tu perro tras el baño y evita que suba al coche mojado."
     ],
     mejorEpoca:
       "Al contar con agua abundante y sombra, es una ruta muy apta para verano. Primavera y otoño también son recomendables por la tranquilidad del paraje.",
@@ -546,25 +545,25 @@ const contenidoRutasBase: Record<string, RutaContenido> = {
     ],
     peor: ["Solo perros que naden", "Recorrido más exigente técnicamente"],
     resumen:
-      "La ruta Descenso del Rio Fraile (Cortes de Pallás) con perro Valencia es un recorrido lineal de 6 km que combina sendero y descenso por el río. Su dificultad es media y es apta en verano, siempre que tu perro sepa nadar.",
+      "La ruta Descenso del Rio Fraile (Bicorp) con perro Valencia es un recorrido lineal de 6 km que combina sendero y descenso por el río. Su dificultad es media y es apta en verano, siempre que tu perro sepa nadar.",
     descripcion:
-      "Este itinerario parte de las inmediaciones de Cortes de Pallás y baja hacia el cauce del río Fraile. Con 6 km y 200 m de desnivel, se tarda unos 90 minutos en llegar desde Valencia. La peculiaridad es que parte del trayecto se realiza descendiendo por el propio río, por lo que solo es adecuado para perros que esten acostumbrados a nadar.\n\nLa ruta cuenta con sombra moderada y varios puntos donde los perros pueden beber y bañarse. La correa no es obligatoria, aunque conviene llevarla y utilizarla en los tramos de acceso o si hay otros excursionistas. La ruta es apta en verano gracias al agua fresca del río.\n\nEs recomendable llevar bolsa estanca para proteger objetos de valor y planificar la logística del regreso, ya que al tratarse de un descenso lineal puede ser necesario dejar un coche al final.",
+      "Este itinerario parte de las inmediaciones de Bicorp y baja hacia el cauce del río Fraile. Con 6 km y 200 m de desnivel, se tarda unos 90 minutos en llegar desde Valencia. La peculiaridad es que parte del trayecto se realiza descendiendo por el propio río, por lo que solo es adecuado para perros que estén acostumbrados a nadar.\n\nLa ruta cuenta con sombra moderada y varios puntos donde los perros pueden beber y bañarse. La correa no es obligatoria, aunque conviene llevarla y utilizarla en los tramos de acceso o si hay otros excursionistas. La ruta es apta en verano gracias al agua fresca del río.\n\nEs recomendable llevar bolsa estanca para proteger objetos de valor y planificar la logística del regreso, ya que al tratarse de un descenso lineal puede ser necesario dejar un coche al final.",
     consejos: [
-      "Asegurate de que tu perro disfruta y sabe nadar; una parte del recorrido discurre por el río.",
+      "Asegúrate de que tu perro disfruta y sabe nadar; una parte del recorrido discurre por el río.",
       "Usa arnés para facilitar el agarre en los tramos acuáticos.",
       "Lleva una bolsa estanca para proteger el móvil y la documentación.",
       "Evita realizar la ruta fuera del verano si el agua está muy fría y puede causar hipotermia a tu perro.",
       "Respeta la fauna del río y no dejes residuos en el entorno."
     ],
     mejorEpoca:
-      "Esta ruta es especialmente recomendable en verano, cuando el río Fraile ofrece un alivio refrescante. En otras estaciones puede resultar demasiado frio.",
+      "Esta ruta es especialmente recomendable en verano, cuando el río Fraile ofrece un alivio refrescante. En otras estaciones puede resultar demasiado frío.",
     advertencias:
-      "El descenso por el río puede ser resbaladizo; vigila a tu perro y ayudale en los tramos complicados. El riesgo de procesionaria es bajo.",
+      "El descenso por el río puede ser resbaladizo; vigila a tu perro y ayúdale en los tramos complicados. El riesgo de procesionaria es bajo.",
     faq: [
       { pregunta: "¿Pueden ir los perros?", respuesta: "Sí, pero conviene que sepan nadar." },
       { pregunta: "¿Hay agua para el perro?", respuesta: "Sí, el río ofrece agua abundante." },
       { pregunta: "¿Es necesaria la correa?", respuesta: "No obligatoria, pero recomendable en tramos concurridos." },
-      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Bajo. Aún asíí, vigila las zonas de pinos en los accesos." }
+      { pregunta: "¿Hay riesgo de procesionaria?", respuesta: "Bajo. Aun así, vigila las zonas de pinos en los accesos." }
     ]
   },
   "ruta-chera": {
