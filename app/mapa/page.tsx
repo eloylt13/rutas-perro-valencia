@@ -4,7 +4,6 @@ import Link from "next/link";
 import { getRutas, sanitizeText } from "@/lib/rutas";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rutasperrovalencia.es"),
   title: "Mapa",
   description: "Mapa interactivo de rutas con perro cerca de Valencia.",
   alternates: {

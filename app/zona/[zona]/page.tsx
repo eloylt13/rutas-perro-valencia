@@ -57,7 +57,6 @@ export async function generateMetadata({
   const contenidoZona = contenidoZonas[zonaFormateada];
 
   return {
-    metadataBase: new URL("https://rutasperrovalencia.es"),
     title: `Rutas con perro en ${zonaFormateada} | Rutas Perro Valencia`,
     description: truncateDescription(
       contenidoZona?.intro[0] ?? `Rutas con perro en ${zonaFormateada}.`
@@ -111,8 +110,8 @@ export default function ZonaPage({ params }: ZonaPageProps) {
         </h1>
         <h2 className="mt-2 text-3xl font-bold text-bosque">{zonaFormateada}</h2>
         <p className="mt-3 max-w-3xl text-base leading-7 text-grafito/80">
-          {rutas.length} rutas disponibles para esta zona, con acceso rápido a la ficha individual
-          de cada recorrido.
+          {rutas.length} {rutas.length === 1 ? "ruta disponible" : "rutas disponibles"} para esta
+          zona, con acceso rápido a la ficha individual de cada recorrido.
         </p>
         {contenidoZona ? (
           <div className="mt-6 space-y-4">

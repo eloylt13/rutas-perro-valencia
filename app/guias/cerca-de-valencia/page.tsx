@@ -5,7 +5,6 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { buildBreadcrumbJsonLd } from "@/lib/rutas";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.rutasperrovalencia.es"),
   title: "Rutas con perro cerca de Valencia: escapadas por tiempo de acceso",
   description:
     "Las mejores rutas con perro cerca de Valencia organizadas por tiempo en coche: menos de 30 min, 45 min, 60 min y más. Con datos de agua, dificultad y correa.",

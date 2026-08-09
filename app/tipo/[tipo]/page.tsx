@@ -38,7 +38,6 @@ export async function generateMetadata({
   }
 
   return {
-    metadataBase: new URL("https://rutasperrovalencia.es"),
     title: getTipoSeoTitle(params.tipo),
     description: getTipoDescription(params.tipo),
     alternates: {

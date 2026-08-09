@@ -3,7 +3,6 @@ import RutasListadoClient from "@/components/RutasListadoClient";
 import { getRutas } from "@/lib/rutas";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rutasperrovalencia.es"),
   title: "Todas las rutas",
   description: "Listado completo de rutas para ir con perro cerca de Valencia.",
   alternates: {

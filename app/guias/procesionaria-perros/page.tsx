@@ -4,7 +4,6 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { getRutas, sanitizeText } from "@/lib/rutas";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rutasperrovalencia.es"),
   title: "Procesionaria del pino: peligro real para tu perro en Valencia",
   description:
     "Guía completa sobre la procesionaria del pino: síntomas en perros, qué hacer, temporada en Valencia y rutas de menor riesgo. Información veterinaria actualizada.",
@@ -28,7 +27,8 @@ const sections = [
 ] as const;
 
 export default function ProcesionariaPerrosPage() {
-  const datePublished = new Date().toISOString();
+  const datePublished = "2026-03-27T16:27:45+01:00";
+  const dateModified = "2026-03-31T09:58:57+02:00";
   const rutasBajoRiesgo = getRutas()
     .filter((ruta) => ruta.riesgo_procesionaria.toLowerCase() === "bajo")
     .sort((rutaA, rutaB) =>
@@ -40,6 +40,7 @@ export default function ProcesionariaPerrosPage() {
     "@type": "Article",
     headline: "Procesionaria del pino: peligro real para tu perro en Valencia",
     datePublished,
+    dateModified,
     author: {
       "@type": "Organization",
       name: "rutasperrovalencia.es"

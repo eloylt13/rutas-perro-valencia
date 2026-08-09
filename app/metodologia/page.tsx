@@ -3,7 +3,6 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { buildBreadcrumbJsonLd } from "@/lib/rutas";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rutasperrovalencia.es"),
   title: "Cómo verificamos las rutas | Rutas Perro Valencia",
   description:
     "Explicamos cómo revisamos cada ficha, qué fuentes consultamos y qué significan los niveles de confianza de las rutas.",

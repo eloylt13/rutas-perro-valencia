@@ -7,10 +7,12 @@ import Footer from "@/components/Footer";
 import HeroImage from "@/components/HeroImage";
 import NavMenu from "@/components/NavMenu";
 import SeasonalAlertBanner from "@/components/SeasonalAlertBanner";
+import { getRutas } from "@/lib/rutas";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
 const siteUrl = "https://www.rutasperrovalencia.es";
+const rutasCount = getRutas().length;
 
 export const metadata: Metadata = {
   title: "Rutas con perro en Valencia",
@@ -20,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rutas con perro en Valencia",
     description:
-      "25 rutas verificadas con perro en Valencia. Mapa interactivo, filtros caninos y fichas detalladas.",
+      `${rutasCount} rutas verificadas con perro en Valencia. Mapa interactivo, filtros caninos y fichas detalladas.`,
     url: siteUrl,
     siteName: "Rutas Perro Valencia",
     locale: "es_ES",
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Rutas con perro en Valencia",
-    description: "25 rutas verificadas con perro en Valencia con mapa interactivo."
+    description: `${rutasCount} rutas verificadas con perro en Valencia con mapa interactivo.`
   },
   verification: {
     google: "TgjWuJcE63weWJL-9P9WqaKz0ZA7TZstiDb0KN9tybI"

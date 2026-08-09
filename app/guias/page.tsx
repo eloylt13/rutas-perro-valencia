@@ -4,7 +4,6 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { buildBreadcrumbJsonLd } from "@/lib/rutas";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rutasperrovalencia.es"),
   title: "Guías para salir con tu perro en Valencia",
   description:
     "Guías prácticas para planificar salidas con tu perro en Valencia, evitar riesgos y elegir rutas según el tiempo de acceso.",

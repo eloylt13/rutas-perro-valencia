@@ -173,13 +173,12 @@ export async function generateMetadata({
   }
 
   return {
-    metadataBase: new URL("https://rutasperrovalencia.es"),
     title: `${sanitizeText(ruta.nombre)} | ${ruta.zona}`,
     description: buildDescription(ruta),
     openGraph: {
       title: `Ruta ${sanitizeText(ruta.nombre)} con perro en Valencia`,
       description: buildDescription(ruta),
-      url: `https://rutasperrovalencia.es/rutas/${ruta.slug}`,
+      url: `/rutas/${ruta.slug}`,
       type: "article"
     },
     alternates: {

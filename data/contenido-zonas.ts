@@ -78,7 +78,7 @@ const contenidoZonas: Record<string, ContenidoZona> = {
   },
   "Valle de Ayora-Cofrentes": {
     intro: [
-      "Valle de Ayora-Cofrentes encaja muy bien en rutas con perro en Valencia para quienes quieren algo más activo sin perder el atractivo del agua. Tanto Cañones del Júcar Jalance como Descenso Río Fraile se sitúan en un perfil medio, lo que da a la zona una identidad bastante clara.",
+      "Valle de Ayora-Cofrentes encaja muy bien en rutas con perro en Valencia para quienes quieren algo más activo sin perder el atractivo del agua. La ruta de los Cañones del Júcar (Jalance) tiene un perfil medio, lo que da a la zona una identidad bastante clara.",
       "Aquí no se trata tanto de un paseo corto y simple, sino de una salida con más sensación de ruta. Eso hace que Valle de Ayora-Cofrentes destaque para dueños que disfrutan caminando de verdad con su perro y buscan recorridos donde el esfuerzo tenga un poco más de protagonismo.",
       "A nivel de posicionamiento, es una zona con una propuesta coherente y fácil de explicar: rutas medias, con agua y pensadas para perros acostumbrados a moverse. Dentro de la provincia, es una buena referencia para quien quiere alejarse de las opciones más básicas y hacer una escapada más completa."
     ],

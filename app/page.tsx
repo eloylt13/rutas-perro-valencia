@@ -14,7 +14,6 @@ import {
 import type { Ruta } from "@/types/ruta";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rutasperrovalencia.es"),
   title: "Rutas con perro cerca de Valencia",
   description: "Rutas verificadas, mapa y filtros para salir con perro cerca de Valencia.",
   alternates: {
