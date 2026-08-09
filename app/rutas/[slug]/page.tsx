@@ -229,7 +229,9 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
     });
   }
 
-  const visibleAffiliateSuggestions = affiliateSuggestions.slice(0, 2);
+  const visibleAffiliateSuggestions = contextualAffiliateSuggestion
+    ? []
+    : affiliateSuggestions.slice(0, 2);
   const breadcrumbItems = [
     { label: "Inicio", href: "/" },
     { label: "Rutas", href: "/rutas" },
