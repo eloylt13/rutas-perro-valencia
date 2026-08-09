@@ -77,6 +77,10 @@ export default function Footer({ methodologyHref }: FooterProps) {
           </a>
         </div>
       </div>
+      <p className="mt-5 text-center text-xs leading-5 text-grafito/60">
+        En calidad de Afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los
+        requisitos aplicables.
+      </p>
     </footer>
   );
 }

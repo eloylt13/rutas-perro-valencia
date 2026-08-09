@@ -42,6 +42,95 @@ type AffiliateSuggestion = {
   label: string;
 };
 
+type ContextualAffiliateSection = "consejos" | "advertencias";
+
+type ContextualAffiliateSlug =
+  | "parque-fluvial-turia-masia-traver"
+  | "puentes-colgantes-chulilla"
+  | "sierra-aledua-pico-besori"
+  | "gatova-pico-aguila-molino-ceja"
+  | "canones-jucar-jalance"
+  | "gorgo-escalera-anna";
+
+type ContextualAffiliateSuggestion = {
+  section: ContextualAffiliateSection;
+  beforeLink: string;
+  label: string;
+  afterLink: string;
+  href: string;
+};
+
+const contextualAffiliateSuggestions = {
+  "parque-fluvial-turia-masia-traver": {
+    section: "consejos",
+    beforeLink:
+      "Si haces la ruta con un perro pequeño o sénior que pueda cansarse, una ",
+    label: "mochila portamascotas",
+    afterLink:
+      " puede servir como apoyo puntual; comprueba antes que la talla y el peso admitido sean adecuados.",
+    href: "https://www.amazon.es/dp/B09Q88DJTW?tag=eloilaraterra-21"
+  },
+  "puentes-colgantes-chulilla": {
+    section: "advertencias",
+    beforeLink: "En los pasos estrechos y los puentes, mantén al perro cerca con una ",
+    label: "correa de doble enganche",
+    afterLink: " y cede el paso cuando sea necesario.",
+    href: "https://www.amazon.es/dp/B0CC5JJLX5?tag=eloilaraterra-21"
+  },
+  "sierra-aledua-pico-besori": {
+    section: "consejos",
+    beforeLink:
+      "El terreno de piedra suelta puede castigar las almohadillas: revísalas antes y después y valora aplicar un ",
+    label: "protector para almohadillas",
+    afterLink: " antes de salir.",
+    href: "https://www.amazon.es/dp/B0CTQDTWLR?tag=eloilaraterra-21"
+  },
+  "gatova-pico-aguila-molino-ceja": {
+    section: "consejos",
+    beforeLink: "Si haces la ruta a última hora para evitar el calor, un ",
+    label: "collar LED",
+    afterLink:
+      " puede ayudarte a localizar al perro cuando baja la luz; mantenlo igualmente bajo control.",
+    href: "https://www.amazon.es/dp/B0DVT8LL49?tag=eloilaraterra-21"
+  },
+  "canones-jucar-jalance": {
+    section: "advertencias",
+    beforeLink:
+      "Evita el baño si hay corriente; en zonas seguras y tranquilas, un ",
+    label: "chaleco salvavidas para perros",
+    afterLink: " puede aportar flotación adicional, sin sustituir la supervisión.",
+    href: "https://www.amazon.es/dp/B0GJ55RZKY?tag=eloilaraterra-21"
+  },
+  "gorgo-escalera-anna": {
+    section: "consejos",
+    beforeLink: "Tras el baño en las pozas, seca bien al perro antes de volver al coche; una ",
+    label: "toalla compacta",
+    afterLink: " puede venir bien sin ocupar mucho espacio en la mochila.",
+    href: "https://www.amazon.es/dp/B0CP7Y6HGQ?tag=eloilaraterra-21"
+  }
+} satisfies Record<ContextualAffiliateSlug, ContextualAffiliateSuggestion>;
+
+function ContextualAffiliateText({
+  suggestion
+}: {
+  suggestion: ContextualAffiliateSuggestion;
+}) {
+  return (
+    <>
+      {suggestion.beforeLink}
+      <a
+        href={suggestion.href}
+        target="_blank"
+        rel="nofollow sponsored noopener noreferrer"
+        className={affiliateLinkClassName}
+      >
+        {suggestion.label}
+      </a>
+      {suggestion.afterLink}
+    </>
+  );
+}
+
 function getRutaImagePath(slug: string): string | null {
   const relativePath = `/img/rutas/${slug}.jpg`;
   const absolutePath = path.join(process.cwd(), "public", "img", "rutas", `${slug}.jpg`);
@@ -115,6 +204,8 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
   const isPendiente = ruta.confianza_dato.toLowerCase() === "pendiente";
   const imagePath = getRutaImagePath(ruta.slug);
   const photoLicense = ruta.foto_credito?.match(/\(([^)]+)\)/)?.[1];
+  const contextualAffiliateSuggestion =
+    contextualAffiliateSuggestions[ruta.slug as ContextualAffiliateSlug];
   const affiliateSuggestions: AffiliateSuggestion[] = [];
 
   if (!ruta.agua) {
@@ -347,6 +438,11 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
                       {consejo}
                     </li>
                   ))}
+                  {contextualAffiliateSuggestion?.section === "consejos" ? (
+                    <li className="list-decimal">
+                      <ContextualAffiliateText suggestion={contextualAffiliateSuggestion} />
+                    </li>
+                  ) : null}
                 </ol>
                 {visibleAffiliateSuggestions.length > 0 ? (
                   <div className="mt-5 space-y-4 border-t border-bosque/10 pt-4 text-grafito/80">
@@ -370,6 +466,11 @@ export default function RutaDetailPage({ params }: RutaPageProps) {
               <article className="panel border border-amber-200 bg-amber-50 px-6 py-7 sm:px-8">
                 <h3 className="text-xl font-semibold text-amber-950">Advertencias</h3>
                 <p className="mt-4 text-base leading-7 text-amber-900">{contenido.advertencias}</p>
+                {contextualAffiliateSuggestion?.section === "advertencias" ? (
+                  <p className="mt-4 text-base leading-7 text-amber-900">
+                    <ContextualAffiliateText suggestion={contextualAffiliateSuggestion} />
+                  </p>
+                ) : null}
               </article>
             </>
           ) : (
