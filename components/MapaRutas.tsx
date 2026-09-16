@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
@@ -174,7 +174,12 @@ function getRutasFiltradas({
   );
 }
 
-export default function MapaRutas({ variant = "full" }: { variant?: "home" | "full" }) {
+type MapaRutasProps = {
+  variant?: "home" | "full";
+  onLocateReady?: (handler: (() => void) | null) => void;
+};
+
+export default function MapaRutas({ variant = "full", onLocateReady }: MapaRutasProps) {
   const [dificultad, setDificultad] = useState(defaultFilter);
   const [zona, setZona] = useState(defaultFilter);
   const [procesionaria, setProcesionaria] = useState(defaultFilter);
@@ -202,15 +207,15 @@ export default function MapaRutas({ variant = "full" }: { variant?: "home" | "fu
       ? rutasFiltradas.map((ruta) => ruta.coordenadas_inicio)
       : allRouteCoordinates;
 
-  function resetToDefaultMap(message: string) {
+  const resetToDefaultMap = useCallback((message: string) => {
     setLocationError(message);
     setUserLocation(null);
     setIsUserLocationActive(false);
     setCurrentCenter(mapCenter);
     setCurrentZoom(defaultZoom);
-  }
+  }, []);
 
-  function handleLocateUser() {
+  const handleLocateUser = useCallback(() => {
     if (!navigator.geolocation) {
       resetToDefaultMap("Activa la ubicación para ver rutas cercanas");
       return;
@@ -230,7 +235,13 @@ export default function MapaRutas({ variant = "full" }: { variant?: "home" | "fu
         resetToDefaultMap("Activa la ubicación para ver rutas cercanas");
       }
     );
-  }
+  }, [resetToDefaultMap]);
+
+  useEffect(() => {
+    onLocateReady?.(handleLocateUser);
+
+    return () => onLocateReady?.(null);
+  }, [handleLocateUser, onLocateReady]);
 
   const mapHeightClass = variant === "home" ? "h-[260px] sm:h-[340px]" : "h-[420px] sm:h-[560px]";
 
@@ -315,7 +326,7 @@ export default function MapaRutas({ variant = "full" }: { variant?: "home" | "fu
   if (variant === "home") {
     return (
       <div className="space-y-3">
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3 md:hidden">
           <button
             type="button"
             onClick={handleLocateUser}
