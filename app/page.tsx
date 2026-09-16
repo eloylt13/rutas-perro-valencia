@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import MapaTeaserSection from "@/components/MapaTeaserSection";
 import {
@@ -137,6 +138,37 @@ function FeaturedRoutesSection({ block }: { block: FeaturedBlock }) {
   );
 }
 
+function IAmagicaPromoCard() {
+  return (
+    <aside className="rounded-2xl border border-bosque/10 bg-white/75 p-3 shadow-sm md:w-[320px]">
+      <div className="flex items-start gap-3">
+        <Image
+          src="/iamagica-logo.png"
+          alt="Logo de IAMagica"
+          width={52}
+          height={52}
+          className="h-11 w-11 shrink-0 object-contain md:h-[52px] md:w-[52px]"
+        />
+        <div className="min-w-0">
+          <p className="text-xs font-semibold text-bosque/60">Publicidad · IAMagica</p>
+          <h2 className="mt-0.5 text-base font-semibold leading-5 text-bosque">¿Tienes un negocio?</h2>
+          <p className="mt-0.5 text-xs leading-5 text-grafito/70">
+            Crea y edita tu web desde WhatsApp.
+          </p>
+          <a
+            href="https://iamagica.es/?utm_source=rutasperrovalencia&utm_medium=referral&utm_campaign=webs_propias&utm_content=home_tarjeta"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1 inline-flex text-xs font-semibold text-bosque underline-offset-4 transition-colors hover:text-grafito hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bosque"
+          >
+            Descubre IAMagica →
+          </a>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
 export default function HomePage() {
   const zonas = getZonas();
 
@@ -151,7 +183,7 @@ export default function HomePage() {
         ))}
       </section>
 
-      <MapaTeaserSection />
+      <MapaTeaserSection promo={<IAmagicaPromoCard />} />
 
       <div className="space-y-6">
         {featuredBlocks.map((block) => (
